@@ -2,13 +2,11 @@
   "name": "receiptYourself",
   "version": "0.0.0",
   "dependencies": {},
-  "scripts": {
-    "test": "gulp test"
-  },
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "~6.7.4",
     "babel-loader": "~6.2.4",
     "babel-preset-es2015": "~6.6.0",
+    "bower": "~1.7.9",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~1.1.1",
@@ -53,7 +51,12 @@
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8"
   },
+  "scripts": {
+    "test": "gulp test",
+    "postinstall": "cd client && bower install --config.interactive=false && gulp build"
+  },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "4.4.3",
+    "npm": "2.15.1"
   }
 }

@@ -2,6 +2,17 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/nikolalsvk/receipt-yourself/branches/master/badge.svg)](https://semaphoreci.com/nikolalsvk/receipt-yourself)
 
+### Technology stack:
+
+ - Backend:
+   - Ruby 2.2.3
+   - Rails 4.2.4
+   - RSpec 3.4.4
+ - Frontend:
+   - AngularJS 1.5.5
+   - Angular Material design
+   - ES6 with Babel (JS preprocessor)
+
 Authors:
 
  - Nikola Djuza

@@ -21,7 +21,7 @@ export function MalarkeyDirective(malarkey) {
       deleteSpeed: 40,
       pauseDelay: 800,
       loop: true,
-      postfix: ' '
+      postfix: ''
     });
 
     el.addClass('acme-malarkey');

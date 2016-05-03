@@ -24,9 +24,4 @@ export class MainController {
       awesomeThing.rank = Math.random();
     });
   }
-
-  showToastr() {
-    this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    this.classAnimation = '';
-  }
 }

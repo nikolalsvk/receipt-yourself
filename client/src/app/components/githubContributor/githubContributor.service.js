@@ -4,7 +4,7 @@ export class GithubContributorService {
 
     this.$log = $log;
     this.$http = $http;
-    this.apiHost = 'https://api.github.com/repos/Swiip/generator-gulp-angular';
+    this.apiHost = 'https://api.github.com/repos/nikolalsvk/receipt-yourself';
   }
 
   getContributors(limit=30) {

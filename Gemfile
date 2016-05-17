@@ -4,15 +4,19 @@ ruby '2.2.3'
 
 gem 'rails', '4.2.4'
 gem 'rails-api'
+
 gem 'pg'
 gem 'devise_token_auth'
 gem 'omniauth'
 # Use rack-rewrite to allow use of HTML5 pushState.
 gem 'rack-rewrite'
 
+gem 'devise_token_auth'
+
 group :development, :test do
   gem 'spring'
   gem 'byebug'
+  gem 'spring'
 end
 
 group :test do

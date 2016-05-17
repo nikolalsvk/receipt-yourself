@@ -6,12 +6,13 @@ gem 'rails', '4.2.4'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
-
 gem 'pg'
+
+gem 'devise_token_auth'
 
 group :development, :test do
   gem 'byebug'
+  gem 'spring'
 end
 
 group :test do

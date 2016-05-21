@@ -7,6 +7,8 @@ gem 'rails-api'
 gem 'pg'
 gem 'devise_token_auth'
 gem 'omniauth'
+# Use rack-rewrite to allow use of HTML5 pushState.
+gem 'rack-rewrite'
 
 group :development, :test do
   gem 'spring'
@@ -18,6 +20,9 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'compass'
 end
 
 group :production do

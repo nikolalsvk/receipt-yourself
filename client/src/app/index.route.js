@@ -1,5 +1,12 @@
-export function routerConfig ($stateProvider, $urlRouterProvider) {
+export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
   'ngInject';
+
+  // Enable HTML5 Mode
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+
   $stateProvider
     .state('home', {
       url: '/',
@@ -7,7 +14,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MainController',
       controllerAs: 'main'
     })
-    .state('signIn', {
+    .state('sign_in', {
       url: '/sign_in',
       templateUrl: 'app/components/userAuth/new.html',
       controller: 'SignInController',

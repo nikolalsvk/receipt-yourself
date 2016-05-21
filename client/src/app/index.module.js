@@ -23,6 +23,6 @@ angular.module('receiptYourself', ['ngResource',
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
-  .controller('SignInController', ['$scope', SignInController])
+  .controller('SignInController', SignInController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

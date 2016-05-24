@@ -1,5 +1,5 @@
 export class SignInController {
-  constructor ($scope, $auth) {
+  constructor ($scope, $auth, $mdToast) {
     'ngInject';
 
     $scope.handleLoginBtnClick = function() {
@@ -7,7 +7,7 @@ export class SignInController {
         .then(function(user) {
         })
         .catch(function(reason) {
-          $scope.error = reason.errors[0];
+          $mdToast.show($mdToast.simple(reason.errors[0]));
         });
     }
   }

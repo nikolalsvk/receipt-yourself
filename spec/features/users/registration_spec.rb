@@ -8,7 +8,7 @@ feature "Registration", js: true do
     fill_in "Email", with: email
     fill_in "Password", with: password
     fill_in "Password confirmation", with: password
-    click_on "Register"
+    click_on "Sign up"
 
     visit '/sign_in'
     login(email, password)
@@ -19,6 +19,6 @@ feature "Registration", js: true do
   def login(email, password)
     fill_in "Email", with: email
     fill_in "Password", with: password
-    find("button", text: "Sign in").click
+    find("button", text: "SIGN IN").click
   end
 end

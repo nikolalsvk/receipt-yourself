@@ -8,12 +8,12 @@ import { SignInController } from '../app/components/userAuth/signIn.controller';
 import { SignUpController } from '../app/components/userRegistration/signUp.controller';
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
-import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
                                    'ngMaterial',
+                                   'ngMessages',
                                    'toastr',
                                    'ng-token-auth'])
   .constant('malarkey', malarkey)
@@ -26,5 +26,4 @@ angular.module('receiptYourself', ['ngResource',
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

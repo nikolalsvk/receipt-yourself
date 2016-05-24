@@ -19,6 +19,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
       templateUrl: 'app/components/userAuth/new.html',
       controller: 'SignInController',
       controllerAs: 'sign_in'
+    })
+    .state('sign_up', {
+      url: '/sign_up',
+      templateUrl: 'app/components/userRegistration/new.html',
+      controller: 'SignUpController',
+      controllerAs: 'sign_up'
     });
 
   $urlRouterProvider.otherwise('/');

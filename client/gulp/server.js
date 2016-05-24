@@ -13,6 +13,8 @@ var exec = require('child_process').exec;
 
 var proxyMiddleware = require('http-proxy-middleware');
 
+var modRewrite = require('connect-modrewrite');
+
 function browserSyncInit(baseDir, browser) {
   browser = browser === undefined ? 'default' : browser;
 
@@ -27,6 +29,9 @@ function browserSyncInit(baseDir, browser) {
     baseDir: baseDir,
     routes: routes,
     middleware: [
+      // Redirect anything that's not a file or an API call to /index.html.
+      // This allows HTML5 pushState to work on page reloads.
+      modRewrite(['!/api|/assets|\\..+$ /index.html']),
       proxyMiddleware('/api', { target: 'http://localhost:3000' })
     ]
   };

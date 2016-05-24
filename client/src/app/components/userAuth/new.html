@@ -1,0 +1,38 @@
+<div layout="row" layout-padding layout-align="center" ng-cloak>
+  <md-card>
+
+    <form ng-submit="handleLoginBtnClick()" role="form" ng-init="loginForm = {}" name="logForm">
+
+      <md-input-container class="md-block">
+        <label for="email">Email</label>
+        <input type="email"
+               name="email"
+               id="email"
+               ng-model="loginForm.email"
+               required="required">
+
+        <div ng-messages="logForm.email.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="email">It must be an email.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label for="password">Password</label>
+        <input type="password"
+               name="password"
+               id="password"
+               ng-model="loginForm.password"
+               required="required">
+
+        <div ng-messages="logForm.password.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-button type="submit">Sign in</md-button>
+    </form>
+
+  </md-card>
+
+</div>

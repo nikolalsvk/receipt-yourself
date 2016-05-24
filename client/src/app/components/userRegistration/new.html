@@ -1,0 +1,52 @@
+<div layout="row" layout-padding layout-align="center" ng-cloak>
+
+  <md-card>
+
+    <form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}" name="regForm">
+
+      <md-input-container class="md-block">
+        <label for="email">Email</label>
+        <input type="email"
+               name="email"
+               id="email"
+               ng-model="registrationForm.email"
+               required />
+
+        <div ng-messages="regForm.email.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="email">It must be an email.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label for="password">Password</label>
+        <input type="password"
+               name="password"
+               id="password"
+               ng-model="registrationForm.password"
+               required />
+
+        <div ng-messages="regForm.password.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label for="password_confirmation">Password confirmation</label>
+        <input type="password"
+               name="password_confirmation"
+               id="password_confirmation"
+               ng-model="registrationForm.password_confirmation"
+               required />
+
+        <div ng-messages="regForm.password_confirmation.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-button type="submit">Sign up</md-button>
+    </form>
+
+  </md-card>
+
+</div>

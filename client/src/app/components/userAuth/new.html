@@ -1,12 +1,8 @@
-<header>
-  <acme-navbar></acme-navbar>
-</header>
-
 <div class="alert alert-danger" role="alert" ng-show="error">
   {{ error }}
 </div>
 
-<form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
+<form ng-submit="handleLoginBtnClick()" role="form" ng-init="loginForm = {}">
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email"

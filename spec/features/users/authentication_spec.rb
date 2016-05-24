@@ -11,7 +11,7 @@ feature 'Authentication', js: true do
     scenario 'with invalid credentials' do
       login("lol@lol.com", "testtest")
 
-      expect(page).to have_content('Invalid login credentials. Please try again.')
+      expect(page).to have_content('Invalid credentials')
     end
 
     scenario 'redirect after login' do

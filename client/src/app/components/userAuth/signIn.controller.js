@@ -1,9 +1,14 @@
 export class SignInController {
-  constructor ($scope) {
+  constructor ($scope, $auth) {
     'ngInject';
 
-    $scope.$on('auth:login-error', function(ev, reason) {
-      $scope.error = reason.errors[0];
-    });
+    $scope.handleLoginBtnClick = function() {
+      $auth.submitLogin($scope.loginForm)
+        .then(function(user) {
+        })
+        .catch(function(reason) {
+          $scope.error = reason.errors[0];
+        });
+    }
   }
 }

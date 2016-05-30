@@ -33,6 +33,7 @@ group :test do
   gem 'capybara'
   gem 'compass'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
 end
 
 group :production do

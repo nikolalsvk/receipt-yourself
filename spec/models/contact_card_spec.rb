@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe ContactCard, type: :model do
-  it { should validate_uniqueness_of(:pib) }
+  before do
+    FactoryGirl.create(:contact_card)
+  end
+  it { should validate_uniqueness_of(:pib).case_insensitive }
   it { should validate_presence_of(:pib) }
   it { should validate_length_of(:pib).is_at_least(8) }
 

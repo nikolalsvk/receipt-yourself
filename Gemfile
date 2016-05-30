@@ -32,6 +32,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'compass'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :production do

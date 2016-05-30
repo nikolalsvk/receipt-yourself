@@ -9,10 +9,15 @@ gem 'rails-api'
 gem 'pg'
 
 gem 'devise_token_auth'
+gem 'omniauth'
 
 group :development, :test do
   gem 'byebug'
   gem 'spring'
+end
+
+group :development do
+  gem "rails-erd"
 end
 
 group :test do

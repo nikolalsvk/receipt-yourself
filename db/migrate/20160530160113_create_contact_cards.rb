@@ -1,14 +1,14 @@
 class CreateContactCards < ActiveRecord::Migration
   def change
     create_table :contact_cards do |t|
-      t.integer :pib
-      t.string :country
+      t.string :pib, null: false
+      t.string :country, null: false
       t.string :region
-      t.string :city
-      t.string :address
-      t.string :email
-      t.string :website
-      t.string :phone
+      t.string :city, null: false
+      t.string :address, null: false
+      t.string :email, null: false
+      t.string :website, null: false
+      t.string :phone, null: false
       t.string :fax
 
       t.timestamps null: false

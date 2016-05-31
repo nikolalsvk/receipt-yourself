@@ -64,15 +64,15 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "daily_bank_statements", force: :cascade do |t|
-    t.integer  "number"
-    t.datetime "statement_date"
-    t.decimal  "previous_amount"
-    t.decimal  "new_amout"
-    t.decimal  "reserved_amount"
-    t.decimal  "total_payment"
-    t.decimal  "total_payout"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "number",                                   null: false
+    t.datetime "statement_date",                           null: false
+    t.decimal  "previous_amount", precision: 15, scale: 4
+    t.decimal  "new_amout",       precision: 15, scale: 4
+    t.decimal  "reserved_amount", precision: 15, scale: 4
+    t.decimal  "total_payment",   precision: 15, scale: 4
+    t.decimal  "total_payout",    precision: 15, scale: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "daily_statements", force: :cascade do |t|

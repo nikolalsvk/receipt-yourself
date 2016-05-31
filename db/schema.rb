@@ -17,21 +17,21 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   enable_extension "plpgsql"
 
   create_table "banks", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "business_partner_accounts", force: :cascade do |t|
-    t.integer  "number"
-    t.boolean  "activated"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "number",                     null: false
+    t.boolean  "activated",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "business_partners", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "type"
+    t.string   "name",       null: false
+    t.integer  "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

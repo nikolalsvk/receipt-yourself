@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Bank, type: :model do
   before do
-    FactoryGirl.create(:company)
+    FactoryGirl.create(:bank)
   end
 
   it { should validate_uniqueness_of(:name) }

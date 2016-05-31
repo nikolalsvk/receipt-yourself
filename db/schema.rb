@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "company_accounts", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "currency"
+    t.string   "number",     null: false
+    t.integer  "currency",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

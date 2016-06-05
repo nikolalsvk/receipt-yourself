@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: business_partner_accounts
+#
+#  id         :integer          not null, primary key
+#  number     :string           not null
+#  activated  :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe BusinessPartnerAccount, type: :model do

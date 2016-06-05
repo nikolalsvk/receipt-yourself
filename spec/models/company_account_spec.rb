@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: company_accounts
+#
+#  id         :integer          not null, primary key
+#  number     :string           not null
+#  currency   :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe CompanyAccount, type: :model do

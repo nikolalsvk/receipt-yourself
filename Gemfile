@@ -21,7 +21,9 @@ group :development, :test do
 end
 
 group :development do
-  gem "rails-erd"
+  gem 'rails-erd'
+  # schema info in model
+  gem 'annotate'
 end
 
 group :test do

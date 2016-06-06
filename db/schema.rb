@@ -76,28 +76,28 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "daily_statements", force: :cascade do |t|
-    t.integer  "debtor_account_number"
-    t.string   "debtor_account_name"
-    t.string   "debtor_account_city"
-    t.integer  "debtor_model_number"
-    t.string   "debtor_reference_number"
-    t.string   "debtor_payment_purpose"
-    t.integer  "creditor_model_number"
-    t.string   "creditor_reference_number"
-    t.integer  "creditor_account_number"
-    t.string   "approval_reference_number"
-    t.integer  "payment_number"
-    t.string   "payment_currency"
-    t.decimal  "transfer_amount"
-    t.string   "account_city"
-    t.datetime "currency_date"
-    t.datetime "payment_date"
-    t.integer  "calculation_method"
-    t.integer  "priority"
-    t.integer  "status"
-    t.decimal  "remaining_amount"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "debtor_account_number",     limit: 18,                          null: false
+    t.string   "debtor_account_name",                                           null: false
+    t.string   "debtor_account_city",                                           null: false
+    t.string   "debtor_model_number",       limit: 2,                           null: false
+    t.string   "debtor_reference_number",                                       null: false
+    t.string   "debtor_payment_purpose",                                        null: false
+    t.string   "creditor_model_number",     limit: 2,                           null: false
+    t.string   "creditor_reference_number",                                     null: false
+    t.string   "creditor_account_number",   limit: 18,                          null: false
+    t.string   "approval_reference_number",                                     null: false
+    t.string   "payment_number",            limit: 3,                           null: false
+    t.integer  "payment_currency",                                              null: false
+    t.decimal  "transfer_amount",                      precision: 15, scale: 4, null: false
+    t.string   "account_city",                                                  null: false
+    t.datetime "currency_date",                                                 null: false
+    t.datetime "payment_date",                                                  null: false
+    t.integer  "calculation_method",                                            null: false
+    t.integer  "priority",                                                      null: false
+    t.integer  "status",                                                        null: false
+    t.decimal  "remaining_amount",                     precision: 15, scale: 4, null: false
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
   end
 
   create_table "financial_years", force: :cascade do |t|

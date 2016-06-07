@@ -150,21 +150,24 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "payment_orders", force: :cascade do |t|
-    t.integer  "creditor_account_number"
-    t.string   "account_name"
-    t.string   "account_city"
-    t.integer  "payment_method"
-    t.integer  "debtor_model_number"
-    t.string   "debtor_reference_number"
-    t.string   "debtor_payment_purpose"
-    t.string   "approval_reference_number"
-    t.integer  "payment_number"
-    t.string   "payment_currency"
-    t.decimal  "transfer_amount"
-    t.datetime "currency_date"
-    t.datetime "payment_date"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "debtor_account_number",     limit: 18,                          null: false
+    t.string   "debtor_account_name",                                           null: false
+    t.string   "debtor_account_city",                                           null: false
+    t.string   "debtor_model_number",       limit: 2,                           null: false
+    t.string   "debtor_reference_number",                                       null: false
+    t.string   "debtor_payment_purpose",                                        null: false
+    t.string   "creditor_model_number",     limit: 2,                           null: false
+    t.string   "creditor_reference_number",                                     null: false
+    t.string   "creditor_account_number",   limit: 18,                          null: false
+    t.integer  "payment_method",                                                null: false
+    t.string   "approval_reference_number",                                     null: false
+    t.string   "payment_number",            limit: 3,                           null: false
+    t.decimal  "transfer_amount",                      precision: 15, scale: 4, null: false
+    t.datetime "currency_date",                                                 null: false
+    t.datetime "payment_date",                                                  null: false
+    t.string   "account_city",                                                  null: false
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
   end
 
   create_table "payment_proposals", force: :cascade do |t|

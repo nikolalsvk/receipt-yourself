@@ -101,10 +101,10 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "financial_years", force: :cascade do |t|
-    t.integer  "year"
-    t.boolean  "closed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "year",                       null: false
+    t.boolean  "closed",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "input_invoice_closures", force: :cascade do |t|

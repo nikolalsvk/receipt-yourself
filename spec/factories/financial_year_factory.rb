@@ -9,8 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-class FinancialYear < ActiveRecord::Base
-  validates :year, presence: true,
-                   length: { minimum: 4,
-                             maximum: 4 }
+FactoryGirl.define do
+  factory :financial_year do
+  	year { Faker::Number.number(4) } 
+  end
 end

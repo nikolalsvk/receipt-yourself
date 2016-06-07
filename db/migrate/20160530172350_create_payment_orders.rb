@@ -1,23 +1,28 @@
 class CreatePaymentOrders < ActiveRecord::Migration
   def change
     create_table :payment_orders do |t|
-      t.integer :creditor_account_number
-      t.string :account_name
-      t.string :account_city
-      t.integer :payment_method
-      t.integer :debtor_model_number
-      t.string :debtor_reference_number
-      t.string :debtor_payment_purpose
+      
+      t.string :debtor_account_number, null: false, limit: 18
+      t.string :debtor_account_name, null: false
+      t.string :debtor_account_city, null: false
+      t.string :debtor_model_number, null: false, limit: 2
+      t.string :debtor_reference_number, null: false 
+      t.string :debtor_payment_purpose, null: false
 
-      t.string :approval_reference_number
-      t.integer :payment_number
-      t.string :payment_currency
-      t.decimal :transfer_amount
-      t.string :account_city
 
-      t.datetime :currency_date
-      t.datetime :payment_date
+      t.string :creditor_model_number, null: false, limit:2
+      t.string :creditor_reference_number, null: false
+      t.string :creditor_account_number, null: false, limit: 18
 
+      t.integer :payment_method, null: false
+      t.string :approval_reference_number, null: false
+      t.string :payment_number, null: false, limit:3
+      t.decimal :transfer_amount, null: false, precision: 15, scale: 4
+
+      t.datetime :currency_date, null: false
+      t.datetime :payment_date, null: false
+
+      t.string :account_city, null: false
 
       t.timestamps null: false
     end

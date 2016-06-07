@@ -171,9 +171,9 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "payment_proposals", force: :cascade do |t|
-    t.datetime "payment_date"
-    t.integer  "number"
-    t.integer  "status"
+    t.datetime "payment_date", null: false
+    t.string   "number",       null: false
+    t.integer  "status",       null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

@@ -9,13 +9,10 @@
 #  updated_at     :datetime         not null
 #
 
-require 'rails_helper'
 
-RSpec.describe InputInvoiceClosure, type: :model do
-  before do
-  	FactoryGirl.create(:input_invoice_closure)
+FactoryGirl.define do
+  factory :input_invoice_closure do
+  	closure_date { Date.today }
+  	closure_amount { Faker::Number.decimal(10, 4) } 
   end
-
-  it { should validate_presence_of(:closure_date) }
-  it { should validate_presence_of(:closure_amount) }
 end

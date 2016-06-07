@@ -9,7 +9,9 @@
 #  updated_at     :datetime         not null
 #
 
-class OutputInvoiceClosure < ActiveRecord::Base
-  validates :closure_date, presence: true
-  validates :closure_amount, presence: true
+FactoryGirl.define do
+  factory :output_invoice_closure do
+  	closure_date { Date.today }
+  	closure_amount { Faker::Number.decimal(10, 4) } 
+  end
 end

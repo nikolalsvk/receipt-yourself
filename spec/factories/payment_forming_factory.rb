@@ -7,7 +7,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-class PaymentForming < ActiveRecord::Base
-  validates :amount, presence: true
+FactoryGirl.define do
+  factory :payment_forming do
+  	amount { Faker::Number.decimal(10, 4) } 
+  end
 end
+

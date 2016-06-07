@@ -144,9 +144,9 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "payment_formings", force: :cascade do |t|
-    t.decimal  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "amount",     precision: 15, scale: 4, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "payment_orders", force: :cascade do |t|

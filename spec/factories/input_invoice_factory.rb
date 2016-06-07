@@ -13,13 +13,13 @@
 #  updated_at       :datetime         not null
 #
 
-class InputInvoice < ActiveRecord::Base
-  validates :number, presence: true, 
-                     uniqueness: true,
-                     case_sensitive: false
-  validates :payment_amount, presence: true
-  validates :remaining_amount, presence: true
-  validates :issuance_date, presence: true
-  validates :circulation_date, presence: true
-  validates :payment_deadline, presence: true
+FactoryGirl.define do
+  factory :input_invoice do
+  	number { Faker::Number.number(12) }
+  	payment_amount { Faker::Number.decimal(11, 4) }
+  	remaining_amount { Faker::Number.decimal(11, 4) }
+  	issuance_date { Date.today }
+  	circulation_date { Date.today }
+  	payment_deadline { Date.today }
+  end
 end

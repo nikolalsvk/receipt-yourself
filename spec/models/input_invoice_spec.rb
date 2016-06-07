@@ -3,12 +3,12 @@
 # Table name: input_invoices
 #
 #  id               :integer          not null, primary key
-#  number           :integer
-#  payment_amount   :decimal(, )
-#  remaining_amount :decimal(, )
-#  issuance_date    :datetime
-#  circulation_date :datetime
-#  payment_deadline :datetime
+#  number           :string           not null
+#  payment_amount   :decimal(15, 4)   not null
+#  remaining_amount :decimal(15, 4)   not null
+#  issuance_date    :datetime         not null
+#  circulation_date :datetime         not null
+#  payment_deadline :datetime         not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
@@ -16,5 +16,15 @@
 require 'rails_helper'
 
 RSpec.describe InputInvoice, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do 
+  	FactoryGirl.create(:input_invoice)
+  end
+
+  it { should validate_presence_of(:number) }
+  it { should validate_uniqueness_of(:number).case_insensitive }
+  it { should validate_presence_of(:payment_amount) }
+  it { should validate_presence_of(:remaining_amount) }
+  it { should validate_presence_of(:issuance_date) }
+  it { should validate_presence_of(:circulation_date) }
+  it { should validate_presence_of(:payment_deadline) }
 end

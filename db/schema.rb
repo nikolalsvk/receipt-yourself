@@ -108,10 +108,10 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "input_invoice_closures", force: :cascade do |t|
-    t.datetime "closure_date"
-    t.decimal  "closure_amount"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "closure_date",                            null: false
+    t.decimal  "closure_amount", precision: 15, scale: 4, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "input_invoices", force: :cascade do |t|

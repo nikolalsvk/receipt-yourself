@@ -33,11 +33,14 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "business_partners", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "type",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",            null: false
+    t.integer  "type",            null: false
+    t.integer  "contact_card_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "business_partners", ["contact_card_id"], name: "index_business_partners_on_contact_card_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",            null: false

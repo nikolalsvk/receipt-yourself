@@ -18,6 +18,7 @@
 
 class ContactCard < ActiveRecord::Base
   has_many :companies
+  has_many :banks
 
   validates :pib, presence: true,
                   uniqueness: true,

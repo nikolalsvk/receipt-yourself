@@ -27,6 +27,8 @@ class CreateDailyStatements < ActiveRecord::Migration
       t.integer :status, null: false
       t.decimal :remaining_amount, null: false, precision: 15, scale: 4
 
+      t.belongs_to :business_partner, index: true
+
       t.timestamps null: false
     end
   end

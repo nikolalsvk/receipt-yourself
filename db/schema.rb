@@ -115,9 +115,12 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.integer  "priority",                                                      null: false
     t.integer  "status",                                                        null: false
     t.decimal  "remaining_amount",                     precision: 15, scale: 4, null: false
+    t.integer  "business_partner_id"
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
   end
+
+  add_index "daily_statements", ["business_partner_id"], name: "index_daily_statements_on_business_partner_id", using: :btree
 
   create_table "financial_years", force: :cascade do |t|
     t.string   "year",                       null: false

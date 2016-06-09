@@ -8,6 +8,8 @@ class CreateOutputInvoices < ActiveRecord::Migration
       t.datetime :circulation_date, null: false
       t.datetime :payment_deadline, null: false
 
+      t.belongs_to :company, index: true
+
       t.timestamps null: false
     end
   end

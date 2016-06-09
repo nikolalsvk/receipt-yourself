@@ -199,10 +199,12 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.string   "image"
     t.string   "email"
     t.json     "tokens"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree

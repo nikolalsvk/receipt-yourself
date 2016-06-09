@@ -23,6 +23,7 @@
 #  image                  :string
 #  email                  :string
 #  tokens                 :json
+#  company_id             :integer
 #  created_at             :datetime
 #  updated_at             :datetime
 #

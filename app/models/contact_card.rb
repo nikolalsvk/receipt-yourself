@@ -17,6 +17,8 @@
 #
 
 class ContactCard < ActiveRecord::Base
+  has_many :companies
+
   validates :pib, presence: true,
                   uniqueness: true,
                   numericality: true,

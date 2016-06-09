@@ -15,6 +15,7 @@ class CompanyAccount < ActiveRecord::Base
   belongs_to :company
   belongs_to :bank
   has_many :payment_formings
+  has_many :daily_bank_statements
 
   validates :number, presence: true,
                      uniqueness: true,

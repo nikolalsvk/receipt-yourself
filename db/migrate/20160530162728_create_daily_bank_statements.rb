@@ -9,6 +9,8 @@ class CreateDailyBankStatements < ActiveRecord::Migration
       t.decimal :total_payment, precision: 15, scale: 4
       t.decimal :total_payout, precision: 15, scale: 4
 
+      t.belongs_to :company_account, index: true
+
       t.timestamps null: false
     end
   end

@@ -83,16 +83,19 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "daily_bank_statements", force: :cascade do |t|
-    t.string   "number",                                   null: false
-    t.datetime "statement_date",                           null: false
-    t.decimal  "previous_amount", precision: 15, scale: 4
-    t.decimal  "new_amout",       precision: 15, scale: 4
-    t.decimal  "reserved_amount", precision: 15, scale: 4
-    t.decimal  "total_payment",   precision: 15, scale: 4
-    t.decimal  "total_payout",    precision: 15, scale: 4
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.string   "number",                                      null: false
+    t.datetime "statement_date",                              null: false
+    t.decimal  "previous_amount",    precision: 15, scale: 4
+    t.decimal  "new_amout",          precision: 15, scale: 4
+    t.decimal  "reserved_amount",    precision: 15, scale: 4
+    t.decimal  "total_payment",      precision: 15, scale: 4
+    t.decimal  "total_payout",       precision: 15, scale: 4
+    t.integer  "company_account_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
+
+  add_index "daily_bank_statements", ["company_account_id"], name: "index_daily_bank_statements_on_company_account_id", using: :btree
 
   create_table "daily_statements", force: :cascade do |t|
     t.string   "debtor_account_number",     limit: 18,                          null: false

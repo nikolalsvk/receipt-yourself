@@ -26,14 +26,16 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   add_index "banks", ["contact_card_id"], name: "index_banks_on_contact_card_id", using: :btree
 
   create_table "business_partner_accounts", force: :cascade do |t|
-    t.string   "number",                     null: false
-    t.boolean  "activated",  default: false
+    t.string   "number",                              null: false
+    t.boolean  "activated",           default: false
     t.integer  "bank_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "business_partner_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "business_partner_accounts", ["bank_id"], name: "index_business_partner_accounts_on_bank_id", using: :btree
+  add_index "business_partner_accounts", ["business_partner_id"], name: "index_business_partner_accounts_on_business_partner_id", using: :btree
 
   create_table "business_partners", force: :cascade do |t|
     t.string   "name",            null: false

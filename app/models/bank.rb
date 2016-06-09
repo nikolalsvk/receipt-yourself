@@ -12,6 +12,7 @@
 class Bank < ActiveRecord::Base
   belongs_to :contact_card
   has_many :business_partner_accounts
+  has_many :company_accounts
 
   validates :name, presence: true, uniqueness: true
 end

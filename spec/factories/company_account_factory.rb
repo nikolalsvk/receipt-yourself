@@ -6,6 +6,7 @@
 #  number     :string           not null
 #  currency   :integer          not null
 #  company_id :integer
+#  bank_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

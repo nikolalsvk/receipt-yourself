@@ -4,6 +4,8 @@ class CreateFinancialYears < ActiveRecord::Migration
       t.string :year, null: false
       t.boolean :closed, default: false
 
+      t.belongs_to :company, index:true
+
       t.timestamps null: false
     end
   end

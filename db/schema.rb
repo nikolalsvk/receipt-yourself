@@ -106,9 +106,12 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   create_table "financial_years", force: :cascade do |t|
     t.string   "year",                       null: false
     t.boolean  "closed",     default: false
+    t.integer  "company_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "financial_years", ["company_id"], name: "index_financial_years_on_company_id", using: :btree
 
   create_table "input_invoice_closures", force: :cascade do |t|
     t.datetime "closure_date",                            null: false

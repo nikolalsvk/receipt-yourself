@@ -11,6 +11,7 @@
 class Company < ActiveRecord::Base
 	has_many :users
 	has_many :company_accounts
+	has_many :financial_years
 
 	validates :name, presence: true, uniqueness: true
 end

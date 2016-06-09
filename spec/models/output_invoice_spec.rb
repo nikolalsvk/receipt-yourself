@@ -2,16 +2,17 @@
 #
 # Table name: output_invoices
 #
-#  id               :integer          not null, primary key
-#  number           :string           not null
-#  payment_amount   :decimal(15, 4)   not null
-#  remaining_amount :decimal(15, 4)   not null
-#  issuance_date    :datetime         not null
-#  circulation_date :datetime         not null
-#  payment_deadline :datetime         not null
-#  company_id       :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                  :integer          not null, primary key
+#  number              :string           not null
+#  payment_amount      :decimal(15, 4)   not null
+#  remaining_amount    :decimal(15, 4)   not null
+#  issuance_date       :datetime         not null
+#  circulation_date    :datetime         not null
+#  payment_deadline    :datetime         not null
+#  company_id          :integer
+#  business_partner_id :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 
 require 'rails_helper'

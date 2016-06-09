@@ -41,6 +41,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration
 
       ## Tokens
       t.json :tokens
+      t.belongs_to :company, index: true
 
       t.timestamps
     end

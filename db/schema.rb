@@ -28,9 +28,12 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   create_table "business_partner_accounts", force: :cascade do |t|
     t.string   "number",                     null: false
     t.boolean  "activated",  default: false
+    t.integer  "bank_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "business_partner_accounts", ["bank_id"], name: "index_business_partner_accounts_on_bank_id", using: :btree
 
   create_table "business_partners", force: :cascade do |t|
     t.string   "name",            null: false

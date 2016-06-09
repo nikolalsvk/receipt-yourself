@@ -58,10 +58,12 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.string   "number",     null: false
     t.integer  "currency",   null: false
     t.integer  "company_id"
+    t.integer  "bank_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "company_accounts", ["bank_id"], name: "index_company_accounts_on_bank_id", using: :btree
   add_index "company_accounts", ["company_id"], name: "index_company_accounts_on_company_id", using: :btree
 
   create_table "contact_cards", force: :cascade do |t|

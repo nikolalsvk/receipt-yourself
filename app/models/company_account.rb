@@ -6,12 +6,14 @@
 #  number     :string           not null
 #  currency   :integer          not null
 #  company_id :integer
+#  bank_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class CompanyAccount < ActiveRecord::Base
   belongs_to :company
+  belongs_to :bank
 
   validates :number, presence: true,
                      uniqueness: true,

@@ -5,6 +5,7 @@ class CreateCompanyAccounts < ActiveRecord::Migration
       t.integer :currency, null: false
 
       t.belongs_to :company, index: true
+      t.belongs_to :bank, index: true
 
       t.timestamps null: false
     end

@@ -28,6 +28,7 @@ class CreateDailyStatements < ActiveRecord::Migration
       t.decimal :remaining_amount, null: false, precision: 15, scale: 4
 
       t.belongs_to :business_partner, index: true
+      t.belongs_to :daily_bank_statement, index: true
 
       t.timestamps null: false
     end

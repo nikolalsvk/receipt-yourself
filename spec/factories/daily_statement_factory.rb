@@ -24,6 +24,7 @@
 #  status                    :integer          not null
 #  remaining_amount          :decimal(15, 4)   not null
 #  business_partner_id       :integer
+#  daily_bank_statement_id   :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #

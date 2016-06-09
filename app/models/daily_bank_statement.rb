@@ -17,6 +17,7 @@
 
 class DailyBankStatement < ActiveRecord::Base
   belongs_to :company_account
+  has_many :daily_statements
 
   validates :number, presence: true,
                      uniqueness: true,

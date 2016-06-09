@@ -2,12 +2,15 @@
 #
 # Table name: payment_formings
 #
-#  id         :integer          not null, primary key
-#  amount     :decimal(15, 4)   not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  amount             :decimal(15, 4)   not null
+#  company_account_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 class PaymentForming < ActiveRecord::Base
+  belongs_to :company_account
+
   validates :amount, presence: true
 end

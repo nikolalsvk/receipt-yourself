@@ -135,15 +135,18 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   end
 
   create_table "input_invoices", force: :cascade do |t|
-    t.string   "number",                                    null: false
-    t.decimal  "payment_amount",   precision: 15, scale: 4, null: false
-    t.decimal  "remaining_amount", precision: 15, scale: 4, null: false
-    t.datetime "issuance_date",                             null: false
-    t.datetime "circulation_date",                          null: false
-    t.datetime "payment_deadline",                          null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.string   "number",                                       null: false
+    t.decimal  "payment_amount",      precision: 15, scale: 4, null: false
+    t.decimal  "remaining_amount",    precision: 15, scale: 4, null: false
+    t.datetime "issuance_date",                                null: false
+    t.datetime "circulation_date",                             null: false
+    t.datetime "payment_deadline",                             null: false
+    t.integer  "business_partner_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
+
+  add_index "input_invoices", ["business_partner_id"], name: "index_input_invoices_on_business_partner_id", using: :btree
 
   create_table "output_invoice_closures", force: :cascade do |t|
     t.datetime "closure_date",                            null: false

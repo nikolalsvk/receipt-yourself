@@ -9,11 +9,14 @@
 #  issuance_date    :datetime         not null
 #  circulation_date :datetime         not null
 #  payment_deadline :datetime         not null
+#  company_id       :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
 
 class OutputInvoice < ActiveRecord::Base
+  belongs_to :company  
+
   validates :number, presence: true, 
                      uniqueness: true,
                      case_sensitive: false

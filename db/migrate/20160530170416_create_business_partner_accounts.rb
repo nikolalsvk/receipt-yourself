@@ -5,6 +5,7 @@ class CreateBusinessPartnerAccounts < ActiveRecord::Migration
       t.boolean :activated, default: false
 
       t.belongs_to :bank, index: true
+      t.belongs_to :business_partner, index: true
 
       t.timestamps null: false
     end

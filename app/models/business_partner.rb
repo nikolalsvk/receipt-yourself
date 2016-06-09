@@ -13,6 +13,7 @@
 class BusinessPartner < ActiveRecord::Base
   belongs_to :contact_card
   has_many :input_invoices
+  has_many :business_partner_accounts
 
   validates :name, presence: true
   validates :type, presence: true

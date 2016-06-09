@@ -23,11 +23,13 @@
 #  priority                  :integer          not null
 #  status                    :integer          not null
 #  remaining_amount          :decimal(15, 4)   not null
+#  business_partner_id       :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
 
 class DailyStatement < ActiveRecord::Base
+  belongs_to :business_partner
   # debtor validations
   validates :debtor_account_number, presence: true,
                                     length: { maximum: 18 }

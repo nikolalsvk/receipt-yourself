@@ -15,6 +15,7 @@ class BusinessPartner < ActiveRecord::Base
   has_many :input_invoices
   has_many :business_partner_accounts
   has_many :output_invoices
+  has_many :daily_statements
 
   validates :name, presence: true
   validates :type, presence: true

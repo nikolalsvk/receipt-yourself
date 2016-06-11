@@ -11,7 +11,8 @@
 #
 
 class InputInvoiceClosure < ActiveRecord::Base
-  belongs_to :daily_statement  
+  belongs_to :daily_statement
+  belongs_to :input_invoice
 
   validates :closure_date, presence: true
   validates :closure_amount, presence: true

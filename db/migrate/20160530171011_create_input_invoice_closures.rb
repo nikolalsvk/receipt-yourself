@@ -5,6 +5,7 @@ class CreateInputInvoiceClosures < ActiveRecord::Migration
       t.decimal :closure_amount, null: false, precision: 15, scale: 4
 
       t.belongs_to :daily_statement, index: true
+      t.belongs_to :input_invoice, index: true
 
       t.timestamps null: false
     end

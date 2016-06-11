@@ -11,6 +11,7 @@
 
 class PaymentForming < ActiveRecord::Base
   belongs_to :company_account
+  belongs_to :input_invoice
 
   validates :amount, presence: true
 end

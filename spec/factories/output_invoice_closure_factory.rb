@@ -6,6 +6,7 @@
 #  closure_date       :datetime         not null
 #  closure_amount     :decimal(15, 4)   not null
 #  daily_statement_id :integer
+#  output_invoice_id  :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

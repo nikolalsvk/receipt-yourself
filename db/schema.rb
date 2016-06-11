@@ -196,15 +196,17 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   add_index "output_invoices", ["financial_year_id"], name: "index_output_invoices_on_financial_year_id", using: :btree
 
   create_table "payment_formings", force: :cascade do |t|
-    t.decimal  "amount",             precision: 15, scale: 4, null: false
+    t.decimal  "amount",              precision: 15, scale: 4, null: false
     t.integer  "company_account_id"
     t.integer  "input_invoice_id"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.integer  "payment_proposal_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   add_index "payment_formings", ["company_account_id"], name: "index_payment_formings_on_company_account_id", using: :btree
   add_index "payment_formings", ["input_invoice_id"], name: "index_payment_formings_on_input_invoice_id", using: :btree
+  add_index "payment_formings", ["payment_proposal_id"], name: "index_payment_formings_on_payment_proposal_id", using: :btree
 
   create_table "payment_orders", force: :cascade do |t|
     t.string   "debtor_account_number",     limit: 18,                          null: false

@@ -5,6 +5,7 @@ class CreatePaymentFormings < ActiveRecord::Migration
 
       t.belongs_to :company_account, index: true
       t.belongs_to :input_invoice, index: true
+      t.belongs_to :payment_proposal, index: true
 
       t.timestamps null: false
     end

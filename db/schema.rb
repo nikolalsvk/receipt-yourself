@@ -141,11 +141,13 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.datetime "closure_date",                                null: false
     t.decimal  "closure_amount",     precision: 15, scale: 4, null: false
     t.integer  "daily_statement_id"
+    t.integer  "input_invoice_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end
 
   add_index "input_invoice_closures", ["daily_statement_id"], name: "index_input_invoice_closures_on_daily_statement_id", using: :btree
+  add_index "input_invoice_closures", ["input_invoice_id"], name: "index_input_invoice_closures_on_input_invoice_id", using: :btree
 
   create_table "input_invoices", force: :cascade do |t|
     t.string   "number",                                       null: false
@@ -194,11 +196,13 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   create_table "payment_formings", force: :cascade do |t|
     t.decimal  "amount",             precision: 15, scale: 4, null: false
     t.integer  "company_account_id"
+    t.integer  "input_invoice_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end
 
   add_index "payment_formings", ["company_account_id"], name: "index_payment_formings_on_company_account_id", using: :btree
+  add_index "payment_formings", ["input_invoice_id"], name: "index_payment_formings_on_input_invoice_id", using: :btree
 
   create_table "payment_orders", force: :cascade do |t|
     t.string   "debtor_account_number",     limit: 18,                          null: false

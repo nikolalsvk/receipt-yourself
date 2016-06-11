@@ -225,9 +225,12 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.datetime "currency_date",                                                 null: false
     t.datetime "payment_date",                                                  null: false
     t.string   "account_city",                                                  null: false
+    t.integer  "payment_forming_id"
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
   end
+
+  add_index "payment_orders", ["payment_forming_id"], name: "index_payment_orders_on_payment_forming_id", using: :btree
 
   create_table "payment_proposals", force: :cascade do |t|
     t.datetime "payment_date", null: false

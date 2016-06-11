@@ -19,11 +19,14 @@
 #  currency_date             :datetime         not null
 #  payment_date              :datetime         not null
 #  account_city              :string           not null
+#  payment_forming_id        :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
 
 class PaymentOrder < ActiveRecord::Base
+  belongs_to :payment_forming
+
   validates :debtor_account_number, presence: true,
                                     length: { maximum: 18 }
   validates :debtor_account_name, presence: true

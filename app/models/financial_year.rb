@@ -12,6 +12,8 @@
 
 class FinancialYear < ActiveRecord::Base
   belongs_to :company
+  has_many :input_invoices
+  has_many :output_invoices
 
   validates :year, presence: true,
                    length: { minimum: 4,

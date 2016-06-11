@@ -20,6 +20,7 @@ class OutputInvoice < ActiveRecord::Base
   belongs_to :company
   belongs_to :business_partner
   belongs_to :financial_year
+  has_many :output_invoice_closures
 
   validates :number, presence: true, 
                      uniqueness: true,

@@ -169,11 +169,13 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.datetime "closure_date",                                null: false
     t.decimal  "closure_amount",     precision: 15, scale: 4, null: false
     t.integer  "daily_statement_id"
+    t.integer  "output_invoice_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end
 
   add_index "output_invoice_closures", ["daily_statement_id"], name: "index_output_invoice_closures_on_daily_statement_id", using: :btree
+  add_index "output_invoice_closures", ["output_invoice_id"], name: "index_output_invoice_closures_on_output_invoice_id", using: :btree
 
   create_table "output_invoices", force: :cascade do |t|
     t.string   "number",                                       null: false

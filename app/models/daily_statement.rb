@@ -32,6 +32,8 @@
 class DailyStatement < ActiveRecord::Base
   belongs_to :business_partner
   belongs_to :daily_bank_statement
+  has_many :input_invoice_closures
+  has_many :output_invoice_closures
   
   # debtor validations
   validates :debtor_account_number, presence: true,

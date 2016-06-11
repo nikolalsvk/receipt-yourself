@@ -4,6 +4,8 @@ class CreateOutputInvoiceClosures < ActiveRecord::Migration
       t.datetime :closure_date, null: false
       t.decimal :closure_amount, null: false, precision: 15, scale: 4
 
+      t.belongs_to :daily_statement, index: true
+
       t.timestamps null: false
     end
   end

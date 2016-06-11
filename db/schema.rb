@@ -138,11 +138,14 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   add_index "financial_years", ["company_id"], name: "index_financial_years_on_company_id", using: :btree
 
   create_table "input_invoice_closures", force: :cascade do |t|
-    t.datetime "closure_date",                            null: false
-    t.decimal  "closure_amount", precision: 15, scale: 4, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "closure_date",                                null: false
+    t.decimal  "closure_amount",     precision: 15, scale: 4, null: false
+    t.integer  "daily_statement_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
+
+  add_index "input_invoice_closures", ["daily_statement_id"], name: "index_input_invoice_closures_on_daily_statement_id", using: :btree
 
   create_table "input_invoices", force: :cascade do |t|
     t.string   "number",                                       null: false
@@ -159,11 +162,14 @@ ActiveRecord::Schema.define(version: 20160530172350) do
   add_index "input_invoices", ["business_partner_id"], name: "index_input_invoices_on_business_partner_id", using: :btree
 
   create_table "output_invoice_closures", force: :cascade do |t|
-    t.datetime "closure_date",                            null: false
-    t.decimal  "closure_amount", precision: 15, scale: 4, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "closure_date",                                null: false
+    t.decimal  "closure_amount",     precision: 15, scale: 4, null: false
+    t.integer  "daily_statement_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
+
+  add_index "output_invoice_closures", ["daily_statement_id"], name: "index_output_invoice_closures_on_daily_statement_id", using: :btree
 
   create_table "output_invoices", force: :cascade do |t|
     t.string   "number",                                       null: false

@@ -9,6 +9,7 @@ class CreateInputInvoices < ActiveRecord::Migration
       t.datetime :payment_deadline, null: false
 
       t.belongs_to :business_partner, index: true
+      t.belongs_to :financial_year, index: true
 
       t.timestamps null: false
     end

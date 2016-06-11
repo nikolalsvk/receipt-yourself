@@ -10,12 +10,14 @@
 #  circulation_date    :datetime         not null
 #  payment_deadline    :datetime         not null
 #  business_partner_id :integer
+#  financial_year_id   :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
 
 class InputInvoice < ActiveRecord::Base
   belongs_to :business_partner
+  belongs_to :financial_year
 
   validates :number, presence: true, 
                      uniqueness: true,

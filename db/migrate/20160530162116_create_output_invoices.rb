@@ -10,6 +10,7 @@ class CreateOutputInvoices < ActiveRecord::Migration
 
       t.belongs_to :company, index: true
       t.belongs_to :business_partner, index: true
+      t.belongs_to :financial_year, index: true
 
       t.timestamps null: false
     end

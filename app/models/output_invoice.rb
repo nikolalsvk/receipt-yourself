@@ -11,6 +11,7 @@
 #  payment_deadline    :datetime         not null
 #  company_id          :integer
 #  business_partner_id :integer
+#  financial_year_id   :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
@@ -18,6 +19,7 @@
 class OutputInvoice < ActiveRecord::Base
   belongs_to :company
   belongs_to :business_partner
+  belongs_to :financial_year
 
   validates :number, presence: true, 
                      uniqueness: true,

@@ -155,11 +155,13 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.datetime "circulation_date",                             null: false
     t.datetime "payment_deadline",                             null: false
     t.integer  "business_partner_id"
+    t.integer  "financial_year_id"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
 
   add_index "input_invoices", ["business_partner_id"], name: "index_input_invoices_on_business_partner_id", using: :btree
+  add_index "input_invoices", ["financial_year_id"], name: "index_input_invoices_on_financial_year_id", using: :btree
 
   create_table "output_invoice_closures", force: :cascade do |t|
     t.datetime "closure_date",                                null: false
@@ -180,12 +182,14 @@ ActiveRecord::Schema.define(version: 20160530172350) do
     t.datetime "payment_deadline",                             null: false
     t.integer  "company_id"
     t.integer  "business_partner_id"
+    t.integer  "financial_year_id"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
 
   add_index "output_invoices", ["business_partner_id"], name: "index_output_invoices_on_business_partner_id", using: :btree
   add_index "output_invoices", ["company_id"], name: "index_output_invoices_on_company_id", using: :btree
+  add_index "output_invoices", ["financial_year_id"], name: "index_output_invoices_on_financial_year_id", using: :btree
 
   create_table "payment_formings", force: :cascade do |t|
     t.decimal  "amount",             precision: 15, scale: 4, null: false

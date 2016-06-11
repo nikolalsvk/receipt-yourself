@@ -12,6 +12,7 @@
 
 class PaymentProposal < ActiveRecord::Base
   has_many :payment_formings
+  has_many :payment_orders
 
   validates :payment_date, presence: true
   validates :number, presence: true,

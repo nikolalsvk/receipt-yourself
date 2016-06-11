@@ -24,6 +24,8 @@ class CreatePaymentOrders < ActiveRecord::Migration
 
       t.string :account_city, null: false
 
+      t.belongs_to :payment_forming, index: true
+
       t.timestamps null: false
     end
   end

@@ -19,6 +19,7 @@
 #  currency_date             :datetime         not null
 #  payment_date              :datetime         not null
 #  account_city              :string           not null
+#  payment_forming_id        :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #

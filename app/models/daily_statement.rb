@@ -57,18 +57,29 @@ class DailyStatement < ActiveRecord::Base
   validates :payment_number, presence: true,
                              length: { maximum: 3 }
   validates :payment_currency, presence: true
-  enum payment_currency: CURRENCY_HASH.keys
   validates :transfer_amount, presence: true
   validates_numericality_of :transfer_amount, :greater_than => 0
   validates :account_city, presence: true
   validates :currency_date, presence: true
   validates :payment_date, presence: true
-  validates :calculation_method, presence: true
-  # need values for eumerating calculation method
+
+  validates :calculation_method, presence: true  
   validates :priority, presence: true
-  # need values for enumerating priority
-  validates :status, presence: true
-  # need values for enumerating status
+  validates :status, presence: true  
   validates :remaining_amount, presence: true
   validates_numericality_of :remaining_amount, :greater_than => 0
+
+  #enumerations
+  enum payment_currency: CURRENCY_HASH.keys
+  enum calculation_method: [:bruto,
+                            :neto]
+  # there was no enumeration for priority in model
+  #   but I think this is okay?
+  enum priority: PRIORITY_ARRAY
+  enum status: [:executed,                   # Izvršen nalog
+                :not_executed_user_error,    # Neizvršen zbog nelikvidnosti podračuna korisnika
+                :not_executed_carrier_error, # Neizvršen zbog nelikvidnosti računa nosioca u NBJ
+                :unauthorized,               # Nalog nije odobren za izvršenje- neviziran nalog
+                :wrong,                      # Pogrešan nalog
+                :stopped]                    # Nalog stopiran za izvršenje
 end

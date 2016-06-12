@@ -19,6 +19,5 @@ class BusinessPartner < ActiveRecord::Base
 
   validates :name, presence: true
   validates :type, presence: true
-
-  # will enumerate type when know them
+  enum status: [ :buyer, :supplier, :buyer_and_supplier ]
 end

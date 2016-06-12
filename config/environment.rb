@@ -120,3 +120,4 @@ CURRENCY_HASH = { 'ALL' => 'Albania Lek',
                   'VND' => 'Viet Nam Dong',
                   'YER' => 'Yemen Rial',
                   'ZWD' => 'Zimbabwe Dollar' }
+PRIORITY_ARRAY = [:urgent, :regular]

@@ -21,5 +21,5 @@ class CompanyAccount < ActiveRecord::Base
                      uniqueness: true,
                      case_sensitive: false
   validates :currency, presence: true
-  enum currency: CURRENCY_HASH.keys
+  enum currency: Constants::Currency::CURRENCY_HASH.keys
 end

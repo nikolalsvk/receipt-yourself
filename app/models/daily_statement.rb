@@ -70,12 +70,12 @@ class DailyStatement < ActiveRecord::Base
   validates_numericality_of :remaining_amount, :greater_than => 0
 
   #enumerations
-  enum payment_currency: CURRENCY_HASH.keys
+  enum payment_currency: Constants::Currency::CURRENCY_HASH.keys
   enum calculation_method: [:bruto,
                             :neto]
   # there was no enumeration for priority in model
   #   but I think this is okay?
-  enum priority: PRIORITY_ARRAY
+  enum priority: Constants::Priority::PRIORITY_ARRAY
   enum status: [:executed,                   # Izvršen nalog
                 :not_executed_user_error,    # Neizvršen zbog nelikvidnosti podračuna korisnika
                 :not_executed_carrier_error, # Neizvršen zbog nelikvidnosti računa nosioca u NBJ

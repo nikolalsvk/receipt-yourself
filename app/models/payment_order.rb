@@ -55,5 +55,5 @@ class PaymentOrder < ActiveRecord::Base
   validates :payment_date, presence: true
 
   # enumerations
-  enum payment_method: PRIORITY_ARRAY
+  enum payment_method: Constants::Priority::PRIORITY_ARRAY
 end

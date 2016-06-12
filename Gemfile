@@ -11,16 +11,14 @@ gem 'omniauth'
 # Use rack-rewrite to allow use of HTML5 pushState.
 gem 'rack-rewrite'
 
-gem 'devise_token_auth'
-gem 'omniauth'
 
 group :development, :test do
   gem 'spring'
   gem 'byebug'
-  gem 'spring'
 end
 
 group :development do
+  # for model pdf generating
   gem 'rails-erd'
   # schema info in model
   gem 'annotate'

@@ -16,8 +16,8 @@ class PaymentProposal < ActiveRecord::Base
 
   validates :payment_date, presence: true
   validates :number, presence: true,
-  					 uniqueness: true,
-  					 case_sensitive: false
+             uniqueness: true,
+             case_sensitive: false
   validates :status, presence: true
   # need values for status enumeration
 end

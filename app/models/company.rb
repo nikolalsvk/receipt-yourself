@@ -10,11 +10,11 @@
 #
 
 class Company < ActiveRecord::Base
-	has_many :users
-	has_many :company_accounts
-	has_many :financial_years
-	has_many :output_invoices
-	belongs_to :contact_card
+  has_many :users
+  has_many :company_accounts
+  has_many :financial_years
+  has_many :output_invoices
+  belongs_to :contact_card
 
-	validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 end

@@ -26,24 +26,24 @@
 
 FactoryGirl.define do
   factory :payment_order do
-  	debtor_account_number { Faker::Number.number(18) }
-  	debtor_account_name { Faker::Name.name }
-  	debtor_account_city { Faker::Address.city }
-  	debtor_model_number { Faker::Number.number(2) }
-  	debtor_reference_number { Faker::Number.number(12) }
-  	debtor_payment_purpose { Faker::Lorem.sentence }
+    debtor_account_number { Faker::Number.number(18) }
+    debtor_account_name { Faker::Name.name }
+    debtor_account_city { Faker::Address.city }
+    debtor_model_number { Faker::Number.number(2) }
+    debtor_reference_number { Faker::Number.number(12) }
+    debtor_payment_purpose { Faker::Lorem.sentence }
 
-  	creditor_model_number { Faker::Number.number(2) }
-  	creditor_reference_number { Faker::Number.number(12) }
-  	creditor_account_number { Faker::Number.number(18) }
+    creditor_model_number { Faker::Number.number(2) }
+    creditor_reference_number { Faker::Number.number(12) }
+    creditor_account_number { Faker::Number.number(18) }
 
-  	payment_method { 1 }
-  	approval_reference_number { Faker::Number.number(12) }
-  	payment_number { Faker::Number.number(3) }
-  	transfer_amount { Faker::Number.decimal(10, 4) }
-  	account_city { Faker::Address.city }
-  	currency_date { Date.today }
-  	payment_date { Date.today }
+    payment_method { 1 }
+    approval_reference_number { Faker::Number.number(12) }
+    payment_number { Faker::Number.number(3) }
+    transfer_amount { Faker::Number.decimal(10, 4) }
+    account_city { Faker::Address.city }
+    currency_date { Date.today }
+    payment_date { Date.today }
   end
 end
 

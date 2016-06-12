@@ -16,6 +16,6 @@ class BusinessPartnerAccount < ActiveRecord::Base
   belongs_to :business_partner
 
   validates :number, presence: true,
-  					 uniqueness: true,
-  					 case_sensitive: false
+             uniqueness: true,
+             case_sensitive: false
 end

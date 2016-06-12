@@ -13,7 +13,7 @@
 
 FactoryGirl.define do
   factory :payment_forming do
-  	amount { Faker::Number.decimal(10, 4) } 
+    amount { Faker::Number.decimal(10, 4) } 
   end
 end
 

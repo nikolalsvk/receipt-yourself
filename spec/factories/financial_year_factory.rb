@@ -12,6 +12,6 @@
 
 FactoryGirl.define do
   factory :financial_year do
-  	year { Faker::Number.number(4) } 
+    year { Faker::Number.number(4) } 
   end
 end

@@ -13,7 +13,7 @@
 
 FactoryGirl.define do
   factory :output_invoice_closure do
-  	closure_date { Date.today }
-  	closure_amount { Faker::Number.decimal(10, 4) } 
+    closure_date { Date.today }
+    closure_amount { Faker::Number.decimal(10, 4) } 
   end
 end

@@ -32,7 +32,7 @@
 
       <div ui-view name="content"></div>
 
-      <div ui-view name="frontpageLogin"></div>
+      <div ng-if="!user.id" ui-view name="frontpageLogin"></div>
 
     </md-content>
 

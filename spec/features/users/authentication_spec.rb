@@ -17,7 +17,7 @@ feature 'Authentication', js: true do
     scenario 'redirect after login' do
       login(@user.email, @user.password)
 
-      expect(page).to have_content('Receipt Yourself!')
+      expect(page).to have_content('You are signed in as')
     end
   end
 

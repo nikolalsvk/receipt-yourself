@@ -15,6 +15,10 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
         content: {
           templateUrl: 'app/main/main.html',
           controller: 'MainController'
+        },
+        frontpageLogin: {
+          templateUrl: 'app/components/userAuth/new.html',
+          controller: 'SignInController'
         }
       }
     })

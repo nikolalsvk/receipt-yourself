@@ -16,7 +16,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
           templateUrl: 'app/main/main.html',
           controller: 'MainController'
         },
-        frontpageLogin: {
+        frontPageLogin: {
           templateUrl: 'app/components/userAuth/new.html',
           controller: 'SignInController'
         }
@@ -39,6 +39,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
         content: {
           templateUrl: 'app/components/userRegistration/new.html',
           controller: 'SignUpController'
+        }
+      }
+    })
+    .state('invoices', {
+      url: '/invoices',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/invoiceTable/invoices.html'
         }
       }
     });

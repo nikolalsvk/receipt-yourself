@@ -9,12 +9,15 @@ import { SignUpController } from '../app/components/userRegistration/signUp.cont
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
+import { InvoiceDirective } from '../app/components/invoiceTable/invoice.directive';
+import { InvoiceController } from '../app/components/invoiceTable/invoice.controller';
 
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
                                    'ngMaterial',
                                    'ngMessages',
                                    'toastr',
+                                   'md.data.table',
                                    'ng-token-auth'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
@@ -26,4 +29,6 @@ angular.module('receiptYourself', ['ngResource',
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .directive('acmeMalarkey', MalarkeyDirective);
+  .controller('InvoiceController', InvoiceController)
+  .directive('acmeMalarkey', MalarkeyDirective)
+  .directive('invoice', InvoiceDirective);

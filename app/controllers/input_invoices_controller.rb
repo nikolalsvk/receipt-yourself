@@ -1,4 +1,4 @@
-class Api::InputInvoicesController < ApplicationController
+class InputInvoicesController < ApplicationController
   before_action :set_input_invoice, only: [:show, :edit, :update, :destroy]
 
   def index

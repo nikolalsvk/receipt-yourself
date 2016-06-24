@@ -1,4 +1,4 @@
-export function runBlock ($log, $location, $rootScope) {
+export function runBlock ($log, $location) {
   'ngInject';
 
   $log.debug('runBlock end');

@@ -6,7 +6,7 @@ export function InvoiceDirective() {
     scope: {
       extraValues: '='
     },
-    templateUrl: '../app/components/invoiceTable/invoiceTable.html',
+    templateUrl: 'app/components/invoiceTable/invoiceTable.html',
     controller: 'InvoiceController',
     controllerAs: 'invoiceCtrl'
   };

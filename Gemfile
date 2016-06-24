@@ -8,9 +8,15 @@ gem 'rails-api'
 gem 'pg'
 gem 'devise_token_auth'
 gem 'omniauth'
+
 # Use rack-rewrite to allow use of HTML5 pushState.
 gem 'rack-rewrite'
 
+# AngularJS-style CSRF Protection for Rails
+gem 'angular_rails_csrf'
+
+# Easy responding in controllers
+gem 'responders'
 
 group :development, :test do
   gem 'spring'

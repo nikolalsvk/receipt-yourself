@@ -21,6 +21,7 @@ class BusinessPartner < ActiveRecord::Base
 
   validates :name, presence: true
   enum type: [ :buyer, :supplier, :buyer_and_supplier ]
+  validates :type, presence: true
 
   def attributes=(hash)
     hash.each do |key, value|

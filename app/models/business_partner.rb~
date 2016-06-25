@@ -20,6 +20,7 @@ class BusinessPartner < ActiveRecord::Base
   has_many :daily_statements
 
   validates :name, presence: true
+  validates :accepted
   enum type: [ :buyer, :supplier, :buyer_and_supplier ]
 
   def attributes=(hash)

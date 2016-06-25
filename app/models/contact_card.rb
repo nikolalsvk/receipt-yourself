@@ -17,6 +17,8 @@
 #
 
 class ContactCard < ActiveRecord::Base
+  include ActiveModel::Serializers::JSON
+
   has_many :companies
   has_many :banks
   has_many :business_partners
@@ -33,4 +35,14 @@ class ContactCard < ActiveRecord::Base
                     uniqueness: true
   validates :website, presence: true
   validates :phone, presence: true
+
+  def attributes=(hash)
+    hash.each do |key, value|
+      send("#{key}=", value)
+    end
+  end
+
+  def attributes
+    instance_values
+  end
 end

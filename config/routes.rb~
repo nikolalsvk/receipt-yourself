@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  root :to => "Site#index"
+  get "businesspartners/test" => "businesspartners#test"
+
   scope '/api/' do
     mount_devise_token_auth_for 'User', at: 'auth'
-    post "businesspartners/recievedata" => "businesspartners#recieve_data"
   end
 
 end

@@ -1,3 +1,6 @@
 [submodule "Report-Generator"]
 	path = Report-Generator
 	url = https://github.com/Besermenji/Report-Generator.git
+[submodule "receipt-yourself-external"]
+	path = receipt-yourself-external
+	url = https://github.com/aleksandarbos/receipt-yourself-external.git

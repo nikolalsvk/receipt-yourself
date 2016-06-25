@@ -1,6 +1,6 @@
 class BusinesspartnersController < ApplicationController
 
-  def recieve_data
+  def receive_data
     @basic_info = params[:basicInfo]
     @contact_info = params[:contactInfo]
 
@@ -12,6 +12,20 @@ class BusinesspartnersController < ApplicationController
     @contact_card.from_json(@contact_info)
 
     @contact_card.save!
+    @business_partner.save!
+  end
+
+  def accept_invoice
+    @input_invoice_info = params[:invoiceInfo]
+    @business_partner_info = params[:businessPartnerInfo]
+
+    @input_invoice = InputInvoice.new
+    @business_partner = BusinessPartner.new
+
+    @input_invoice.from_json(@input_invoice_info)
+    @business_partner.from_json(@business_partner_info)
+    @input_invoice.business_partner = @business_partner
+
     @business_partner.save!
   end
 

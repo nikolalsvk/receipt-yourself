@@ -13,6 +13,8 @@ class BusinesspartnersController < ApplicationController
 
     @contact_card.save!
     @business_partner.save!
+
+    render :text => "[Receipt-Yourself]: Added new business partner.", :status => 200
   end
 
   def accept_invoice
@@ -27,6 +29,8 @@ class BusinesspartnersController < ApplicationController
     @input_invoice.business_partner = @business_partner
 
     @business_partner.save!
+
+    render :text => "[Receipt-Yourself]: Added new input invoice.", :status => 200
   end
 
 end

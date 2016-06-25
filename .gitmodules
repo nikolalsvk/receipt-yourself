@@ -1,0 +1,3 @@
+[submodule "Report-Generator"]
+	path = Report-Generator
+	url = https://github.com/Besermenji/Report-Generator.git

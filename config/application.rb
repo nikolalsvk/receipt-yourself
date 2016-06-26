@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 module ReceiptYourself
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
+
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
@@ -29,5 +30,7 @@ module ReceiptYourself
         request_specs: false,
         controller_specs: true
     end
+
+    config.app_generators.scaffold_controller :responders_controller
   end
 end

@@ -11,6 +11,7 @@ import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service'
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 import { InvoiceDirective } from '../app/components/invoiceTable/invoice.directive';
 import { InvoiceController } from '../app/components/invoiceTable/invoice.controller';
+import { InputInvoice } from '../app/components/inputInvoice/inputInvoice.factory';
 
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
@@ -18,12 +19,14 @@ angular.module('receiptYourself', ['ngResource',
                                    'ngMessages',
                                    'toastr',
                                    'md.data.table',
-                                   'ng-token-auth'])
+                                   'ng-token-auth',
+                                   'rails'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
   .config(routerConfig)
   .run(runBlock)
+  .factory('inputInvoice', ['railsResourceFactory', InputInvoice.inputInvoice])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)

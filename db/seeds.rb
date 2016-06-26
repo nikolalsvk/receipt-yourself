@@ -32,6 +32,13 @@ def seed_daily_bank_statement(company_account, no_of_statements=5)
   end
 end
 
+PaymentProposal.destroy_all
+
+10.times do |i|
+    PaymentProposal.create!(payment_date: Date.today - i.days,
+                            number: Faker::Number.number(6),
+                            status: 1)
+end
 
 ContactCard.destroy_all
 
@@ -77,7 +84,7 @@ BusinessPartner.find_each do |business_partner|
   
   # also seeding input invoices here, jbg
   FinancialYear.find_each do |financial_year|
-    2.times do |i|
+    1.times do |i|
       InputInvoice.create!(number: Faker::Number.number(12),
                            payment_amount: Faker::Number.decimal(11, 4),
                            remaining_amount: Faker::Number.decimal(11, 4),
@@ -88,7 +95,7 @@ BusinessPartner.find_each do |business_partner|
                            financial_year_id: financial_year.id)
     end
     # also output invoices.. :(
-    2.times do |i|
+    1.times do |i|
       OutputInvoice.create!(number: Faker::Number.number(12),
                             payment_amount: Faker::Number.decimal(11, 4),
                             remaining_amount: Faker::Number.decimal(11, 4),

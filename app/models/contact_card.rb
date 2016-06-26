@@ -17,9 +17,9 @@
 #
 
 class ContactCard < ActiveRecord::Base
-  has_many :companies
-  has_many :banks
-  has_many :business_partners
+  has_many :companies, dependent: :destroy
+  has_many :banks, dependent: :destroy
+  has_many :business_partners, dependent: :destroy
 
   validates :pib, presence: true,
                   uniqueness: true,

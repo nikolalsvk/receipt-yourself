@@ -25,7 +25,7 @@ class DailyBankStatement < ActiveRecord::Base
                      uniqueness: true,
                      case_sensitive: false
   validates :statement_date, presence: true
-  validates :new_amount, presence: true
+  validates :new_amout, presence: true
   validates :previous_amount, presence: true
   validates :reserved_amount, presence: true
   validates  :statement_date, presence: true

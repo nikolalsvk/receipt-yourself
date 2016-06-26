@@ -11,8 +11,10 @@ class BusinesspartnersController < ApplicationController
     business_partner.from_json(basic_info)
     contact_card.from_json(contact_info)
 
-    contact_card.save!
-    business_partner.save!
+    ActiveRecord::Base.transaction do
+      contact_card.save!
+      business_partner.save!
+    end
 
     render :text => "[Receipt-Yourself]: Added new business partner.", :status => 200
   end
@@ -28,7 +30,9 @@ class BusinesspartnersController < ApplicationController
     business_partner.from_json(business_partner_info)
     input_invoice.business_partner = business_partner
 
-    business_partner.save!
+    ActiveRecord::Base.transaction do
+      business_partner.save!
+    end
 
     render :text => "[Receipt-Yourself]: Added new input invoice.", :status => 200
   end

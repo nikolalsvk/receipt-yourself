@@ -21,21 +21,34 @@ class BanksController < ApplicationController
 
   def receive_daily_statement
     statement_info = params[:statementInfo]
-    parsed_statement = ActiveSupport::JSON.decode(statement_info)
+    items_info = params[:itemsInfo]
+    parsed_statement = ActiveSupport::JSON.decode(items_info)
+
+    #fixing typo
+    statement_info.sub! 'new_amount', 'new_amout'
 
     daily_bank_statement = DailyBankStatement.new
     daily_bank_statement.from_json(statement_info)
-    #daily_bank_statement.statement_date = parsed_statement['statement_date']
-    #daily_bank_statement.daily_statements = parsed_statement['daily_statements']
 
-    company_account = CompanyAccount.new
     daily_statement = DailyStatement.new
+    daily_statements = Array.new
 
-    #daily_statement.from_json(parsed_statement['daily_statements'])
+    parsed_statement.each { |el|
+      daily_statements.push(daily_statement.from_json(el.to_json))
+    }
 
-    #company_account.bank_id =
+    daily_bank_statement.daily_statements = daily_statements
+
+    ActiveRecord::Base.transaction do
+      daily_bank_statement.save!
+    end
 
     render :text => "[Receipt-Yourself]: Added new bank daily statement.", :status => 200
+  end
+
+  def format_date(date, date_format)
+    t = Time.at(date.time/1000)
+    return t.strftime(date_format)
   end
 
 end

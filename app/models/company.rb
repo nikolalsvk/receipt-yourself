@@ -10,10 +10,10 @@
 #
 
 class Company < ActiveRecord::Base
-  has_many :users
-  has_many :company_accounts
-  has_many :financial_years
-  has_many :output_invoices
+  has_many :users, dependent: :destroy
+  has_many :company_accounts, dependent: :destroy
+  has_many :financial_years, dependent: :destroy
+  has_many :output_invoices, dependent: :destroy
   belongs_to :contact_card
 
   validates :name, presence: true, uniqueness: true

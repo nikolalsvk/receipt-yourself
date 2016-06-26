@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post "businesspartners/receivedata" => "businesspartners#receive_data"
     post "businesspartners/acceptinvoice" => "businesspartners#accept_invoice"
     post "banks/receivedata" => "banks#receive_data"
+    post "banks/receviedailystatement" => "banks#receive_daily_statement"
   end
 
 end

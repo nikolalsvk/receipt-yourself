@@ -16,6 +16,8 @@
 #
 
 class DailyBankStatement < ActiveRecord::Base
+  include ActiveModel::Serializers::JSON
+
   belongs_to :company_account
   has_many :daily_statements
 
@@ -23,4 +25,20 @@ class DailyBankStatement < ActiveRecord::Base
                      uniqueness: true,
                      case_sensitive: false
   validates :statement_date, presence: true
+  validates :new_amount, presence: true
+  validates :previous_amount, presence: true
+  validates :reserved_amount, presence: true
+  validates  :statement_date, presence: true
+  validates :total_payment, presence: true
+  validates :total_payout, presence: true
+
+  def attributes=(hash)
+    hash.each do |key, value|
+      send("#{key}=", value)
+    end
+  end
+
+  def attributes
+    instance_values
+  end
 end

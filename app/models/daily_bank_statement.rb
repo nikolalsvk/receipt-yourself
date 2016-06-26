@@ -28,7 +28,7 @@ class DailyBankStatement < ActiveRecord::Base
   validates :new_amout, presence: true
   validates :previous_amount, presence: true
   validates :reserved_amount, presence: true
-  validates  :statement_date, presence: true
+  validates :statement_date, presence: true
   validates :total_payment, presence: true
   validates :total_payout, presence: true
 

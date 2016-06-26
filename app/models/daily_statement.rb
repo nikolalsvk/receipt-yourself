@@ -62,8 +62,8 @@ class DailyStatement < ActiveRecord::Base
   validates :transfer_amount, presence: true
   validates_numericality_of :transfer_amount, :greater_than => 0
   validates :account_city, presence: true
-  #validates :currency_date, presence: true
-  #validates :payment_date, presence: true
+  validates :currency_date, presence: true
+  validates :payment_date, presence: true
 
   validates :priority, presence: true
   validates :status, presence: true  

@@ -146,3 +146,23 @@ PaymentProposal.find_each do |pp|
                          company_account_id: input_invoice.financial_year.company.company_accounts.first.id,
                          payment_proposal_id: pp.id)
 end
+
+PaymentForming.find_each do |pf|
+  PaymentOrder.create!( debtor_account_number: Faker::Number.number(18),
+                        debtor_account_name: Faker::Name.name,
+                        debtor_account_city: Faker::Address.city,
+                        debtor_model_number: Faker::Number.number(2),
+                        debtor_reference_number: Faker::Number.number(12),
+                        debtor_payment_purpose: Faker::Lorem.sentence,
+                        creditor_model_number: Faker::Number.number(2),
+                        creditor_reference_number: Faker::Number.number(12),
+                        creditor_account_number: Faker::Number.number(18),
+                        payment_method: Constants::Priority::PRIORITY_ARRAY.sample,
+                        approval_reference_number: Faker::Number.number(12),
+                        payment_number: Faker::Number.number(3),
+                        transfer_amount: Faker::Number.decimal(10, 4),
+                        account_city: Faker::Address.city,
+                        currency_date: Date.today,
+                        payment_date: Date.today,
+                        payment_forming_id: pf.id)
+end

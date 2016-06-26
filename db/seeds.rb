@@ -1,6 +1,5 @@
 require 'faker'
 
-
 def seed_users(company, no_users=1)
     no_users.times do
       num = User.count
@@ -43,4 +42,13 @@ ContactCard.destroy_all
                            category: Random.rand(0..2))
   end
   
+end
+
+# each company will have a company account
+#   and they will have a randomly selected bank
+Company.find_each do |company|
+  CompanyAccount.create!(number: Faker::Number.number(10),
+                         currency: Constants::Currency::CURRENCY_HASH.keys.sample,
+                         company_id: company.id,
+                         bank_id: Bank.order("RANDOM()").first.id )
 end

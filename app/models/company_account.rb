@@ -14,8 +14,8 @@
 class CompanyAccount < ActiveRecord::Base
   belongs_to :company
   belongs_to :bank
-  has_many :payment_formings
-  has_many :daily_bank_statements
+  has_many :payment_formings, dependent: :destroy
+  has_many :daily_bank_statements, dependent: :destroy
 
   validates :number, presence: true,
                      uniqueness: true,

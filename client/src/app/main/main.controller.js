@@ -1,5 +1,5 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr) {
+  constructor ($timeout, webDevTec, toastr, inputInvoice) {
     'ngInject';
 
     this.awesomeThings = [];
@@ -7,14 +7,13 @@ export class MainController {
     this.creationDate = 1462222868758;
     this.toastr = toastr;
 
-    this.activate($timeout, webDevTec);
+    this.inputInvoice = inputInvoice;
+    this.getInvoices();
   }
 
-  activate($timeout, webDevTec) {
-    this.getWebDevTec(webDevTec);
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
+  getInvoices() {
+    this.inputInvoices = this.inputInvoice.query().then(function(results) {
+    })
   }
 
   getWebDevTec(webDevTec) {

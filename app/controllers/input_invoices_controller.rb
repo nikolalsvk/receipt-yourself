@@ -1,6 +1,8 @@
 class InputInvoicesController < ApplicationController
   before_action :set_input_invoice, only: [:show, :edit, :update, :destroy]
 
+  respond_to :json
+
   def index
     @input_invoices = InputInvoice.all
     respond_with(@input_invoices)

@@ -18,12 +18,19 @@ angular.module('receiptYourself', ['ngResource',
                                    'ngMessages',
                                    'toastr',
                                    'md.data.table',
-                                   'ng-token-auth'])
+                                   'ng-token-auth',
+                                   'rails'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
   .config(routerConfig)
   .run(runBlock)
+  .factory('inputInvoice', function(railsResourceFactory) {
+    return railsResourceFactory({
+      url: '/api/input_invoices',
+      name: 'input_invoice'
+    });
+  })
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)

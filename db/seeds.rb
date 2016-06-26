@@ -166,3 +166,14 @@ PaymentForming.find_each do |pf|
                         payment_date: Date.today,
                         payment_forming_id: pf.id)
 end
+
+DailyStatement.find_each do |daily_statement|
+  InputInvoiceClosure.create!(closure_date: Date.today,
+                              closure_amount: Faker::Number.decimal(10, 4),
+                              daily_statement_id: daily_statement.id,
+                              input_invoice_id: InputInvoice.order("RANDOM()").first.id)
+  OutputInvoiceClosure.create!(closure_date: Date.today,
+                              closure_amount: Faker::Number.decimal(10, 4),
+                              daily_statement_id: daily_statement.id,
+                              output_invoice_id: OutputInvoice.order("RANDOM()").first.id)
+end

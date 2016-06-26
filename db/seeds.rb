@@ -1,5 +1,8 @@
 require 'faker'
 
+PaymentProposal.destroy_all
+ContactCard.destroy_all
+
 def seed_users(company, no_users=1)
     no_users.times do
       num = User.count
@@ -62,16 +65,6 @@ def seed_daily_bank_statement(company_account, no_of_statements=5)
     seed_daily_statement(db_statement)
   end
 end
-
-PaymentProposal.destroy_all
-
-10.times do |i|
-    PaymentProposal.create!(payment_date: Date.today - i.days,
-                            number: Faker::Number.number(6),
-                            status: 1)
-end
-
-ContactCard.destroy_all
 
 10.times do |i|
   ContactCard.create!(pib: Faker::Number.number(8),
@@ -138,4 +131,18 @@ BusinessPartner.find_each do |business_partner|
                             company_id: financial_year.company.id)
     end
   end
+end
+
+10.times do |i|
+    pp = PaymentProposal.create!(payment_date: Date.today - i.days,
+                                 number: Faker::Number.number(6),
+                                 status: 1)
+end
+
+PaymentProposal.find_each do |pp|
+  input_invoice = InputInvoice.order("RANDOM()").first
+  PaymentForming.create!(amount: Faker::Number.decimal(10, 4),
+                         input_invoice_id: input_invoice.id,
+                         company_account_id: input_invoice.financial_year.company.company_accounts.first.id,
+                         payment_proposal_id: pp.id)
 end

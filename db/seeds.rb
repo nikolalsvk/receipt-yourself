@@ -52,3 +52,12 @@ Company.find_each do |company|
                          company_id: company.id,
                          bank_id: Bank.order("RANDOM()").first.id )
 end
+
+# each business partner will have an account
+#   and they will have randomly selected bank
+BusinessPartner.find_each do |business_partner|
+  BusinessPartnerAccount.create!(number: Faker::Number.number(10), 
+                                 activated: [true, false].sample,
+                                 business_partner_id: business_partner.id,
+                                 bank_id: Bank.order("RANDOM()").first.id)
+end

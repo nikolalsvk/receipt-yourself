@@ -19,16 +19,47 @@ def seed_financial_years(company, no_years=5)
   end
 end
 
+def seed_daily_statement(db_statement)
+  DailyStatement.create!( debtor_account_number: Faker::Number.number(18),
+                          debtor_account_name: Faker::Name.name,
+                          debtor_account_city: Faker::Address.city,
+                          debtor_model_number: Faker::Number.number(2),
+                          debtor_reference_number: Faker::Number.number(12),
+                          debtor_payment_purpose: Faker::Lorem.sentence,
+                          creditor_model_number: Faker::Number.number(2),
+                          creditor_reference_number: Faker::Number.number(12),
+                          creditor_account_number: Faker::Number.number(18),
+                          approval_reference_number: Faker::Number.number(12),
+                          payment_number: Faker::Number.number(3),
+                          payment_currency: Constants::Currency::CURRENCY_HASH.keys.sample,
+                          transfer_amount: Faker::Number.decimal(10, 4),
+                          account_city: Faker::Address.city,
+                          currency_date: Date.today,
+                          payment_date: Date.today,
+                          calculation_method: [:bruto, :neto].sample,
+                          priority: Constants::Priority::PRIORITY_ARRAY.sample,
+                          status: [:executed,                   # Izvršen nalog
+                                   :not_executed_user_error,    # Neizvršen zbog nelikvidnosti podračuna korisnika
+                                   :not_executed_carrier_error, # Neizvršen zbog nelikvidnosti računa nosioca u NBJ
+                                   :unauthorized,               # Nalog nije odobren za izvršenje- neviziran nalog
+                                   :wrong,                      # Pogrešan nalog
+                                   :stopped].sample,
+                          remaining_amount: Faker::Number.decimal(3, 4),
+                          daily_bank_statement_id: db_statement.id,
+                          business_partner_id: BusinessPartner.order("RANDOM()").first.id)
+end
+
 def seed_daily_bank_statement(company_account, no_of_statements=5)
   no_of_statements.times do |i|
-    DailyBankStatement.create!(number: Faker::Number.number(10), 
-                               statement_date: DateTime.now - i.days,
-                               previous_amount: Faker::Number.decimal(2, 4),
-                               new_amout: Faker::Number.decimal(2, 4),
-                               reserved_amount: Faker::Number.decimal(2, 4),
-                               total_payment: Faker::Number.decimal(2, 4),
-                               total_payout: Faker::Number.decimal(2, 4),
-                               company_account_id: company_account.id)
+    db_statement = DailyBankStatement.create!(number: Faker::Number.number(10), 
+                                              statement_date: DateTime.now - i.days,
+                                              previous_amount: Faker::Number.decimal(2, 4),
+                                              new_amout: Faker::Number.decimal(2, 4),
+                                              reserved_amount: Faker::Number.decimal(2, 4),
+                                              total_payment: Faker::Number.decimal(2, 4),
+                                              total_payout: Faker::Number.decimal(2, 4),
+                                                company_account_id: company_account.id)
+    seed_daily_statement(db_statement)
   end
 end
 

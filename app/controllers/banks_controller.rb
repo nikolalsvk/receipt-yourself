@@ -16,7 +16,7 @@ class BanksController < ApplicationController
       bank.save!
     end
 
-    render :text => "[Receipt-Yourself]: Added new bank as a partner.", :status => 200
+    render :html => "<h3>[Receipt-Yourself]: Added new bank as a partner.</h3><br/>Data:#{basic_info}#{contact_info}".html_safe
   end
 
   def receive_daily_statement
@@ -49,7 +49,7 @@ class BanksController < ApplicationController
       daily_bank_statement.save!
     end
 
-    render :text => "[Receipt-Yourself]: Added new bank daily statement.", :status => 200
+    render :html => "<h3>[Receipt-Yourself]: Added new bank daily statement.</h3><br/>Data:#{statement_info}#{items_info}".html_safe
   end
 
   def format_date(date)

@@ -16,7 +16,7 @@ class BusinesspartnersController < ApplicationController
       business_partner.save!
     end
 
-    render :text => "[Receipt-Yourself]: Added new business partner.", :status => 200
+    render :html => "<h3>[Receipt-Yourself]: Added new business partner.</h3><br/>Data:#{basic_info}#{contact_info}".html_safe
   end
 
   def accept_invoice
@@ -34,7 +34,7 @@ class BusinesspartnersController < ApplicationController
       business_partner.save!
     end
 
-    render :text => "[Receipt-Yourself]: Added new input invoice.", :status => 200
+    render :html => "<h3>[Receipt-Yourself]: Added new input invoice.</h3><br/>Data:#{input_invoice_info}#{business_partner_info}".html_safe
   end
 
 end

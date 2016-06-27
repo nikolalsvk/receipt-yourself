@@ -4,10 +4,10 @@
 #
 #  id              :integer          not null, primary key
 #  name            :string           not null
-#  type            :integer          not null
 #  contact_card_id :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  category        :integer          not null
 #
 
 class BusinessPartner < ActiveRecord::Base
@@ -20,8 +20,8 @@ class BusinessPartner < ActiveRecord::Base
   has_many :daily_statements
 
   validates :name, presence: true
-  enum type: [ :buyer, :supplier, :buyer_and_supplier ]
-  validates :type, presence: true
+  enum category: [ :buyer, :supplier, :buyer_and_supplier ]
+  validates :category, presence: true
 
   def attributes=(hash)
     hash.each do |key, value|

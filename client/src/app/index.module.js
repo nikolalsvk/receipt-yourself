@@ -9,21 +9,29 @@ import { SignUpController } from '../app/components/userRegistration/signUp.cont
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
+import { InvoiceDirective } from '../app/components/invoiceTable/invoice.directive';
+import { InvoiceController } from '../app/components/invoiceTable/invoice.controller';
+import { InputInvoice } from '../app/components/inputInvoice/inputInvoice.factory';
 
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
                                    'ngMaterial',
                                    'ngMessages',
                                    'toastr',
-                                   'ng-token-auth'])
+                                   'md.data.table',
+                                   'ng-token-auth',
+                                   'rails'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
   .config(routerConfig)
   .run(runBlock)
+  .factory('inputInvoice', ['railsResourceFactory', InputInvoice.inputInvoice])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .directive('acmeMalarkey', MalarkeyDirective);
+  .controller('InvoiceController', InvoiceController)
+  .directive('acmeMalarkey', MalarkeyDirective)
+  .directive('invoice', InvoiceDirective);

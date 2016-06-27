@@ -19,7 +19,7 @@ class DailyBankStatement < ActiveRecord::Base
   include ActiveModel::Serializers::JSON
 
   belongs_to :company_account
-  has_many :daily_statements
+  has_many :daily_statements, dependent: :destroy
 
   validates :number, presence: true,
                      uniqueness: true,

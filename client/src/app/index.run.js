@@ -1,8 +1,5 @@
-export function runBlock ($log, $location, $rootScope) {
+export function runBlock ($log, $location) {
   'ngInject';
-  $log.debug('runBlock end');
 
-  $rootScope.$on('auth:login-success', function() {
-    $location.path('/');
-  });
+  $log.debug('runBlock end');
 }

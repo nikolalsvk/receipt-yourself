@@ -20,8 +20,8 @@ class InputInvoice < ActiveRecord::Base
 
   belongs_to :business_partner
   belongs_to :financial_year
-  has_many :input_invoice_closures
-  has_many :payment_formings
+  has_many :input_invoice_closures, dependent: :destroy
+  has_many :payment_formings, dependent: :destroy
 
   validates :number, presence: true, 
                      uniqueness: true,

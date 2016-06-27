@@ -18,4 +18,8 @@ class FinancialYear < ActiveRecord::Base
   validates :year, presence: true,
                    length: { minimum: 4,
                              maximum: 4 }
+
+  def as_json(options = {})
+    super(options.merge(:include => :company))
+  end
 end

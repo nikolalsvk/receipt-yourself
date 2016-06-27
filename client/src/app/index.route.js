@@ -47,7 +47,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
       views: {
         navbar: { templateUrl: 'app/components/navbar/navbar.html' },
         content: {
-          templateUrl: 'app/components/invoiceTable/invoices.html'
+          templateUrl: 'app/components/invoiceTables/invoices.html'
         }
       }
     });

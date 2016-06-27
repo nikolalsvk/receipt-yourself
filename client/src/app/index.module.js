@@ -9,9 +9,16 @@ import { SignUpController } from '../app/components/userRegistration/signUp.cont
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
-import { InvoiceDirective } from '../app/components/invoiceTable/invoice.directive';
-import { InvoiceController } from '../app/components/invoiceTable/invoice.controller';
+
+// InputInvoice components
+import { InputInvoiceDirective } from '../app/components/invoiceTables/inputInvoice.directive';
+import { InputInvoiceController } from '../app/components/invoiceTables/inputInvoice.controller';
 import { InputInvoice } from '../app/components/inputInvoice/inputInvoice.factory';
+
+// OutputInvoice components
+import { OutputInvoiceDirective } from '../app/components/invoiceTables/outputInvoice.directive';
+import { OutputInvoiceController } from '../app/components/invoiceTables/outputInvoice.controller';
+import { OutputInvoice } from '../app/components/outputInvoice/outputInvoice.factory';
 
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
@@ -27,11 +34,14 @@ angular.module('receiptYourself', ['ngResource',
   .config(routerConfig)
   .run(runBlock)
   .factory('inputInvoice', ['railsResourceFactory', InputInvoice.inputInvoice])
+  .factory('outputInvoice', ['railsResourceFactory', OutputInvoice.outputInvoice])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .controller('InvoiceController', InvoiceController)
-  .directive('acmeMalarkey', MalarkeyDirective)
-  .directive('invoice', InvoiceDirective);
+  .controller('InputInvoiceController', InputInvoiceController)
+  .directive('inputInvoice', InputInvoiceDirective)
+  .controller('OutputInvoiceController', OutputInvoiceController)
+  .directive('outputInvoice', OutputInvoiceDirective)
+  .directive('acmeMalarkey', MalarkeyDirective);

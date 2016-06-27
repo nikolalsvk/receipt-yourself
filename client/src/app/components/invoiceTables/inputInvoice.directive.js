@@ -1,4 +1,4 @@
-export function InvoiceDirective() {
+export function InputInvoiceDirective() {
   'ngInject';
 
   let directive = {
@@ -6,8 +6,8 @@ export function InvoiceDirective() {
     scope: {
       extraValues: '='
     },
-    templateUrl: 'app/components/invoiceTable/invoiceTable.html',
-    controller: 'InvoiceController',
+    templateUrl: 'app/components/invoiceTables/inputInvoiceTable.html',
+    controller: 'InputInvoiceController',
     controllerAs: 'invoiceCtrl'
   };
 

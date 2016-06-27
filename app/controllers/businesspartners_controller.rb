@@ -16,25 +16,34 @@ class BusinesspartnersController < ApplicationController
       business_partner.save!
     end
 
-    render :html => "<h3>[Receipt-Yourself]: Added new business partner.</h3><br/>Data:#{basic_info}#{contact_info}".html_safe
+    render :html => "<h3>[Receipt-Yourself]: Added new business partner.</h3><br/>Data:#{basic_info}".html_safe
   end
 
   def accept_invoice
     input_invoice_info = params[:invoiceInfo]
-    business_partner_info = params[:businessPartnerInfo]
+
+    parsed_input_invoice = ActiveSupport::JSON.decode(input_invoice_info)
 
     input_invoice = InputInvoice.new
-    business_partner = BusinessPartner.new
 
     input_invoice.from_json(input_invoice_info)
-    business_partner.from_json(business_partner_info)
-    input_invoice.business_partner = business_partner
+
+    #Java date -> Ruby
+    input_invoice['issuance_date'] = format_date(parsed_input_invoice['issuance_date'])
+    input_invoice['circulation_date'] = format_date(parsed_input_invoice['circulation_date'])
+    input_invoice['payment_deadline'] = format_date(parsed_input_invoice['payment_deadline'])
+
 
     ActiveRecord::Base.transaction do
-      business_partner.save!
+      input_invoice.save!
     end
 
-    render :html => "<h3>[Receipt-Yourself]: Added new input invoice.</h3><br/>Data:#{input_invoice_info}#{business_partner_info}".html_safe
+    render :html => "<h3>[Receipt-Yourself]: Added new input invoice.</h3><br/>Data:#{input_invoice_info}".html_safe
+  end
+
+  def format_date(date)
+    t = Time.at(date/1000)
+    return t.to_s
   end
 
 end

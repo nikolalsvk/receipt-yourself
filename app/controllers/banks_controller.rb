@@ -16,7 +16,7 @@ class BanksController < ApplicationController
       bank.save!
     end
 
-    render :html => "<h3>[Receipt-Yourself]: Added new bank as a partner.</h3><br/>Data:#{basic_info}#{contact_info}".html_safe
+    render :html => "<h3>[Receipt-Yourself]: Added new bank as a partner.</h3><br/>Data:#{basic_info}".html_safe
   end
 
   def receive_daily_statement

@@ -84,6 +84,8 @@ class DailyStatement < ActiveRecord::Base
                 :wrong,                      # Pogrešan nalog
                 :stopped]                    # Nalog stopiran za izvršenje
 
+  validates :calculation_method, presence: true
+
   def attributes=(hash)
     hash.each do |key, value|
       send("#{key}=", value)

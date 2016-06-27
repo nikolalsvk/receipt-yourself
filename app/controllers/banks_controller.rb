@@ -29,7 +29,6 @@ class BanksController < ApplicationController
     #fixing typo
     statement_info.sub! 'new_amount', 'new_amout'
 
-
     daily_bank_statement = DailyBankStatement.new
     daily_bank_statement.from_json(statement_info)
 

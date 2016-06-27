@@ -10,9 +10,22 @@
 #
 
 class Bank < ActiveRecord::Base
+  include ActiveModel::Serializers::JSON
+
   belongs_to :contact_card
   has_many :business_partner_accounts, dependent: :destroy
   has_many :company_accounts, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+
+  def attributes=(hash)
+    hash.each do |key, value|
+      send("#{key}=", value)
+    end
+  end
+
+  def attributes
+    instance_values
+  end
+
 end

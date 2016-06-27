@@ -30,6 +30,8 @@
 #
 
 class DailyStatement < ActiveRecord::Base
+  include ActiveModel::Serializers::JSON
+
   belongs_to :business_partner
   belongs_to :daily_bank_statement
   has_many :input_invoice_closures, dependent: :destroy
@@ -63,7 +65,6 @@ class DailyStatement < ActiveRecord::Base
   validates :currency_date, presence: true
   validates :payment_date, presence: true
 
-  validates :calculation_method, presence: true  
   validates :priority, presence: true
   validates :status, presence: true  
   validates :remaining_amount, presence: true
@@ -82,4 +83,16 @@ class DailyStatement < ActiveRecord::Base
                 :unauthorized,               # Nalog nije odobren za izvršenje- neviziran nalog
                 :wrong,                      # Pogrešan nalog
                 :stopped]                    # Nalog stopiran za izvršenje
+
+  validates :calculation_method, presence: true
+
+  def attributes=(hash)
+    hash.each do |key, value|
+      send("#{key}=", value)
+    end
+  end
+
+  def attributes
+    instance_values
+  end
 end

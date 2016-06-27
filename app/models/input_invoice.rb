@@ -16,6 +16,8 @@
 #
 
 class InputInvoice < ActiveRecord::Base
+  include ActiveModel::Serializers::JSON
+
   belongs_to :business_partner
   belongs_to :financial_year
   has_many :input_invoice_closures, dependent: :destroy
@@ -29,4 +31,14 @@ class InputInvoice < ActiveRecord::Base
   validates :issuance_date, presence: true
   validates :circulation_date, presence: true
   validates :payment_deadline, presence: true
+
+  def attributes=(hash)
+    hash.each do |key, value|
+      send("#{key}=", value)
+    end
+  end
+
+  def attributes
+    instance_values
+  end
 end

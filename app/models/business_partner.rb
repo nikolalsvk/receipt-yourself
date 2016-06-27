@@ -11,6 +11,8 @@
 #
 
 class BusinessPartner < ActiveRecord::Base
+  include ActiveModel::Serializers::JSON
+
   belongs_to :contact_card
   has_many :input_invoices
   has_many :business_partner_accounts
@@ -18,6 +20,16 @@ class BusinessPartner < ActiveRecord::Base
   has_many :daily_statements
 
   validates :name, presence: true
-  validates :category, presence: true
   enum category: [ :buyer, :supplier, :buyer_and_supplier ]
+  validates :category, presence: true
+
+  def attributes=(hash)
+    hash.each do |key, value|
+      send("#{key}=", value)
+    end
+  end
+
+  def attributes
+    instance_values
+  end
 end

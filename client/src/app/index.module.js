@@ -20,6 +20,10 @@ import { OutputInvoiceDirective } from '../app/components/invoiceTables/outputIn
 import { OutputInvoiceController } from '../app/components/invoiceTables/outputInvoice.controller';
 import { OutputInvoice } from '../app/components/outputInvoice/outputInvoice.factory';
 
+import { BusinessPartnerDirective } from '../app/components/businessPartner/businessPartner.directive';
+import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
+import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
+
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
                                    'ngMaterial',
@@ -35,6 +39,7 @@ angular.module('receiptYourself', ['ngResource',
   .run(runBlock)
   .factory('inputInvoice', ['railsResourceFactory', InputInvoice.inputInvoice])
   .factory('outputInvoice', ['railsResourceFactory', OutputInvoice.outputInvoice])
+  .factory('businessPartner', ['railsResourceFactory', BusinessPartner.businessPartner])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
@@ -44,4 +49,6 @@ angular.module('receiptYourself', ['ngResource',
   .directive('inputInvoice', InputInvoiceDirective)
   .controller('OutputInvoiceController', OutputInvoiceController)
   .directive('outputInvoice', OutputInvoiceDirective)
+  .controller('BusinessPartnerController', BusinessPartnerController)
+  .directive('businessPartner', BusinessPartnerDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

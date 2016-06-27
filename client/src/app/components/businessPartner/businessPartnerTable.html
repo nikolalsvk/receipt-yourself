@@ -43,11 +43,11 @@
           </tr>
         </thead>
         <tbody md-body>
-          <tr md-row md-select="inputInvoice"
+          <tr md-row md-select="businessPartner"
             md-on-select="logItem"
             md-auto-select="false"
-            ng-repeat="inputInvoice in invoiceCtrl.outputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{inputInvoice.circulationDate}}</td>
+            ng-repeat="businessPartner in partnerCtrl.businessPartners | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{businessPartner.name}}</td>
             <td md-cell>{{inputInvoice.financialYear.company.name}}</td>
             <td md-cell>{{dessert.fat.value | number: 2}}</td>
             <td md-cell>{{dessert.carbs.value}}</td>
@@ -67,7 +67,7 @@
       md-limit="query.limit"
       md-limit-options="limitOptions"
       md-page="query.page"
-      md-total="{{invoiceCtrl.inputInvoices.length}}"
+      md-total="{{partnerCtrl.businessPartners.length}}"
       md-page-select="options.pageSelect"
       md-boundary-links="options.boundaryLinks"
       md-on-paginate="logPagination"></md-table-pagination>

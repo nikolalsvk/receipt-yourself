@@ -16,8 +16,6 @@
 #
 
 class InputInvoice < ActiveRecord::Base
-  include ActiveModel::Serializers::JSON
-
   belongs_to :business_partner
   belongs_to :financial_year
   has_many :input_invoice_closures, dependent: :destroy
@@ -32,21 +30,8 @@ class InputInvoice < ActiveRecord::Base
   validates :circulation_date, presence: true
   validates :payment_deadline, presence: true
 
-  def attributes=(hash)
-    hash.each do |key, value|
-      send("#{key}=", value)
-    end
-  end
-
-  def attributes
-    instance_values
-  end
-
   def as_json(options = {})
     super(options.merge(:include => [:business_partner,
-                                     :financial_year => {
-                                       :include => :company
-                                     }
-          ]))
+                                     :financial_year]))
   end
 end

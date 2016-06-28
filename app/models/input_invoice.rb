@@ -23,7 +23,7 @@ class InputInvoice < ActiveRecord::Base
   has_many :input_invoice_closures, dependent: :destroy
   has_many :payment_formings, dependent: :destroy
 
-  validates :number, presence: true, 
+  validates :number, presence: true,
                      uniqueness: true,
                      case_sensitive: false
   validates :payment_amount, presence: true
@@ -40,5 +40,13 @@ class InputInvoice < ActiveRecord::Base
 
   def attributes
     instance_values
+  end
+
+  def as_json(options = {})
+    super(options.merge(:include => [:business_partner,
+                                     :financial_year => {
+                                       :include => :company
+                                     }
+          ]))
   end
 end

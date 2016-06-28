@@ -1,10 +1,10 @@
-<div ng-if="user.id">
+<div ng-if="user.id" ng-controller="InvoiceFilterController as filterCtrl">
 
-  <invoice></invoice>
+  <business-partner></business-partner>
 
   <div layout="row">
     <div flex="45">
-      <invoice></invoice>
+      <output-invoice></output-invoice>
     </div>
 
     <div flex="10" layout="column" layout-align="center center">
@@ -14,7 +14,7 @@
     </div>
 
     <div flex="45">
-      <invoice></invoice>
+      <input-invoice></input-invoice>
     </div>
   </div>
 

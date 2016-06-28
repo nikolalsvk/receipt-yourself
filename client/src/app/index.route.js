@@ -50,6 +50,16 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
           templateUrl: 'app/components/invoiceTables/invoices.html'
         }
       }
+    })
+    .state('dailyBankStatements', {
+      url: '/daily_bank_statements',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/dailyBankStatement/dailyBankStatement.html',
+          controller: 'DailyBankStatementController'
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

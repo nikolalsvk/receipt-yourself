@@ -1,0 +1,75 @@
+<md-content laout="column" flex >
+
+  <md-card>
+
+    <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowselection && selected.length">
+      <div class="md-toolbar-tools">
+        <span>Daily statements</span>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="loadstuff()">
+          <md-icon>refresh</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowselection && selected.length">
+      <div class="md-toolbar-tools">
+        <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+      </div>
+    </md-toolbar>
+
+    <md-table-container>
+      <table md-table
+        md-row-select="options.rowselection"
+        multiple="false"
+        ng-model="selected"
+        md-progress="promise">
+
+        <thead md-head md-order="query.order" md-on-reorder="logorder">
+          <tr md-row>
+            <th md-column md-order-by="name"><span>dessert (100g serving)</span></th>
+            <th md-column md-order-by="type"><span>type</span></th>
+            <th md-column md-numeric md-order-by="calories.value" md-desc><span>calories</span></th>
+            <th md-column md-numeric md-order-by="fat.value"><span>fat (g)</span></th>
+            <th md-column md-numeric md-order-by="carbs.value"><span>carbs (g)</span></th>
+            <th md-column md-numeric md-order-by="protein.value"><span>protein (g)</span></th>
+            <th md-column md-numeric md-order-by="sodium.value" hide-gt-xs show-gt-md><span>sodium (mg)</span></th>
+            <th md-column md-numeric md-order-by="calcium.value" hide-gt-xs show-gt-lg><span>calcium (%)</span></th>
+            <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>iron (%)</span></th>
+            <th md-column md-order-by="comment">
+              <md-icon>comments</md-icon>
+              <span>comments</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="inputinvoice"
+            md-on-select="logitem"
+            md-auto-select="false"
+            ng-repeat="dailystatement in dailystctrl.dailystatements | filter: filter.search | orderby: query.order | limitto: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{dailystatement.debtoraccountnumber}}</td>
+            <td md-cell>{{inputinvoice.financialyear.company.name}}</td>
+            <td md-cell>{{dessert.fat.value | number: 2}}</td>
+            <td md-cell>{{dessert.carbs.value}}</td>
+            <td md-cell>{{dessert.protein.value | number: 2}}</td>
+            <td md-cell hide-gt-xs show-gt-md>{{dessert.sodium.value}}</td>
+            <td md-cell hide-gt-xs show-gt-lg>{{dessert.calcium.value}}%</td>
+            <td md-cell hide-gt-xs show-gt-lg>{{dessert.iron.value}}%</td>
+            <td md-cell ng-click="editcomment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
+              {{dessert.comment || 'add a comment'}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <md-table-pagination
+      md-limit="query.limit"
+      md-limit-options="limitoptions"
+      md-page="query.page"
+      md-total="{{dailystctrl.dailystatements.length}}"
+      md-page-select="options.pageselect"
+      md-boundary-links="options.boundarylinks"
+      md-on-paginate="logpagination"></md-table-pagination>
+  </md-card>
+</md-content>

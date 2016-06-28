@@ -30,6 +30,8 @@
 #
 
 class DailyStatement < ActiveRecord::Base
+  before_validation :set_dates, on: :create
+
   belongs_to :business_partner
   belongs_to :daily_bank_statement
   has_many :input_invoice_closures, dependent: :destroy
@@ -83,5 +85,12 @@ class DailyStatement < ActiveRecord::Base
                 :stopped]                    # Nalog stopiran za izvršenje
 
   validates :calculation_method, presence: true
+
+  private
+
+  def set_dates
+    self.currency_date = daily_bank_statement.statement_date
+    self.payment_date = daily_bank_statement.statement_date
+  end
 
 end

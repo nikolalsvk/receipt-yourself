@@ -43,12 +43,16 @@ export class OutputInvoiceController {
     }
 
     $scope.logItem = function (item) {
-      console.log(item.id, 'was selected');
+      console.log(item.id, 'was selected OUTPUT INVOICE');
     };
 
     $scope.logOrder = function (order) {
       console.log('order: ', order);
     };
+
+    $scope.$on('someEvent', function(event, item) {
+     console.log("[OUTPUT INOVICE, SELECTED BPARTNER]:" + item.name)
+    });
 
     $scope.logPagination = function (page, limit) {
       console.log('page: ', page);

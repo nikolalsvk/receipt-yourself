@@ -58,7 +58,6 @@ angular.module('receiptYourself', ['ngResource',
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .controller('InvoiceFilterController', InvoiceFilterController)
   .controller('InputInvoiceController', InputInvoiceController)
   .directive('inputInvoice', InputInvoiceDirective)
   .controller('OutputInvoiceController', OutputInvoiceController)

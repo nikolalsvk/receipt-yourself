@@ -43,8 +43,13 @@ export class InputInvoiceController {
     }
 
     $scope.logItem = function (item) {
-      console.log(item.id, 'was selected');
+      console.log(item.id, 'was selected INPUT INVOICE');
     };
+
+    $scope.$on('someEvent', function(event, item) {
+     console.log("[INPUT INOVICE, SELECTED B-PARTNER]:" + item.name)
+    });
+
 
     $scope.logOrder = function (order) {
       console.log('order: ', order);

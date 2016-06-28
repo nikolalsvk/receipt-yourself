@@ -4,13 +4,25 @@
 
   <div layout="row">
     <div flex="45">
-      <input-invoice></input-invoice>
+      <daily-bank-statement-item></daily-bank-statement-item>
     </div>
 
     <div flex="10" layout="column" layout-align="center center">
+      <md-button class="md-raised" ng-click="">Close RCPT</md-button>
+    </div>
 
-      <md-button class="md-raised">Close RCPT</md-button>
+    <div flex="45">
+      <input-invoice></input-invoice>
+    </div>
+  </div>
 
+  <div layout="row">
+    <div flex="45">
+      <h1>Reserved place</h1>
+    </div>
+
+    <div flex="10" layout="column" layout-align="center center">
+        <md-button class="md-raised" ng-click="">Close RCPT</md-button>
     </div>
 
     <div flex="45">

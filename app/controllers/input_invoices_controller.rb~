@@ -3,7 +3,7 @@ class InputInvoicesController < ApplicationController
 
   respond_to :json
 
-  def index
+def index
     if params[:business_partner_id]
       @input_invoices = InputInvoice.where(:business_partner_id => params[:business_partner_id])
     else

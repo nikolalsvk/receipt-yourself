@@ -43,8 +43,7 @@ export class BusinessPartnerController {
     }
 
     $scope.logItem = function (item) {
-      console.log("ITEM SELECTED IN B-PARTNER");
-      $rootScope.$broadcast('someEvent', item);
+      $rootScope.$broadcast('changedBusinessPartner', item);
     };
 
     $scope.logOrder = function (order) {

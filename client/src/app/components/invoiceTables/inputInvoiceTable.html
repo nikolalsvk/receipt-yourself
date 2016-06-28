@@ -1,27 +1,22 @@
-<md-content laout="column" flex >
 
+<md-content layout="column" flex >
   <md-card>
 
-    <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+    <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
         <span>Opened Input Invoices</span>
         <div flex></div>
+        <md-button class="md-raised" ng-click="closeReceipt()">Close RCPT</md-button>
         <md-button class="md-icon-button" ng-click="loadStuff()">
           <md-icon>refresh</md-icon>
         </md-button>
       </div>
     </md-toolbar>
 
-    <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
-      <div class="md-toolbar-tools">
-        <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
-      </div>
-    </md-toolbar>
-
     <md-table-container>
       <table md-table
         md-row-select="options.rowSelection"
-        multiple="false"
+        multiple="true"
         ng-model="selected"
         md-progress="promise">
 

@@ -1,5 +1,5 @@
-export class InputInvoiceController {
-  constructor($mdEditDialog, $q, $scope, $timeout, inputInvoice) {
+export class DailyBankStatementItemController {
+  constructor($rootScope, $mdEditDialog, $q, $scope, $timeout, dailyBankStatementItem) {
     'ngInject';
 
     $scope.selected = [];
@@ -24,8 +24,8 @@ export class InputInvoiceController {
 
     let that = this
 
-    inputInvoice.query().then(function(results) {
-      that.inputInvoices = results;
+    dailyBankStatementItem.query().then(function(results) {
+      that.dailyBankStatementItem = results;
     });
 
     $scope.toggleLimitOptions = function () {
@@ -33,8 +33,8 @@ export class InputInvoiceController {
     };
 
     $scope.loadStuff = function () {
-      inputInvoice.query().then(function(results) {
-        this.inputInvoices = results;
+      dailyBankStatementItem.query().then(function(results) {
+        this.dailyBankStatementItems = results;
       });
 
       $scope.promise = $timeout(function () {
@@ -42,35 +42,20 @@ export class InputInvoiceController {
       }, 2000);
     }
 
-    $scope.logItem = function (item) {
-      debugger
-      console.log(alert($scope.selected));
-    };
-
     $scope.$on('changedBusinessPartner', function(event, item) {
 
-      inputInvoice.query({ business_partner_id: item.id })
+      dailyBankStatementItem.query({ business_partner_id: item.id })
       .then(function (results) {
-          that.inputInvoices = results;
+          that.dailyBankStatementItems = results;
       }, function (error) {
-              alert('[input invoices]: error filter fetching data from database.');
+              alert('[db statement]: error filter fetching data from database.');
       });
 
     });
 
-    $scope.test = function() {
-      alert('ITS WORKING!');
-    }
-
     $scope.logOrder = function (order) {
       console.log('order: ', order);
     };
-
-    $scope.closeReceipt = function() {
-      if($scope.selected != null) {
-        alert('Closing input receipt: ' + $scope.selected[0].number);
-      }
-    }
 
     $scope.logPagination = function (page, limit) {
       console.log('page: ', page);

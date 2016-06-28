@@ -2,19 +2,14 @@
 
   <md-card>
 
-    <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+    <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
         <span>Opened Output Invoices</span>
         <div flex></div>
+        <md-button class="md-raised" ng-click="closeReceipt()">Close RCPT</md-button>
         <md-button class="md-icon-button" ng-click="loadStuff()">
           <md-icon>refresh</md-icon>
         </md-button>
-      </div>
-    </md-toolbar>
-
-    <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
-      <div class="md-toolbar-tools">
-        <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
       </div>
     </md-toolbar>
 
@@ -32,8 +27,8 @@
             <th md-column md-numeric md-order-by="calories.value" md-desc><span>Remaining amount</span></th>
             <th md-column md-numeric md-order-by="fat.value"><span>Circulation date</span></th>
             <th md-column md-numeric md-order-by="carbs.value"><span>Payment deadline</span></th>
-            <th md-column md-numeric md-order-by="carbs.value"><span>Company</span></th>
             <th md-column md-numeric md-order-by="protein.value"><span>Business partner</span></th>
+            <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>Iron (%)</span></th>
             <th md-column md-order-by="comment">
               <md-icon>comments</md-icon>
               <span>Comments</span>
@@ -41,7 +36,7 @@
           </tr>
         </thead>
         <tbody md-body>
-          <tr md-row md-select="inputInvoice"
+          <tr md-row md-select="outputInvoice"
             md-on-select="logItem"
             md-auto-select="false"
             ng-repeat="outputInvoice in invoiceCtrl.outputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
@@ -50,7 +45,6 @@
             <td md-cell>{{outputInvoice.remainingAmount}}</td>
             <td md-cell>{{outputInvoice.circulationDate}}</td>
             <td md-cell>{{outputInvoice.paymentDeadline}}</td>
-            <td md-cell hide-gt-xs show-gt-md>{{outputInvoice.companyId}}</td>
             <td md-cell hide-gt-xs show-gt-md>{{outputInvoice.businessPartner.name}}</td>
             <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
               {{outputInvoice.comment || 'Add a comment'}}
@@ -64,7 +58,7 @@
       md-limit="query.limit"
       md-limit-options="limitOptions"
       md-page="query.page"
-      md-total="{{invoiceCtrl.inputInvoices.length}}"
+      md-total="{{invoiceCtrl.outputInvoices.length}}"
       md-page-select="options.pageSelect"
       md-boundary-links="options.boundaryLinks"
       md-on-paginate="logPagination"></md-table-pagination>

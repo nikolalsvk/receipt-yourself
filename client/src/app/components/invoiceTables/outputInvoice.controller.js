@@ -33,8 +33,8 @@ export class OutputInvoiceController {
     };
 
     $scope.loadStuff = function () {
-      inputInvoice.query().then(function(results) {
-        this.inputInvoices = results;
+      outputInvoice.query().then(function(results) {
+        this.outputInvoices = results;
       });
 
       $scope.promise = $timeout(function () {
@@ -50,9 +50,23 @@ export class OutputInvoiceController {
       console.log('order: ', order);
     };
 
-    $scope.$on('someEvent', function(event, item) {
-     console.log("[OUTPUT INOVICE, SELECTED BPARTNER]:" + item.name)
+    $scope.$on('changedBusinessPartner', function(event, item) {
+
+     outputInvoice.query({ business_partner_id: item.id })
+      .then(function (results) {
+          debugger
+          that.outputInvoices = results;
+      }, function (error) {
+              alert('[output invoices]: error filter fetching data from database.');
+      });
+
     });
+
+    $scope.closeReceipt = function() {
+      if($scope.selected != null) {
+        alert('Closing output receipt: ' + $scope.selected[0].number);
+      }
+    }
 
     $scope.logPagination = function (page, limit) {
       console.log('page: ', page);

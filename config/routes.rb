@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :output_invoices, except: [:new, :edit]
 
     resources :business_partners, except: [:new, :edit]
+
+    resources :daily_bank_statements, except: [:new, :edit]
+
+    resources :daily_statements, except: [:new, :edit]
   end
 
 end

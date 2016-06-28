@@ -4,7 +4,7 @@
 
     <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
       <div class="md-toolbar-tools">
-        <span>Input Invoices</span>
+        <span>Opened Input Invoices</span>
         <div flex></div>
         <md-button class="md-icon-button" ng-click="loadStuff()">
           <md-icon>refresh</md-icon>
@@ -32,7 +32,7 @@
             <th md-column md-numeric md-order-by="calories.value" md-desc><span>Remaining amount</span></th>
             <th md-column md-numeric md-order-by="fat.value"><span>Circulation date</span></th>
             <th md-column md-numeric md-order-by="carbs.value"><span>Payment deadline</span></th>
-            <th md-column md-numeric md-order-by="protein.value"><span>Business partner ID</span></th>
+            <th md-column md-numeric md-order-by="protein.value"><span>Business partner</span></th>
             <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>Iron (%)</span></th>
             <th md-column md-order-by="comment">
               <md-icon>comments</md-icon>
@@ -45,14 +45,14 @@
             md-on-select="logItem"
             md-auto-select="false"
             ng-repeat="inputInvoice in invoiceCtrl.inputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{inputInvoice.number}}</td>
+            <td md-cell>{{inputInvoice.paymentAmount}}</td>
+            <td md-cell>{{inputInvoice.remainingAmount}}</td>
             <td md-cell>{{inputInvoice.circulationDate}}</td>
-            <td md-cell>{{inputInvoice.financialYear.company.name}}</td>
-            <td md-cell>{{dessert.fat.value | number: 2}}</td>
-            <td md-cell>{{dessert.carbs.value}}</td>
-            <td md-cell>{{dessert.protein.value | number: 2}}</td>
-            <td md-cell hide-gt-xs show-gt-md>{{dessert.sodium.value}}</td>
+            <td md-cell>{{inputInvoice.paymentDeadline}}</td>
+            <td md-cell hide-gt-xs show-gt-md>{{inputInvoice.businessPartner.name}}</td>
             <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
-              {{dessert.comment || 'Add a comment'}}
+              {{inputInvoice.comment || 'Add a comment'}}
             </td>
           </tr>
         </tbody>

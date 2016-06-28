@@ -22,17 +22,12 @@
 
         <thead md-head md-order="query.order" md-on-reorder="logOrder">
           <tr md-row>
-            <th md-column md-order-by="name"><span>Number</span></th>
-            <th md-column md-order-by="type"><span>Payment amount</span></th>
-            <th md-column md-numeric md-order-by="calories.value" md-desc><span>Remaining amount</span></th>
-            <th md-column md-numeric md-order-by="fat.value"><span>Circulation date</span></th>
-            <th md-column md-numeric md-order-by="carbs.value"><span>Payment deadline</span></th>
-            <th md-column md-numeric md-order-by="protein.value"><span>Business partner</span></th>
-            <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>Iron (%)</span></th>
-            <th md-column md-order-by="comment">
-              <md-icon>comments</md-icon>
-              <span>Comments</span>
-            </th>
+            <th md-column md-order-by="number"><span>Number</span></th>
+            <th md-column md-order-by="paymentAmount"><span>Payment amount</span></th>
+            <th md-column md-numeric md-order-by="remainingAmount" md-desc><span>Remaining amount</span></th>
+            <th md-column md-numeric md-order-by="circulationDate"><span>Circulation date</span></th>
+            <th md-column md-numeric md-order-by="paymentDeadline"><span>Payment deadline</span></th>
+            <th md-column md-numeric md-order-by="businessPartner.name"><span>Business partner</span></th>
           </tr>
         </thead>
         <tbody md-body>
@@ -45,10 +40,7 @@
             <td md-cell>{{outputInvoice.remainingAmount}}</td>
             <td md-cell>{{outputInvoice.circulationDate}}</td>
             <td md-cell>{{outputInvoice.paymentDeadline}}</td>
-            <td md-cell hide-gt-xs show-gt-md>{{outputInvoice.businessPartner.name}}</td>
-            <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
-              {{outputInvoice.comment || 'Add a comment'}}
-            </td>
+            <td md-cell>{{outputInvoice.businessPartner.name}}</td>
           </tr>
         </tbody>
       </table>

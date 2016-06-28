@@ -34,7 +34,6 @@ export class DailyBankStatementController {
     }
   }
 
-
   getDailyBankStatements(that) {
     that.dailyBankStatement.query().then(function(results) {
       that.dailyBankStatements = results;

@@ -32,7 +32,7 @@
         <tbody md-body>
           <tr md-row md-select="dailyBankStatement"
             md-on-select="showDailyStatements"
-            md-auto-select="false"
+            md-auto-select="true"
             ng-repeat="dailyBankStatement in dailyBankStCtrl.dailyBankStatements | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
             <td md-cell>{{dailyBankStatement.number}}</td>
             <td md-cell>{{dailyBankStatement.previousAmount}}</td>

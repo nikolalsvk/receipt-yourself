@@ -84,4 +84,8 @@ class DailyStatement < ActiveRecord::Base
 
   validates :calculation_method, presence: true
 
+  def as_json(options = {})
+    super(options.merge(:include => {:business_partner => {:only => [:id, :name]}}, :except => [:created_at, :updated_at]))
+  end
+
 end

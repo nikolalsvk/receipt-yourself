@@ -62,7 +62,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
       }
     })
     .state('dailyStatements', {
-      url: '/daily_bank_statements/:id',
+      url: '/daily_bank_statements/:id/',
       views: {
         navbar: { templateUrl: 'app/components/navbar/navbar.html' },
         content: {

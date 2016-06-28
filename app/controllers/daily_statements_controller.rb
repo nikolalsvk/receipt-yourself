@@ -4,7 +4,12 @@ class DailyStatementsController < ApplicationController
   respond_to :json
 
   def index
-    @daily_statements = DailyStatement.all
+    if params[:daily_bank_statement_id]
+      @daily_statements = DailyStatement.where(:daily_bank_statement_id => params[:daily_bank_statement_id])
+    else
+      @daily_statements = DailyStatement.all
+    end
+
     respond_with(@daily_statements)
   end
 

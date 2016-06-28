@@ -1,5 +1,5 @@
 export class DailyBankStatementItemController {
-  constructor($rootScope, $mdEditDialog, $q, $scope, $timeout, dailyBankStatementItem) {
+  constructor($rootScope, $mdEditDialog, $q, $scope, $timeout) {
     'ngInject';
 
     $scope.selected = [];
@@ -23,10 +23,6 @@ export class DailyBankStatementItemController {
     };
 
     let that = this
-
-    dailyBankStatementItem.query().then(function(results) {
-      that.dailyBankStatementItem = results;
-    });
 
     $scope.toggleLimitOptions = function () {
       $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];

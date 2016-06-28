@@ -30,8 +30,6 @@ import { BusinessPartnerDirective } from '../app/components/businessPartner/busi
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
 import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
 
-import { InvoiceFilterController } from '../app/components/invoiceTables/invoiceFilter.controller';
-
 // DailyBankStatement compoments
 import { DailyBankStatementController } from '../app/components/dailyBankStatement/dailyBankStatement.controller';
 import { DailyBankStatement } from '../app/components/dailyBankStatement/dailyBankStatement.factory';

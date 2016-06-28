@@ -30,4 +30,12 @@ class OutputInvoice < ActiveRecord::Base
   validates :issuance_date, presence: true
   validates :circulation_date, presence: true
   validates :payment_deadline, presence: true
+
+  def as_json(options = {})
+    super(options.merge(:include => [:business_partner,
+                                     :financial_year => {
+                                       :include => :company
+                                     }
+          ]))
+  end
 end

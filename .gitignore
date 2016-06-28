@@ -21,3 +21,11 @@ coverage/
 .idea/
 .tmp/
 dist/
+
+# Ignore Byebug command history file.
+.byebug_history
+
+client/npm-debug.log
+
+# Ignore temp files
+*~

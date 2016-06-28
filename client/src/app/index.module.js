@@ -20,11 +20,24 @@ import { OutputInvoiceDirective } from '../app/components/invoiceTables/outputIn
 import { OutputInvoiceController } from '../app/components/invoiceTables/outputInvoice.controller';
 import { OutputInvoice } from '../app/components/outputInvoice/outputInvoice.factory';
 
+// DailyBankStatementItem components
+import { DailyBankStatementItemDirective } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.directive';
+import { DailyBankStatementItemController } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.controller';
+import { DailyBankStatementItem } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.factory';
+
+// BusinessPartner components
 import { BusinessPartnerDirective } from '../app/components/businessPartner/businessPartner.directive';
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
 import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
 
-import { InvoiceFilterController } from '../app/components/invoiceTables/invoiceFilter.controller';
+// DailyBankStatement compoments
+import { DailyBankStatementController } from '../app/components/dailyBankStatement/dailyBankStatement.controller';
+import { DailyBankStatement } from '../app/components/dailyBankStatement/dailyBankStatement.factory';
+
+// DailyStatement compoments
+import { DailyStatementDirective } from '../app/components/dailyStatement/dailyStatement.directive';
+import { DailyStatementController } from '../app/components/dailyStatement/dailyStatement.controller';
+import { DailyStatement } from '../app/components/dailyStatement/dailyStatement.factory';
 
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
@@ -42,16 +55,19 @@ angular.module('receiptYourself', ['ngResource',
   .factory('inputInvoice', ['railsResourceFactory', InputInvoice.inputInvoice])
   .factory('outputInvoice', ['railsResourceFactory', OutputInvoice.outputInvoice])
   .factory('businessPartner', ['railsResourceFactory', BusinessPartner.businessPartner])
+  .factory('dailyBankStatement', ['railsResourceFactory', DailyBankStatement.dailyBankStatement])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .controller('InvoiceFilterController', InvoiceFilterController)
   .controller('InputInvoiceController', InputInvoiceController)
-  .directive('inputInvoice', InputInvoiceDirective)
-  .controller('OutputInvoiceController', OutputInvoiceController)
-  .directive('outputInvoice', OutputInvoiceDirective)
   .controller('BusinessPartnerController', BusinessPartnerController)
+  .controller('OutputInvoiceController', OutputInvoiceController)
+  .controller('DailyBankStatementItemController', DailyBankStatementItemController)
+  .directive('inputInvoice', InputInvoiceDirective)
+  .directive('dailyBankStatementItem', DailyBankStatementItemDirective)
+  .directive('outputInvoice', OutputInvoiceDirective)
   .directive('businessPartner', BusinessPartnerDirective)
+  .controller('DailyBankStatementController', DailyBankStatementController)
   .directive('acmeMalarkey', MalarkeyDirective);

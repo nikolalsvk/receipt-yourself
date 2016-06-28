@@ -17,8 +17,6 @@
 #
 
 class ContactCard < ActiveRecord::Base
-  include ActiveModel::Serializers::JSON
-
   has_many :companies, dependent: :destroy
   has_many :banks, dependent: :destroy
   has_many :business_partners, dependent: :destroy
@@ -36,13 +34,4 @@ class ContactCard < ActiveRecord::Base
   validates :website, presence: true
   validates :phone, presence: true
 
-  def attributes=(hash)
-    hash.each do |key, value|
-      send("#{key}=", value)
-    end
-  end
-
-  def attributes
-    instance_values
-  end
 end

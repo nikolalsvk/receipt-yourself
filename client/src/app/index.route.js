@@ -57,7 +57,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
         navbar: { templateUrl: 'app/components/navbar/navbar.html' },
         content: {
           templateUrl: 'app/components/dailyBankStatement/dailyBankStatement.html',
-          controller: 'DailyBankStatementController'
+          controller: 'DailyBankStatementController as dailyBankStCtrl'
         }
       }
     });

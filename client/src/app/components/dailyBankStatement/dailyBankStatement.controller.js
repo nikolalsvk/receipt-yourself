@@ -5,6 +5,8 @@ export class DailyBankStatementController {
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
 
+    this.dailyBankStatement = dailyBankStatement;
+
     $scope.options = {
       rowSelection: true,
       multiSelect: true,
@@ -18,41 +20,26 @@ export class DailyBankStatementController {
 
     $scope.query = {
       order: 'name',
-      limit: 5,
+      limit: 10,
       page: 1
     };
 
     let that = this
 
-    dailyBankStatement.query().then(function(results) {
-      that.inputInvoices = results;
+    this.getDailyBankStatements(that);
+  }
+
+  getDailyBankStatements(that) {
+    that.dailyBankStatement.query().then(function(results) {
+      that.dailyBankStatements = results;
     });
+  }
 
-    $scope.toggleLimitOptions = function () {
-      $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
-    };
+  loadStuff(that) {
+    that.getDailyBankStatements(that);
+  }
 
-    $scope.loadStuff = function () {
-      inputInvoice.query().then(function(results) {
-        this.inputInvoices = results;
-      });
+  showDailyStatements(item) {
 
-      $scope.promise = $timeout(function () {
-        // loading
-      }, 2000);
-    }
-
-    $scope.logItem = function (item) {
-      console.log(item.id, 'was selected');
-    };
-
-    $scope.logOrder = function (order) {
-      console.log('order: ', order);
-    };
-
-    $scope.logPagination = function (page, limit) {
-      console.log('page: ', page);
-      console.log('limit: ', limit);
-    }
   }
 }

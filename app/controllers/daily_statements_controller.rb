@@ -1,7 +1,7 @@
 class DailyStatementsController < ApplicationController
   before_action :set_daily_statement, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :json
 
   def index
     @daily_statements = DailyStatement.all

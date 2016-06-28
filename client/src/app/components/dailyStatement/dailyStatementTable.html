@@ -2,17 +2,17 @@
 
   <md-card>
 
-    <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowselection && selected.length">
+    <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
       <div class="md-toolbar-tools">
-        <span>Daily statements</span>
+        <span>Daily Statement</span>
         <div flex></div>
-        <md-button class="md-icon-button" ng-click="loadstuff()">
+        <md-button class="md-icon-button" ng-click="loadStuff()">
           <md-icon>refresh</md-icon>
         </md-button>
       </div>
     </md-toolbar>
 
-    <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowselection && selected.length">
+    <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
       <div class="md-toolbar-tools">
         <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
       </div>
@@ -20,43 +20,43 @@
 
     <md-table-container>
       <table md-table
-        md-row-select="options.rowselection"
+        md-row-select="options.rowSelection"
         multiple="false"
         ng-model="selected"
         md-progress="promise">
 
-        <thead md-head md-order="query.order" md-on-reorder="logorder">
+        <thead md-head md-order="query.order" md-on-reorder="logOrder">
           <tr md-row>
-            <th md-column md-order-by="name"><span>dessert (100g serving)</span></th>
-            <th md-column md-order-by="type"><span>type</span></th>
-            <th md-column md-numeric md-order-by="calories.value" md-desc><span>calories</span></th>
-            <th md-column md-numeric md-order-by="fat.value"><span>fat (g)</span></th>
-            <th md-column md-numeric md-order-by="carbs.value"><span>carbs (g)</span></th>
-            <th md-column md-numeric md-order-by="protein.value"><span>protein (g)</span></th>
-            <th md-column md-numeric md-order-by="sodium.value" hide-gt-xs show-gt-md><span>sodium (mg)</span></th>
-            <th md-column md-numeric md-order-by="calcium.value" hide-gt-xs show-gt-lg><span>calcium (%)</span></th>
-            <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>iron (%)</span></th>
+            <th md-column md-order-by="name"><span>Dessert (100g serving)</span></th>
+            <th md-column md-order-by="type"><span>Type</span></th>
+            <th md-column md-numeric md-order-by="calories.value" md-desc><span>Calories</span></th>
+            <th md-column md-numeric md-order-by="fat.value"><span>Fat (g)</span></th>
+            <th md-column md-numeric md-order-by="carbs.value"><span>Carbs (g)</span></th>
+            <th md-column md-numeric md-order-by="protein.value"><span>Protein (g)</span></th>
+            <th md-column md-numeric md-order-by="sodium.value" hide-gt-xs show-gt-md><span>Sodium (mg)</span></th>
+            <th md-column md-numeric md-order-by="calcium.value" hide-gt-xs show-gt-lg><span>Calcium (%)</span></th>
+            <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>Iron (%)</span></th>
             <th md-column md-order-by="comment">
               <md-icon>comments</md-icon>
-              <span>comments</span>
+              <span>Comments</span>
             </th>
           </tr>
         </thead>
         <tbody md-body>
-          <tr md-row md-select="inputinvoice"
-            md-on-select="logitem"
+          <tr md-row md-select="inputInvoice"
+            md-on-select="logItem"
             md-auto-select="false"
-            ng-repeat="dailystatement in dailystctrl.dailystatements | filter: filter.search | orderby: query.order | limitto: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{dailystatement.debtoraccountnumber}}</td>
-            <td md-cell>{{inputinvoice.financialyear.company.name}}</td>
+            ng-repeat="inputInvoice in invoiceCtrl.inputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{inputInvoice.circulationDate}}</td>
+            <td md-cell>{{inputInvoice.financialYear.company.name}}</td>
             <td md-cell>{{dessert.fat.value | number: 2}}</td>
             <td md-cell>{{dessert.carbs.value}}</td>
             <td md-cell>{{dessert.protein.value | number: 2}}</td>
             <td md-cell hide-gt-xs show-gt-md>{{dessert.sodium.value}}</td>
             <td md-cell hide-gt-xs show-gt-lg>{{dessert.calcium.value}}%</td>
             <td md-cell hide-gt-xs show-gt-lg>{{dessert.iron.value}}%</td>
-            <td md-cell ng-click="editcomment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
-              {{dessert.comment || 'add a comment'}}
+            <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
+              {{dessert.comment || 'Add a comment'}}
             </td>
           </tr>
         </tbody>
@@ -65,11 +65,11 @@
 
     <md-table-pagination
       md-limit="query.limit"
-      md-limit-options="limitoptions"
+      md-limit-options="limitOptions"
       md-page="query.page"
-      md-total="{{dailystctrl.dailystatements.length}}"
-      md-page-select="options.pageselect"
-      md-boundary-links="options.boundarylinks"
-      md-on-paginate="logpagination"></md-table-pagination>
+      md-total="{{invoiceCtrl.inputInvoices.length}}"
+      md-page-select="options.pageSelect"
+      md-boundary-links="options.boundaryLinks"
+      md-on-paginate="logPagination"></md-table-pagination>
   </md-card>
 </md-content>

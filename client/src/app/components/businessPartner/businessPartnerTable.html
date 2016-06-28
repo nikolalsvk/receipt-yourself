@@ -44,7 +44,7 @@
         </thead>
         <tbody md-body>
           <tr md-row md-select="businessPartner"
-            md-on-select="logItem"
+            md-on-select="partnerCtrl.partnerSelected"
             md-auto-select="false"
             ng-repeat="businessPartner in partnerCtrl.businessPartners | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
             <td md-cell>{{businessPartner.name}}</td>

@@ -55,4 +55,7 @@ export class BusinessPartnerController {
       console.log('limit: ', limit);
     }
   }
+
+  partnerSelected(item) {
+  }
 }

@@ -24,6 +24,8 @@ import { BusinessPartnerDirective } from '../app/components/businessPartner/busi
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
 import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
 
+import { InvoiceFilterController } from '../app/components/invoiceTables/invoiceFilter.controller';
+
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
                                    'ngMaterial',
@@ -45,6 +47,7 @@ angular.module('receiptYourself', ['ngResource',
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
+  .controller('InvoiceFilterController', InvoiceFilterController)
   .controller('InputInvoiceController', InputInvoiceController)
   .directive('inputInvoice', InputInvoiceDirective)
   .controller('OutputInvoiceController', OutputInvoiceController)

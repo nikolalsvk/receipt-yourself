@@ -4,7 +4,8 @@ export function InputInvoiceDirective() {
   let directive = {
     restrict: 'E',
     scope: {
-      extraValues: '='
+      extraValues: '=',
+      dailyStatementId: '='
     },
     templateUrl: 'app/components/invoiceTables/inputInvoiceTable.html',
     controller: 'InputInvoiceController',

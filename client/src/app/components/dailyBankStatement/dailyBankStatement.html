@@ -31,15 +31,15 @@
         </thead>
         <tbody md-body>
           <tr md-row md-select="dailyBankStatement"
-            md-on-select="dailyBankStCtrl.showDailyStatements"
-            md-auto-select="false"
+            md-on-select="showDailyStatements"
+            md-auto-select="true"
             ng-repeat="dailyBankStatement in dailyBankStCtrl.dailyBankStatements | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
             <td md-cell>{{dailyBankStatement.number}}</td>
             <td md-cell>{{dailyBankStatement.previousAmount}}</td>
             <td md-cell>{{dailyBankStatement.reservedAmount}}</td>
             <td md-cell>{{dailyBankStatement.statementDate | date}}</td>
             <td md-cell>{{dailyBankStatement.totalPayment}}</td>
-            <td md-cell hide-gt-xs show-gt-md>{{dailyBankStatement.totalPayout}}</td>
+            <td md-cell>{{dailyBankStatement.totalPayout}}</td>
           </tr>
         </tbody>
       </table>

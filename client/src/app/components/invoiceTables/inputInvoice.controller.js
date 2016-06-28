@@ -51,9 +51,9 @@ export class InputInvoiceController {
 
       inputInvoice.query({ business_partner_id: item.id })
       .then(function (results) {
-          that.inputInvoices = results;
+        that.inputInvoices = results;
       }, function (error) {
-              alert('[input invoices]: error filter fetching data from database.');
+        alert('[input invoices]: error filter fetching data from database.');
       });
 
     });

@@ -60,6 +60,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
           controller: 'DailyBankStatementController as dailyBankStCtrl'
         }
       }
+    })
+    .state('dailyStatements', {
+      url: '/daily_bank_statements/:id/',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/dailyStatement/dailyStatements.html'
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

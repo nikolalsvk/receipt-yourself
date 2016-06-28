@@ -20,35 +20,21 @@
 
         <thead md-head md-order="query.order" md-on-reorder="logOrder">
           <tr md-row>
-            <th md-column md-order-by="name"><span>Payment Date</span></th>
-            <th md-column md-order-by="type"><span>Remaining Amount</span></th>
-            <th md-column md-numeric md-order-by="calories.value" md-desc><span>Transfer Amount</span></th>
-            <th md-column md-numeric md-order-by="carbs.value"><span>Something else</span></th>
-            <th md-column md-numeric md-order-by="protein.value"><span>Protein (g)</span></th>
-            <th md-column md-numeric md-order-by="sodium.value" hide-gt-xs show-gt-md><span>Sodium (mg)</span></th>
-            <th md-column md-numeric md-order-by="calcium.value" hide-gt-xs show-gt-lg><span>Calcium (%)</span></th>
-            <th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>Iron (%)</span></th>
-            <th md-column md-order-by="comment">
-              <md-icon>comments</md-icon>
-              <span>Comments</span>
-            </th>
+            <th md-column md-order-by="debtorPaymentPurpose"><span>Purpose</span></th>
+            <th md-column md-order-by="businessPartner.name"><span>Business Partner</span></th>
+            <th md-column md-numeric md-order-by="debtorReferenceNumber" md-desc><span>Reference Number</span></th>
+            <th md-column md-numeric md-order-by="debtorAccountNumber"><span>Account Number</span></th>
           </tr>
         </thead>
         <tbody md-body>
           <tr md-row md-select="dailyStatement"
             md-on-select="logItem"
-            md-auto-select="false"
+            md-auto-select="true"
             ng-repeat="dailyStatement in dailyStatementCtrl.dailyStatements | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{dailyStatement.paymentDate}}</td>
-            <td md-cell>{{dailyStatement.remainingAmount}}</td>
-            <td md-cell>{{dailyStatement.transferAmount}}</td>
-            <td md-cell>{{dailyStatement.protein.value | number: 2}}</td>
-            <td md-cell hide-gt-xs show-gt-md>{{dessert.sodium.value}}</td>
-            <td md-cell hide-gt-xs show-gt-lg>{{dessert.calcium.value}}%</td>
-            <td md-cell hide-gt-xs show-gt-lg>{{dessert.iron.value}}%</td>
-            <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
-              {{dessert.comment || 'Add a comment'}}
-            </td>
+            <td md-cell>{{dailyStatement.debtorPaymentPurpose}}</td>
+            <td md-cell>{{dailyStatement.businessPartner.name}}</td>
+            <td md-cell>{{dailyStatement.debtorReferenceNumber}}</td>
+            <td md-cell>{{dailyStatement.debtorAccountNumber}}</td>
           </tr>
         </tbody>
       </table>

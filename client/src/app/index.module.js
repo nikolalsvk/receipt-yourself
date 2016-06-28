@@ -31,7 +31,9 @@ import { DailyBankStatement } from '../app/components/dailyBankStatement/dailyBa
 
 // DailyStatement compoments
 import { DailyStatementDirective } from '../app/components/dailyStatement/dailyStatement.directive';
+import { DailyStatementListDirective } from '../app/components/dailyStatement/dailyStatementList.directive';
 import { DailyStatementController } from '../app/components/dailyStatement/dailyStatement.controller';
+import { DailyStatementListController } from '../app/components/dailyStatement/dailyStatementList.controller';
 import { DailyStatement } from '../app/components/dailyStatement/dailyStatement.factory';
 
 angular.module('receiptYourself', ['ngResource',
@@ -51,6 +53,7 @@ angular.module('receiptYourself', ['ngResource',
   .factory('outputInvoice', ['railsResourceFactory', OutputInvoice.outputInvoice])
   .factory('businessPartner', ['railsResourceFactory', BusinessPartner.businessPartner])
   .factory('dailyStatement', ['railsResourceFactory', DailyStatement.dailyStatement])
+  .factory('dailyBankStatement', ['railsResourceFactory', DailyBankStatement.dailyBankStatement])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
@@ -60,10 +63,11 @@ angular.module('receiptYourself', ['ngResource',
   .controller('BusinessPartnerController', BusinessPartnerController)
   .controller('OutputInvoiceController', OutputInvoiceController)
   .controller('DailyStatementController', DailyStatementController)
-  .controller('DailyBankStatementController', DailyStatementController)
+  .controller('DailyStatementListController', DailyStatementListController)
+  .controller('DailyBankStatementController', DailyBankStatementController)
   .directive('inputInvoice', InputInvoiceDirective)
   .directive('dailyStatement', DailyStatementDirective)
+  .directive('dailyStatementList', DailyStatementListDirective)
   .directive('outputInvoice', OutputInvoiceDirective)
   .directive('businessPartner', BusinessPartnerDirective)
-  .controller('DailyBankStatementController', DailyBankStatementController)
   .directive('acmeMalarkey', MalarkeyDirective);

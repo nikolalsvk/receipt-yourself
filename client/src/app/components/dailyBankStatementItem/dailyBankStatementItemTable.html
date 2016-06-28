@@ -4,7 +4,7 @@
 
     <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
       <div class="md-toolbar-tools">
-        <span>Business partners</span>
+        <span>Daily Bank Statements</span>
         <div flex></div>
         <md-button class="md-icon-button" ng-click="loadStuff()">
           <md-icon>refresh</md-icon>
@@ -12,16 +12,10 @@
       </div>
     </md-toolbar>
 
-    <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
-      <div class="md-toolbar-tools">
-        <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
-      </div>
-    </md-toolbar>
-
     <md-table-container>
       <table md-table
         md-row-select="options.rowSelection"
-        multiple="false"
+        multiple="true"
         ng-model="selected"
         md-progress="promise">
 
@@ -44,17 +38,17 @@
           </tr>
         </thead>
         <tbody md-body>
-          <tr md-row md-select="businessPartner"
+          <tr md-row md-select="dailyBankStatementItem"
             md-on-select="logItem"
             md-auto-select="false"
-            ng-repeat="businessPartner in partnerCtrl.businessPartners | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{businessPartner.name}}</td>
-            <td md-cell>{{inputInvoice.financialYear.company.name}}</td>
-            <td md-cell>{{dessert.fat.value | number: 2}}</td>
-            <td md-cell>{{dessert.carbs.value}}</td>
-            <td md-cell>{{dessert.protein.value | number: 2}}</td>
-            <td md-cell>{{dessert.protein.value | number: 2}}</td>
-            <td md-cell>{{dessert.protein.value | number: 2}}</td>
+            ng-repeat="dailyBankStatementItem in statementItemCtrl.dailyBankStatementItems | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{dailyBankStatementItem.number}}</td>
+            <td md-cell>{{dailyBankStatementItem.statementDate}}</td>
+            <td md-cell>{{dailyBankStatementItem.fat.value | number: 2}}</td>
+            <td md-cell>{{dailyBankStatementItem.carbs.value}}</td>
+            <td md-cell>{{dailyBankStatementItem.protein.value | number: 2}}</td>
+            <td md-cell>{{dailyBankStatementItem.protein.value | number: 2}}</td>
+            <td md-cell>{{dailyBankStatementItem.protein.value | number: 2}}</td>
             <td md-cell hide-gt-xs show-gt-md>{{dessert.sodium.value}}</td>
             <td md-cell hide-gt-xs show-gt-lg>{{dessert.calcium.value}}%</td>
             <td md-cell hide-gt-xs show-gt-lg>{{dessert.iron.value}}%</td>
@@ -70,7 +64,7 @@
       md-limit="query.limit"
       md-limit-options="limitOptions"
       md-page="query.page"
-      md-total="{{partnerCtrl.businessPartners.length}}"
+      md-total="{{statementItemCtrl.dailyBankStatementItems.length}}"
       md-page-select="options.pageSelect"
       md-boundary-links="options.boundaryLinks"
       md-on-paginate="logPagination"></md-table-pagination>

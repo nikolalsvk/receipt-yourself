@@ -20,12 +20,15 @@ import { OutputInvoiceDirective } from '../app/components/invoiceTables/outputIn
 import { OutputInvoiceController } from '../app/components/invoiceTables/outputInvoice.controller';
 import { OutputInvoice } from '../app/components/outputInvoice/outputInvoice.factory';
 
+// DailyBankStatementItem components
+import { DailyBankStatementItemDirective } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.directive';
+import { DailyBankStatementItemController } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.controller';
+import { DailyBankStatementItem } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.factory';
+
 // BusinessPartner components
 import { BusinessPartnerDirective } from '../app/components/businessPartner/businessPartner.directive';
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
 import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
-
-import { InvoiceFilterController } from '../app/components/invoiceTables/invoiceFilter.controller';
 
 // DailyBankStatement compoments
 import { DailyBankStatementController } from '../app/components/dailyBankStatement/dailyBankStatement.controller';
@@ -58,12 +61,13 @@ angular.module('receiptYourself', ['ngResource',
   .controller('MainController', MainController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
-  .controller('InvoiceFilterController', InvoiceFilterController)
   .controller('InputInvoiceController', InputInvoiceController)
-  .directive('inputInvoice', InputInvoiceDirective)
-  .controller('OutputInvoiceController', OutputInvoiceController)
-  .directive('outputInvoice', OutputInvoiceDirective)
   .controller('BusinessPartnerController', BusinessPartnerController)
+  .controller('OutputInvoiceController', OutputInvoiceController)
+  .controller('DailyBankStatementItemController', DailyBankStatementItemController)
+  .directive('inputInvoice', InputInvoiceDirective)
+  .directive('dailyBankStatementItem', DailyBankStatementItemDirective)
+  .directive('outputInvoice', OutputInvoiceDirective)
   .directive('businessPartner', BusinessPartnerDirective)
   .controller('DailyBankStatementController', DailyBankStatementController)
   .directive('acmeMalarkey', MalarkeyDirective);

@@ -1,5 +1,5 @@
 export class BusinessPartnerController {
-  constructor($mdEditDialog, $q, $scope, $timeout, businessPartner) {
+  constructor($rootScope, $mdEditDialog, $q, $scope, $timeout, businessPartner) {
     'ngInject';
 
     $scope.selected = [];
@@ -43,7 +43,7 @@ export class BusinessPartnerController {
     }
 
     $scope.logItem = function (item) {
-      console.log(item.id, 'was selected');
+      $rootScope.$broadcast('changedBusinessPartner', item);
     };
 
     $scope.logOrder = function (order) {
@@ -54,8 +54,5 @@ export class BusinessPartnerController {
       console.log('page: ', page);
       console.log('limit: ', limit);
     }
-  }
-
-  partnerSelected(item) {
   }
 }

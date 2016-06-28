@@ -98,6 +98,9 @@ section.jumbotron {
   }
 }
 
+md-toolbar.md-table-toolbar:not(.md-menu-toolbar).md-default {
+  color: white !important;
+}
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

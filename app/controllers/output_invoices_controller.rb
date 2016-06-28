@@ -4,7 +4,12 @@ class OutputInvoicesController < ApplicationController
   respond_to :json
 
   def index
-    @output_invoices = OutputInvoice.all
+    if params[:business_partner_id]
+      @output_invoices = OutputInvoice.where(:business_partner_id => params[:business_partner_id])
+    else
+      @output_invoices = OutputInvoice.all
+    end
+
     respond_with(@output_invoices)
   end
 

@@ -249,8 +249,5 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   spring
 
-RUBY VERSION
-   ruby 2.2.3p173
-
 BUNDLED WITH
    1.12.5

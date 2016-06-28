@@ -34,4 +34,5 @@ class InputInvoice < ActiveRecord::Base
     super(options.merge(:include => [:business_partner,
                                      :financial_year]))
   end
+
 end

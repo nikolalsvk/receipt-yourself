@@ -20,11 +20,6 @@ import { OutputInvoiceDirective } from '../app/components/invoiceTables/outputIn
 import { OutputInvoiceController } from '../app/components/invoiceTables/outputInvoice.controller';
 import { OutputInvoice } from '../app/components/outputInvoice/outputInvoice.factory';
 
-// DailyBankStatementItem components
-import { DailyBankStatementItemDirective } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.directive';
-import { DailyBankStatementItemController } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.controller';
-import { DailyBankStatementItem } from '../app/components/dailyBankStatementItem/dailyBankStatementItem.factory';
-
 // BusinessPartner components
 import { BusinessPartnerDirective } from '../app/components/businessPartner/businessPartner.directive';
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
@@ -55,7 +50,7 @@ angular.module('receiptYourself', ['ngResource',
   .factory('inputInvoice', ['railsResourceFactory', InputInvoice.inputInvoice])
   .factory('outputInvoice', ['railsResourceFactory', OutputInvoice.outputInvoice])
   .factory('businessPartner', ['railsResourceFactory', BusinessPartner.businessPartner])
-  .factory('dailyBankStatement', ['railsResourceFactory', DailyBankStatement.dailyBankStatement])
+  .factory('dailyStatement', ['railsResourceFactory', DailyStatement.dailyStatement])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
@@ -64,9 +59,10 @@ angular.module('receiptYourself', ['ngResource',
   .controller('InputInvoiceController', InputInvoiceController)
   .controller('BusinessPartnerController', BusinessPartnerController)
   .controller('OutputInvoiceController', OutputInvoiceController)
-  .controller('DailyBankStatementItemController', DailyBankStatementItemController)
+  .controller('DailyStatementController', DailyStatementController)
+  .controller('DailyBankStatementController', DailyStatementController)
   .directive('inputInvoice', InputInvoiceDirective)
-  .directive('dailyBankStatementItem', DailyBankStatementItemDirective)
+  .directive('dailyStatement', DailyStatementDirective)
   .directive('outputInvoice', OutputInvoiceDirective)
   .directive('businessPartner', BusinessPartnerDirective)
   .controller('DailyBankStatementController', DailyBankStatementController)

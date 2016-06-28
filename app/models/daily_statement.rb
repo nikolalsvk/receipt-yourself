@@ -30,13 +30,11 @@
 #
 
 class DailyStatement < ActiveRecord::Base
-  include ActiveModel::Serializers::JSON
-
   belongs_to :business_partner
   belongs_to :daily_bank_statement
   has_many :input_invoice_closures, dependent: :destroy
   has_many :output_invoice_closures, dependent: :destroy
-  
+
   # debtor validations
   validates :debtor_account_number, presence: true,
                                     length: { maximum: 18 }
@@ -66,7 +64,7 @@ class DailyStatement < ActiveRecord::Base
   validates :payment_date, presence: true
 
   validates :priority, presence: true
-  validates :status, presence: true  
+  validates :status, presence: true
   validates :remaining_amount, presence: true
   validates_numericality_of :remaining_amount, :greater_than => 0
 
@@ -86,13 +84,4 @@ class DailyStatement < ActiveRecord::Base
 
   validates :calculation_method, presence: true
 
-  def attributes=(hash)
-    hash.each do |key, value|
-      send("#{key}=", value)
-    end
-  end
-
-  def attributes
-    instance_values
-  end
 end

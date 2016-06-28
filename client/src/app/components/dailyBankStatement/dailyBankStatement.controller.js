@@ -1,11 +1,12 @@
 export class DailyBankStatementController {
-  constructor($mdEditDialog, $q, $scope, $timeout, dailyBankStatement) {
+  constructor($state, $scope, dailyBankStatement) {
     'ngInject';
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
 
     this.dailyBankStatement = dailyBankStatement;
+    this.$state = $state
 
     $scope.options = {
       rowSelection: true,
@@ -27,7 +28,12 @@ export class DailyBankStatementController {
     let that = this
 
     this.getDailyBankStatements(that);
+
+    $scope.showDailyStatements = (item) => {
+      $state.go("dailyStatements", {id: item.id}, {reload: true});
+    }
   }
+
 
   getDailyBankStatements(that) {
     that.dailyBankStatement.query().then(function(results) {
@@ -39,7 +45,4 @@ export class DailyBankStatementController {
     that.getDailyBankStatements(that);
   }
 
-  showDailyStatements(item) {
-
-  }
 }

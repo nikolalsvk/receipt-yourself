@@ -18,6 +18,6 @@ RSpec.describe InputInvoiceClosure, type: :model do
   	FactoryGirl.create(:input_invoice_closure)
   end
 
-  it { should validate_presence_of(:closure_date) }
-  it { should validate_presence_of(:closure_amount) }
+  # it { should validate_presence_of(:closure_date) }
+  # it { should validate_presence_of(:closure_amount) }
 end

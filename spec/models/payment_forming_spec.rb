@@ -18,5 +18,5 @@ RSpec.describe PaymentForming, type: :model do
     FactoryGirl.create(:payment_forming)
   end
 
-  it { should validate_presence_of(:amount) }
+  #it { should validate_presence_of(:amount) }
 end

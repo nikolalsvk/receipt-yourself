@@ -31,20 +31,20 @@ RSpec.describe PaymentOrder, type: :model do
     FactoryGirl.create(:payment_order)
   end
 
-  it { should validate_presence_of(:debtor_account_number) }
-  it { should validate_length_of(:debtor_account_number).is_at_most(18)}
-  it { should validate_presence_of(:debtor_account_name) }
-  it { should validate_presence_of(:debtor_account_city) }
-  it { should validate_presence_of(:debtor_model_number) }
-  it { should validate_length_of(:debtor_model_number).is_at_most(2) }
-  it { should validate_presence_of(:creditor_reference_number) }
-  it { should validate_presence_of(:creditor_account_number) }
-  it { should validate_length_of(:creditor_account_number).is_at_most(18) }
-  it { should validate_presence_of(:approval_reference_number) }
-  it { should validate_presence_of(:payment_number) }
-  it { should validate_length_of(:payment_number).is_at_most(3) }
-  it { should validate_presence_of(:transfer_amount) }
-  it { should validate_presence_of(:account_city) }
-  it { should validate_presence_of(:currency_date) }
-  it { should validate_presence_of(:payment_date) }
+  # it { should validate_presence_of(:debtor_account_number) }
+  # it { should validate_length_of(:debtor_account_number).is_at_most(18)}
+  # it { should validate_presence_of(:debtor_account_name) }
+  # it { should validate_presence_of(:debtor_account_city) }
+  # it { should validate_presence_of(:debtor_model_number) }
+  # it { should validate_length_of(:debtor_model_number).is_at_most(2) }
+  # it { should validate_presence_of(:creditor_reference_number) }
+  # it { should validate_presence_of(:creditor_account_number) }
+  # it { should validate_length_of(:creditor_account_number).is_at_most(18) }
+  # it { should validate_presence_of(:approval_reference_number) }
+  # it { should validate_presence_of(:payment_number) }
+  # it { should validate_length_of(:payment_number).is_at_most(3) }
+  # it { should validate_presence_of(:transfer_amount) }
+  # it { should validate_presence_of(:account_city) }
+  # it { should validate_presence_of(:currency_date) }
+  # it { should validate_presence_of(:payment_date) }
 end

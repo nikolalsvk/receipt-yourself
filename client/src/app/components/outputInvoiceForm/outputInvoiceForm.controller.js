@@ -1,5 +1,5 @@
 export class OutputInvoiceFormController {
-  constructor($mdEditDialog, $q, $scope, $timeout, businessPartner, outputInvoice) {
+  constructor($mdEditDialog, $q, $scope, $mdToast, $state, $timeout, businessPartner, outputInvoice) {
     'ngInject';
 
     $scope.businessPartners = [];
@@ -29,6 +29,9 @@ export class OutputInvoiceFormController {
           circulation_date: $scope.outputInvoice.circulationDate,
           payment_deadline: $scope.outputInvoice.paymentDeadline
         }).create();
+        
+        $mdToast.show($mdToast.simple('Successfuly issued output invoice!'));
+        $state.go($state.current, {}, {reload: true})
     }
   }
 }

@@ -1,4 +1,4 @@
-export function ClosedOutputInvoiceDirective() {
+export function ClosedInputInvoiceDirective() {
   'ngInject';
 
   let directive = {
@@ -7,7 +7,7 @@ export function ClosedOutputInvoiceDirective() {
       extraValues: '=',
       dailyStatementId: '='
     },
-    templateUrl: 'app/components/invoiceTables/outputInvoiceTable.html',
+    templateUrl: 'app/components/undoClosures/closedInputInvoice.html',
     controller: 'ClosedInputInvoiceController',
     controllerAs: 'invoiceCtrl'
   };

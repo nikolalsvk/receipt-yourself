@@ -1,1 +1,58 @@
-<h1>hi</h1>
+<md-content laout="column" flex >
+
+  <md-card>
+
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <span>Daily Bank Statements</span>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="dailyBankStCtrl.loadStuff(dailyBankStCtrl)">
+          <md-icon>refresh</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-table-container>
+      <table md-table
+        md-row-select="true"
+        multiple="false"
+        ng-model="selected"
+        md-progress="promise">
+
+        <thead md-head md-order="query.order" md-on-reorder="logOrder">
+          <tr md-row>
+            <th md-column md-order-by="number"><span>Number</span></th>
+            <th md-column md-order-by="previousAmount"><span>Previous Amount</span></th>
+            <th md-column md-numeric md-order-by="reservedAmount" md-desc><span>Reserved Amount</span></th>
+            <th md-column md-numeric md-order-by="statementDate"><span>Date</span></th>
+            <th md-column md-numeric md-order-by="totalPayment"><span>Total Payment</span></th>
+            <th md-column md-numeric md-order-by="totalPayout"><span>Total Payout</span></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="dailyBankStatement"
+            md-on-select="showDailyStatements"
+            md-auto-select="true"
+            ng-repeat="dailyBankStatement in dailyBankStCtrl.dailyBankStatements | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{dailyBankStatement.number}}</td>
+            <td md-cell>{{dailyBankStatement.previousAmount}}</td>
+            <td md-cell>{{dailyBankStatement.reservedAmount}}</td>
+            <td md-cell>{{dailyBankStatement.statementDate | date}}</td>
+            <td md-cell>{{dailyBankStatement.totalPayment}}</td>
+            <td md-cell>{{dailyBankStatement.totalPayout}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <md-table-pagination
+      md-limit="query.limit"
+      md-limit-options="limitOptions"
+      md-page="query.page"
+      md-total="{{dailyBankStCtrl.dailyBankStatements.length}}"
+      md-page-select="options.pageSelect"
+      md-boundary-links="options.boundaryLinks"
+      md-on-paginate="logPagination"></md-table-pagination>
+  </md-card>
+
+</md-content>

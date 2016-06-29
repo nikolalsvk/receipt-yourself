@@ -7,7 +7,7 @@ export function ClosedOutputInvoiceDirective() {
       extraValues: '=',
       dailyStatementId: '='
     },
-    templateUrl: 'app/components/invoiceTables/outputInvoiceTable.html',
+    templateUrl: 'app/components/undoClosures/closedOutputInvoice.html',
     controller: 'ClosedOutputInvoiceController',
     controllerAs: 'invoiceCtrl'
   };

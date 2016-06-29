@@ -1,12 +1,11 @@
 <md-content layout="column" flex >
-
   <md-card>
 
     <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
-        <span>Opened Output Invoices</span>
+        <span>Closed Input Invoices</span>
         <div flex></div>
-        <md-button class="md-raised" ng-click="closeReceipt()">Close RCPT</md-button>
+        <md-button class="md-raised" ng-click="undoClosure()">Undo closure</md-button>
         <md-button class="md-icon-button" ng-click="loadStuff()">
           <md-icon>refresh</md-icon>
         </md-button>
@@ -16,7 +15,7 @@
     <md-table-container>
       <table md-table
         md-row-select="options.rowSelection"
-        multiple="false"
+        multiple="true"
         ng-model="selected"
         md-progress="promise">
 
@@ -31,16 +30,16 @@
           </tr>
         </thead>
         <tbody md-body>
-          <tr md-row md-select="outputInvoice"
+          <tr md-row md-select="inputInvoice"
             md-on-select="logItem"
             md-auto-select="false"
-            ng-repeat="outputInvoice in invoiceCtrl.outputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{outputInvoice.number}}</td>
-            <td md-cell>{{outputInvoice.paymentAmount}}</td>
-            <td md-cell>{{outputInvoice.remainingAmount}}</td>
-            <td md-cell>{{outputInvoice.circulationDate}}</td>
-            <td md-cell>{{outputInvoice.paymentDeadline}}</td>
-            <td md-cell>{{outputInvoice.businessPartner.name}}</td>
+            ng-repeat="inputInvoice in invoiceCtrl.inputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <td md-cell>{{inputInvoice.number}}</td>
+            <td md-cell>{{inputInvoice.paymentAmount}}</td>
+            <td md-cell>{{inputInvoice.remainingAmount}}</td>
+            <td md-cell>{{inputInvoice.circulationDate}}</td>
+            <td md-cell>{{inputInvoice.paymentDeadline}}</td>
+            <td md-cell>{{inputInvoice.businessPartner.name}}</td>
           </tr>
         </tbody>
       </table>
@@ -50,10 +49,9 @@
       md-limit="query.limit"
       md-limit-options="limitOptions"
       md-page="query.page"
-      md-total="{{invoiceCtrl.outputInvoices.length}}"
+      md-total="{{invoiceCtrl.inputInvoices.length}}"
       md-page-select="options.pageSelect"
       md-boundary-links="options.boundaryLinks"
       md-on-paginate="logPagination"></md-table-pagination>
   </md-card>
-
 </md-content>

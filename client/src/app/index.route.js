@@ -69,6 +69,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
           templateUrl: 'app/components/dailyStatement/dailyStatements.html'
         }
       }
+    })
+    .state('undoClosures', {
+      url: '/undo_closures',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/undoClosures/undoClosures.html'
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

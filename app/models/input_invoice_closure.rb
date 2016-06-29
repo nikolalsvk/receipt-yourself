@@ -27,9 +27,7 @@ class InputInvoiceClosure < ActiveRecord::Base
   def can_create_closure
     # if remaining amount of invoice is smaller than zero (can be zero)
     if (daily_statement.remaining_amount + input_invoice.remaining_amount) < 0
-      errors.add(:closure_amount, "Cannot create Input Invoice Closure,
-                                   amounts from Daily Statement and
-                                   Input Invoice are not the same!")
+      errors.add(:closure_amount, "Cannot create Input Invoice Closure, CUSTOM ERROR")
     end
   end
 

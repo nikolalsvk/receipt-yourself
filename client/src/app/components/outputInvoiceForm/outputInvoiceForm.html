@@ -1,0 +1,63 @@
+<md-card>
+<div layout="column" ng-cloak>
+  <md-content layout-padding>
+    <form name="projectForm">
+      <md-input-container>
+        <label>Business partner</label>
+          <md-select ng-model="someModel">
+          <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Number</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Payment amount</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Remaining amount</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>  
+      <md-input-container class="md-block">
+        <label>Issuance date</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>   
+      <md-input-container class="md-block">
+        <label>Circulation date</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>       
+      <md-input-container class="md-block">
+        <label>Payment deadline</label>
+        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="project.description">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+        </div>
+      </md-input-container>   
+      <md-button>Submit output invoice!</md-button>           
+    </form>
+  </md-content>
+</div>
+</md-card>

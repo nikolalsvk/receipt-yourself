@@ -25,6 +25,11 @@ import { BusinessPartnerDirective } from '../app/components/businessPartner/busi
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
 import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
 
+// OutputInvoiceForm components
+import { OutputInvoiceFormDirective } from '../app/components/outputInvoiceForm/outputInvoiceForm.directive';
+import { OutputInvoiceFormController } from '../app/components/outputInvoiceForm/outputInvoiceForm.controller';
+import { OutputInvoiceForm } from '../app/components/outputInvoiceForm/outputInvoiceForm.factory';
+
 // DailyBankStatement compoments
 import { DailyBankStatementController } from '../app/components/dailyBankStatement/dailyBankStatement.controller';
 import { DailyBankStatement } from '../app/components/dailyBankStatement/dailyBankStatement.factory';

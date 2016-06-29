@@ -24,7 +24,9 @@ export class ClosedInputInvoiceController {
 
     let that = this
 
-    inputInvoice.query().then(function(results) {
+    this.inputInvoice = inputInvoice;
+
+    inputInvoice.query({ closed: "true" }).then(function(results) {
       that.inputInvoices = results;
     });
 
@@ -32,9 +34,9 @@ export class ClosedInputInvoiceController {
       $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
     };
 
-    $scope.loadStuff = function () {
-      inputInvoice.query().then(function(results) {
-        this.inputInvoices = results;
+    $scope.loadStuff = function (that) {
+      that.inputInvoice.query({ closed: "true" }).then(function(results) {
+        that.inputInvoices = results;
       });
 
       $scope.promise = $timeout(function () {

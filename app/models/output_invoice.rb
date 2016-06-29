@@ -22,7 +22,7 @@ class OutputInvoice < ActiveRecord::Base
   belongs_to :financial_year
   has_many :output_invoice_closures, dependent: :destroy
 
-  validates :number, presence: true, 
+  validates :number, presence: true,
                      uniqueness: true,
                      case_sensitive: false
   validates :payment_amount, presence: true
@@ -30,6 +30,9 @@ class OutputInvoice < ActiveRecord::Base
   validates :issuance_date, presence: true
   validates :circulation_date, presence: true
   validates :payment_deadline, presence: true
+
+  scope :closed, -> { includes(:output_invoice_closures).where(:output_invoice_closures => { :id => nil }) }
+  scope :opened, -> { joins(:output_invoice_closures).group("output_invoices.id").having("count(output_invoice_id) > 0") }
 
   def as_json(options = {})
     super(options.merge(:include => [:business_partner,

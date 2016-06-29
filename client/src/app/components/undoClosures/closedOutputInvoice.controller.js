@@ -24,7 +24,7 @@ export class ClosedOutputInvoiceController {
 
     let that = this
 
-    outputInvoice.query().then(function(results) {
+    outputInvoice.query({ closed: "true" }).then(function(results) {
       that.outputInvoices = results;
     });
 

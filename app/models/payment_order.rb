@@ -25,6 +25,8 @@
 #
 
 class PaymentOrder < ActiveRecord::Base
+  before_validation :set_amount, on: :create
+
   belongs_to :payment_forming
 
   validates :debtor_account_number, presence: true,
@@ -56,4 +58,11 @@ class PaymentOrder < ActiveRecord::Base
 
   # enumerations
   enum payment_method: Constants::Priority::PRIORITY_ARRAY
+
+  private
+
+  # Same as in payment_forming
+  def set_amount
+    self.transfer_amount = payment_forming.amount
+  end
 end

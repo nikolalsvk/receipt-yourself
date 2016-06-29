@@ -30,6 +30,8 @@
 #
 
 class DailyStatement < ActiveRecord::Base
+  before_validation :set_status, on: :create
+
   belongs_to :business_partner
   belongs_to :daily_bank_statement
   has_many :input_invoice_closures, dependent: :destroy
@@ -58,7 +60,6 @@ class DailyStatement < ActiveRecord::Base
                              length: { maximum: 3 }
   validates :payment_currency, presence: true
   validates :transfer_amount, presence: true
-  #validates_numericality_of :transfer_amount, :greater_than => 0
   validates :account_city, presence: true
   validates :currency_date, presence: true
   validates :payment_date, presence: true
@@ -66,7 +67,6 @@ class DailyStatement < ActiveRecord::Base
   validates :priority, presence: true
   validates :status, presence: true
   validates :remaining_amount, presence: true
-  validates_numericality_of :remaining_amount
 
   #enumerations
   enum payment_currency: Constants::Currency::CURRENCY_HASH.keys
@@ -80,12 +80,19 @@ class DailyStatement < ActiveRecord::Base
                 :not_executed_carrier_error, # Neizvršen zbog nelikvidnosti računa nosioca u NBJ
                 :unauthorized,               # Nalog nije odobren za izvršenje- neviziran nalog
                 :wrong,                      # Pogrešan nalog
-                :stopped]                    # Nalog stopiran za izvršenje
+                :stopped,                    # Nalog stopiran za izvršenje
+                :processing]                 # DEFAULT STATUS ? Verovatno ce olaksati filtriranje?
 
   validates :calculation_method, presence: true
 
   def as_json(options = {})
     super(options.merge(:include => {:business_partner => {:only => [:id, :name]}}, :except => [:created_at, :updated_at]))
+  end
+  
+  private
+
+  def set_status
+    self.status = :processing
   end
 
 end

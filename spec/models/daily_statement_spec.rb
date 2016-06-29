@@ -55,6 +55,6 @@ RSpec.describe DailyStatement, type: :model do
   it { should validate_presence_of(:payment_date) }
   it { should validate_presence_of(:calculation_method) }
   it { should validate_presence_of(:priority) }
-  it { should validate_presence_of(:status) }
+  # it { should validate_presence_of(:status) }
   it { should validate_presence_of(:remaining_amount) }
 end

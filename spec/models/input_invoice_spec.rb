@@ -7,7 +7,7 @@
 #  payment_amount      :decimal(15, 4)   not null
 #  remaining_amount    :decimal(15, 4)   not null
 #  issuance_date       :datetime         not null
-#  circulation_date    :datetime         not null
+#  circulation_date    :datetime
 #  payment_deadline    :datetime         not null
 #  business_partner_id :integer
 #  financial_year_id   :integer
@@ -27,6 +27,6 @@ RSpec.describe InputInvoice, type: :model do
   it { should validate_presence_of(:payment_amount) }
   it { should validate_presence_of(:remaining_amount) }
   it { should validate_presence_of(:issuance_date) }
-  it { should validate_presence_of(:circulation_date) }
+  # it { should validate_presence_of(:circulation_date) }
   it { should validate_presence_of(:payment_deadline) }
 end

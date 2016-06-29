@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628172217) do
+ActiveRecord::Schema.define(version: 20160629125229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,11 +97,6 @@ ActiveRecord::Schema.define(version: 20160628172217) do
 
   add_index "daily_bank_statements", ["company_account_id"], name: "index_daily_bank_statements_on_company_account_id", using: :btree
 
-  create_table "daily_statement_items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "daily_statements", force: :cascade do |t|
     t.string   "debtor_account_number",     limit: 18,                          null: false
     t.string   "debtor_account_name",                                           null: false
@@ -159,7 +154,7 @@ ActiveRecord::Schema.define(version: 20160628172217) do
     t.decimal  "payment_amount",      precision: 15, scale: 4, null: false
     t.decimal  "remaining_amount",    precision: 15, scale: 4, null: false
     t.datetime "issuance_date",                                null: false
-    t.datetime "circulation_date",                             null: false
+    t.datetime "circulation_date"
     t.datetime "payment_deadline",                             null: false
     t.integer  "business_partner_id"
     t.integer  "financial_year_id"
@@ -187,7 +182,7 @@ ActiveRecord::Schema.define(version: 20160628172217) do
     t.decimal  "payment_amount",      precision: 15, scale: 4, null: false
     t.decimal  "remaining_amount",    precision: 15, scale: 4, null: false
     t.datetime "issuance_date",                                null: false
-    t.datetime "circulation_date",                             null: false
+    t.datetime "circulation_date"
     t.datetime "payment_deadline",                             null: false
     t.integer  "company_id"
     t.integer  "business_partner_id"

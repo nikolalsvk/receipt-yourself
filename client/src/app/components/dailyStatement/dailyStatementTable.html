@@ -20,8 +20,9 @@
 
         <thead md-head md-order="query.order" md-on-reorder="logOrder">
           <tr md-row>
-            <th md-column md-order-by="debtorPaymentPurpose"><span>Purpose</span></th>
             <th md-column md-order-by="businessPartner.name"><span>Business Partner</span></th>
+            <th md-column md-order-by="businessPartner.paymentDate"><span>Payment Date</span></th>
+            <th md-column md-order-by="businessPartner.name"><span>{{type == 'on load' ? 'Pay off' : 'Charge'}} amount</span></th>
             <th md-column md-numeric md-order-by="debtorReferenceNumber" md-desc><span>Reference Number</span></th>
             <th md-column md-numeric md-order-by="debtorAccountNumber"><span>Account Number</span></th>
           </tr>
@@ -30,11 +31,12 @@
           <tr md-row md-select="dailyStatement"
             md-on-select="logItem"
             md-auto-select="true"
-            ng-repeat="dailyStatement in dailyStatementCtrl.dailyStatements | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{dailyStatement.debtorPaymentPurpose}}</td>
-            <td md-cell>{{dailyStatement.businessPartner.name}}</td>
-            <td md-cell>{{dailyStatement.debtorReferenceNumber}}</td>
-            <td md-cell>{{dailyStatement.debtorAccountNumber}}</td>
+            ng-repeat="dailyStatement in dailyStatementCtrl.dailyStatements | filter: (type == 'on load' ? isNegative : isPositive) | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+              <td md-cell>{{dailyStatement.businessPartner.name}}</td>
+              <td md-cell>{{dailyStatement.paymentDate}}</td>
+              <td md-cell>{{dailyStatement.transferAmount}}</td>
+              <td md-cell>{{dailyStatement.debtorReferenceNumber}}</td>
+              <td md-cell>{{dailyStatement.debtorAccountNumber}}</td>
           </tr>
         </tbody>
       </table>

@@ -5,7 +5,8 @@ export function DailyStatementDirective() {
     restrict: 'E',
     scope: {
       extraValues: '=',
-      type: "="
+      type: "=",
+      typeSign: "="
     },
     templateUrl: 'app/components/dailyStatement/dailyStatementTable.html',
     controller: 'DailyStatementController',

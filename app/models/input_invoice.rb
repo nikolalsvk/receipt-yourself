@@ -21,9 +21,9 @@ class InputInvoice < ActiveRecord::Base
   has_many :input_invoice_closures, dependent: :destroy
   has_many :payment_formings, dependent: :destroy
 
-  validates :number, presence: true,
-                     uniqueness: true,
-                     case_sensitive: false
+  #validates :number, presence: true,
+                     #uniqueness: true,
+                     #case_sensitive: false
   validates :payment_amount, presence: true
   validates :remaining_amount, presence: true
   validates :issuance_date, presence: true

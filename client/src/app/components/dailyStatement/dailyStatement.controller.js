@@ -69,6 +69,14 @@ export class DailyStatementController {
       }
     }
 
+    $scope.isPositive = function (item) { 
+      return item.transferAmount > 0; 
+    };
+
+      $scope.isNegative = function (item) { 
+      return item.transferAmount < 0; 
+    };
+
     $scope.logPagination = function (page, limit) {
       console.log('page: ', page);
       console.log('limit: ', limit);

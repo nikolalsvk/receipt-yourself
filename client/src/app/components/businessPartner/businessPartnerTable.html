@@ -49,17 +49,17 @@
             md-auto-select="false"
             ng-repeat="businessPartner in partnerCtrl.businessPartners | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
             <td md-cell>{{businessPartner.name}}</td>
-            <td md-cell>{{inputInvoice.financialYear.company.name}}</td>
-            <td md-cell>{{dessert.fat.value | number: 2}}</td>
-            <td md-cell>{{dessert.carbs.value}}</td>
-            <td md-cell>{{}}</td>
+            <td md-cell>{{businessPartner.contactCard.pib}}</td>
+            <td md-cell>{{businessPartner.category}}</td>
+            <td md-cell>{{businessPartner.contactCard.country}}</td>
+            <td md-cell>{{businessPartner.contactCard.city}}</td>
             <td md-cell>{{businessPartner.contactCard.address}}</td>
-            <td md-cell>{{dessert.protein.value | number: 2}}</td>
-            <td md-cell hide-gt-xs show-gt-md>{{dessert.sodium.value}}</td>
-            <td md-cell hide-gt-xs show-gt-lg>{{dessert.calcium.value}}%</td>
-            <td md-cell hide-gt-xs show-gt-lg>{{dessert.iron.value}}%</td>
+            <td md-cell>{{businessPartner.contactCard.email}}</td>
+            <td md-cell hide-gt-xs show-gt-md>{{businessPartner.contactCard.phone}}</td>
+            <td md-cell hide-gt-xs show-gt-lg>{{businessPartner.contactCard.website}}%</td>
+            <td md-cell hide-gt-xs show-gt-lg>{{businessPartner.contactCard.fax}}%</td>
             <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
-              {{dessert.comment || 'Add a comment'}}
+              {{businessPartner.comment || 'Add a comment'}}
             </td>
           </tr>
         </tbody>

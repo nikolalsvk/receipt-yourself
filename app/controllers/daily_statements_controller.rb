@@ -6,6 +6,8 @@ class DailyStatementsController < ApplicationController
   def index
     if params[:daily_bank_statement_id]
       @daily_statements = DailyStatement.where(:daily_bank_statement_id => params[:daily_bank_statement_id])
+    elsif params[:business_partner_id]
+      @daily_statements = DailyStatement.where(:business_partner_id => params[:business_partner_id])
     else
       @daily_statements = DailyStatement.all
     end

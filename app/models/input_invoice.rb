@@ -7,7 +7,7 @@
 #  payment_amount      :decimal(15, 4)   not null
 #  remaining_amount    :decimal(15, 4)   not null
 #  issuance_date       :datetime         not null
-#  circulation_date    :datetime         not null
+#  circulation_date    :datetime
 #  payment_deadline    :datetime         not null
 #  business_partner_id :integer
 #  financial_year_id   :integer
@@ -27,7 +27,6 @@ class InputInvoice < ActiveRecord::Base
   validates :payment_amount, presence: true
   validates :remaining_amount, presence: true
   validates :issuance_date, presence: true
-  validates :circulation_date, presence: true
   validates :payment_deadline, presence: true
 
   def as_json(options = {})

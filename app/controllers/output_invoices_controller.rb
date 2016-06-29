@@ -6,6 +6,12 @@ class OutputInvoicesController < ApplicationController
   def index
     if params[:business_partner_id]
       @output_invoices = OutputInvoice.where(:business_partner_id => params[:business_partner_id])
+    elsif params[:closed].present?
+      if params[:closed]
+        @output_invoices = OutputInvoice.closed
+      else
+        @output_invoices = OutputInvoice.opened
+      end
     else
       @output_invoices = OutputInvoice.all
     end

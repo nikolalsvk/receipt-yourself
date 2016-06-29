@@ -30,6 +30,9 @@ class InputInvoice < ActiveRecord::Base
   validates :circulation_date, presence: true
   validates :payment_deadline, presence: true
 
+  scope :closed, -> { includes(:input_invoice_closures).where(:input_invoice_closures => { :id => nil }) }
+  scope :opened, -> { joins(:input_invoice_closures).group("input_invoices.id").having("count(input_invoice_id) > 0") }
+
   def as_json(options = {})
     super(options.merge(:include => [:business_partner,
                                      :financial_year]))

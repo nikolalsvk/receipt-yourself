@@ -2,10 +2,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
   'ngInject';
 
   // Enable HTML5 Mode
-  $locationProvider.html5Mode({
+  $locationProvider
+  .html5Mode({
     enabled: true,
     requireBase: false
-  });
+  })
+  .hashPrefix('!');
 
   $stateProvider
     .state('home', {

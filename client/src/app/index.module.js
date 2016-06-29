@@ -36,6 +36,12 @@ import { DailyStatementController } from '../app/components/dailyStatement/daily
 import { DailyStatementListController } from '../app/components/dailyStatement/dailyStatementList.controller';
 import { DailyStatement } from '../app/components/dailyStatement/dailyStatement.factory';
 
+// UndoClosures compoments
+import { ClosedInputInvoiceController } from '../app/components/undoClosures/closedInputInvoice.controller';
+import { ClosedInputInvoiceDirective } from '../app/components/undoClosures/closedInputInvoice.directive';
+import { ClosedOutputInvoiceController } from '../app/components/undoClosures/closedOutputInvoice.controller';
+import { ClosedOutputInvoiceDirective } from '../app/components/undoClosures/closedOutputInvoice.directive';
+
 angular.module('receiptYourself', ['ngResource',
                                    'ui.router',
                                    'ngMaterial',
@@ -65,9 +71,13 @@ angular.module('receiptYourself', ['ngResource',
   .controller('DailyStatementController', DailyStatementController)
   .controller('DailyStatementListController', DailyStatementListController)
   .controller('DailyBankStatementController', DailyBankStatementController)
+  .controller('ClosedOutputInvoiceController', ClosedOutputInvoiceController)
+  .controller('ClosedInputInvoiceController', ClosedInputInvoiceController)
   .directive('inputInvoice', InputInvoiceDirective)
   .directive('dailyStatement', DailyStatementDirective)
   .directive('dailyStatementList', DailyStatementListDirective)
   .directive('outputInvoice', OutputInvoiceDirective)
   .directive('businessPartner', BusinessPartnerDirective)
+  .directive('closedOutputInvoice', ClosedOutputInvoiceDirective)
+  .directive('closedInputInvoice', ClosedInputInvoiceDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

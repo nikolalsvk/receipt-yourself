@@ -69,6 +69,25 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
           templateUrl: 'app/components/dailyStatement/dailyStatements.html'
         }
       }
+    })
+    .state('undoClosures', {
+      url: '/undo_closures',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/undoClosures/undoClosures.html',
+          controller: 'DailyBankStatementController as dailyBankStCtrl'
+        }
+      }
+    })
+    .state('undoClosuresForBankStatement', {
+      url: '/undo_closures/:id/',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/undoClosures/undoClosuresForBankStatement.html',
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

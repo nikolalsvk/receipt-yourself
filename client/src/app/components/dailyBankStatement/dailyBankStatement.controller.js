@@ -30,7 +30,11 @@ export class DailyBankStatementController {
     this.getDailyBankStatements(that);
 
     $scope.showDailyStatements = (item) => {
-      $state.go("dailyStatements", {id: item.id}, {reload: true});
+      if($state.current.name == "dailyStatements") {
+        $state.go("dailyStatements", {id: item.id}, {reload: true});
+      } else {
+        $state.go("undoClosuresForBankStatement", {id: item.id}, {reload: true});
+      }
     }
   }
 

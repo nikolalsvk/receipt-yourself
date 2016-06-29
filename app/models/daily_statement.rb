@@ -30,7 +30,6 @@
 #
 
 class DailyStatement < ActiveRecord::Base
-  before_validation :set_dates, on: :create
   before_validation :set_status, on: :create
 
   belongs_to :business_partner
@@ -92,11 +91,6 @@ class DailyStatement < ActiveRecord::Base
     super(options.merge(:include => {:business_partner => {:only => [:id, :name]}}, :except => [:created_at, :updated_at]))
 
   private
-
-  def set_dates
-    self.currency_date = daily_bank_statement.statement_date
-    self.payment_date = daily_bank_statement.statement_date
-  end
 
   def set_status
     self.status = :processing

@@ -90,6 +90,16 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
           templateUrl: 'app/components/undoClosures/undoClosuresForBankStatement.html',
         }
       }
+    })
+    .state('outputInvoiceForm', {
+      url: '/output_invoice_form',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/outputInvoiceForm/outputInvoiceForm.html',
+          controller: 'OutputInvoiceFormController as outputInvoiceFormCtrl'
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

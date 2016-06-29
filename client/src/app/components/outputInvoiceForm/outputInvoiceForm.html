@@ -1,0 +1,35 @@
+<md-card>
+<div layout="column" ng-cloak>
+  <md-content layout-padding>
+    <form ng-submit="test()" role="form" ng-init="outputInvoiceForm = {}" name="outputInvoiceForm">
+      <md-input-container>
+        <label>Business partner</label>
+          <md-select ng-model="outputInvoice.businessPartner">
+          <md-option ng-repeat="businessPartner in outputInvoiceFormCtrl.businessPartners">{{businessPartner.name}}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Number</label>
+        <input required md-no-asterisk name="number" ng-model="outputInvoice.number">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Payment amount</label>
+        <input name="opaymentAmount" ng-model="outputInvoice.paymentAmount">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Remaining amount</label>
+        <input name="remainingAmount" ng-model="outputInvoice.remainingAmount">
+      </md-input-container>  
+        <label>Issuance date</label>
+        <md-datepicker name="issuanceDate" ng-model="outputInvoice.issuanceDate"></md-datepicker>
+        <label>Circulation date</label>
+        <md-datepicker name="circulationDate" ng-model="outputInvoice.circulationDate"></md-datepicker>
+        <label>Payment deadline</label>
+        <md-datepicker name="paymentDeadline" ng-model="outputInvoice.paymentDeadline"></md-datepicker><br/>
+      <md-input-container>
+        <md-button type="submit">Issue an Output Invoice!</md-button>
+      </md-input-container>              
+    </form>
+  </md-content>
+</div>
+</md-card>

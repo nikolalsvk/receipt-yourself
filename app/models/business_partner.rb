@@ -22,7 +22,7 @@ class BusinessPartner < ActiveRecord::Base
   validates :category, presence: true
 
   def as_json(options = {})
-    super(options.merge(:include => {:contact_card => {:only => :address}}, :except => [:created_at, :updated_at]))
+    super(options.merge(:include => :contact_card ))
   end
 
 end

@@ -7,7 +7,7 @@ export class BusinessPartnerController {
 
     $scope.options = {
       rowSelection: true,
-      multiSelect: true,
+      multiSelect: false,
       autoSelect: true,
       decapitate: false,
       largeEditDialog: false,

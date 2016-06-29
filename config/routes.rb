@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     resources :daily_bank_statements, except: [:new, :edit]
 
-    resources :daily_statements, except: [:new, :edit]
+    resources :daily_statements, except: [:new, :edit], defaults: { format: 'json' }
   end
 
 end

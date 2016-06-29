@@ -4,7 +4,11 @@ class BusinessPartnersController < ApplicationController
   respond_to :json
 
   def index
-    @business_partners = BusinessPartner.all
+    if params[:name]
+      @business_partners = BusinessPartner.where(:name => params[:name])
+    else
+      @business_partners = BusinessPartner.all
+    end
     respond_with(@business_partners)
   end
 

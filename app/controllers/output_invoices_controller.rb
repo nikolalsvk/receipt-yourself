@@ -33,7 +33,9 @@ class OutputInvoicesController < ApplicationController
 
   def create
     @output_invoice = OutputInvoice.new(output_invoice_params)
-    @output_invoice.save
+    @business_partner_query = BusinessPartner.where(:id => params[:output_invoice][:business_partner_id])
+    @output_invoice.business_partner = @business_partner_query[0]
+    @output_invoice.save!
     respond_with(@output_invoice)
   end
 
@@ -53,6 +55,6 @@ class OutputInvoicesController < ApplicationController
     end
 
     def output_invoice_params
-      params[:output_invoice]
+      params.require(:output_invoice).permit(:payment_amount, :remaining_amount, :number, :issuance_date, :circulation_date, :payment_deadline)
     end
 end

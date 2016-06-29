@@ -96,7 +96,8 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
       views: {
         navbar: { templateUrl: 'app/components/navbar/navbar.html' },
         content: {
-          templateUrl: 'app/components/outputInvoiceForm/outputInvoiceForm.html'
+          templateUrl: 'app/components/outputInvoiceForm/outputInvoiceForm.html',
+          controller: 'OutputInvoiceFormController as outputInvoiceFormCtrl'
         }
       }
     });

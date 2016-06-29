@@ -28,7 +28,6 @@ import { BusinessPartner } from '../app/components/businessPartner/businessPartn
 // OutputInvoiceForm components
 import { OutputInvoiceFormDirective } from '../app/components/outputInvoiceForm/outputInvoiceForm.directive';
 import { OutputInvoiceFormController } from '../app/components/outputInvoiceForm/outputInvoiceForm.controller';
-import { OutputInvoiceForm } from '../app/components/outputInvoiceForm/outputInvoiceForm.factory';
 
 // DailyBankStatement compoments
 import { DailyBankStatementController } from '../app/components/dailyBankStatement/dailyBankStatement.controller';
@@ -73,6 +72,7 @@ angular.module('receiptYourself', ['ngResource',
   .controller('InputInvoiceController', InputInvoiceController)
   .controller('BusinessPartnerController', BusinessPartnerController)
   .controller('OutputInvoiceController', OutputInvoiceController)
+  .controller('OutputInvoiceFormController', OutputInvoiceFormController)
   .controller('DailyStatementController', DailyStatementController)
   .controller('DailyStatementListController', DailyStatementListController)
   .controller('DailyBankStatementController', DailyBankStatementController)
@@ -80,6 +80,7 @@ angular.module('receiptYourself', ['ngResource',
   .controller('ClosedInputInvoiceController', ClosedInputInvoiceController)
   .directive('inputInvoice', InputInvoiceDirective)
   .directive('dailyStatement', DailyStatementDirective)
+  .directive('outputInvoiceForm', OutputInvoiceFormDirective)
   .directive('dailyStatementList', DailyStatementListDirective)
   .directive('outputInvoice', OutputInvoiceDirective)
   .directive('businessPartner', BusinessPartnerDirective)

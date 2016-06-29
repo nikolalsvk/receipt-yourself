@@ -66,7 +66,7 @@ class DailyStatement < ActiveRecord::Base
   validates :priority, presence: true
   validates :status, presence: true
   validates :remaining_amount, presence: true
-  validates_numericality_of :remaining_amount, :greater_than => 0
+  validates_numericality_of :remaining_amount
 
   #enumerations
   enum payment_currency: Constants::Currency::CURRENCY_HASH.keys

@@ -32,18 +32,26 @@ class BanksController < ApplicationController
     daily_bank_statement = DailyBankStatement.new
     daily_bank_statement.from_json(statement_info)
 
-    daily_statement = DailyStatement.new
+    business_partners = Array.new
 
-    parsed_items.each { |el|
-      daily_bank_statement.daily_statements.push(daily_statement.from_json(el.to_json))
+    # store b.partners ids
+    parsed_items.each_with_index { |ds, index|
+      business_partnerQuery = BusinessPartner.where(name: ds['business_partner']['name'])
+      business_partners.push(business_partnerQuery[0])
+
+      ds.delete('business_partner')
+
+      daily_statement = DailyStatement.new
+      daily_statement.from_json(ds.to_json)
+      daily_statement['business_partner_id'] = business_partners[index]['id']
+      daily_statement['currency_date'] = format_date(ds['currency_date'])
+      daily_statement['payment_date'] = format_date(ds['payment_date'])
+
+      daily_bank_statement.daily_statements.push(daily_statement)
     }
 
     #Java date -> Ruby
     daily_bank_statement['statement_date'] = format_date(parsed_statement['statement_date'])
-    daily_bank_statement.daily_statements[0]['currency_date'] = format_date(parsed_items[0]['currency_date'])
-    daily_bank_statement.daily_statements[0]['payment_date'] = format_date(parsed_items[0]['payment_date'])
-    daily_bank_statement.daily_statements[1]['currency_date'] = format_date(parsed_items[1]['currency_date'])
-    daily_bank_statement.daily_statements[1]['payment_date'] = format_date(parsed_items[1]['payment_date'])
 
     ActiveRecord::Base.transaction do
       daily_bank_statement.save!

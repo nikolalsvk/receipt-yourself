@@ -59,7 +59,7 @@
             <td md-cell hide-gt-xs show-gt-lg>{{businessPartner.contactCard.website}}%</td>
             <td md-cell hide-gt-xs show-gt-lg>{{businessPartner.contactCard.fax}}%</td>
             <td md-cell ng-click="editComment($event, dessert)" ng-class="{'md-placeholder': !dessert.comment}">
-              {{dessert.comment || 'Add a comment'}}
+              {{businessPartner.comment || 'Add a comment'}}
             </td>
           </tr>
         </tbody>

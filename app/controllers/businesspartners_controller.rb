@@ -21,10 +21,16 @@ class BusinesspartnersController < ApplicationController
 
   def accept_invoice
     input_invoice_info = params[:invoiceInfo]
+    business_partner_info = params[:businessPartnerInfo]
 
     parsed_input_invoice = ActiveSupport::JSON.decode(input_invoice_info)
+    parsed_business_partner = ActiveSupport::JSON.decode(business_partner_info)
 
     input_invoice = InputInvoice.new
+    business_partnerQuery = BusinessPartner.where(name: parsed_business_partner['name'])
+    business_partner = BusinessPartner.new
+
+    business_partner.id = business_partnerQuery[0]['id']
 
     input_invoice.from_json(input_invoice_info)
 
@@ -33,6 +39,7 @@ class BusinesspartnersController < ApplicationController
     input_invoice['circulation_date'] = format_date(parsed_input_invoice['circulation_date'])
     input_invoice['payment_deadline'] = format_date(parsed_input_invoice['payment_deadline'])
 
+    input_invoice.business_partner = business_partner
 
     ActiveRecord::Base.transaction do
       input_invoice.save!

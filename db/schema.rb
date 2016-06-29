@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628172217) do
+ActiveRecord::Schema.define(version: 20160629125229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 20160628172217) do
     t.decimal  "payment_amount",      precision: 15, scale: 4, null: false
     t.decimal  "remaining_amount",    precision: 15, scale: 4, null: false
     t.datetime "issuance_date",                                null: false
-    t.datetime "circulation_date",                             null: false
+    t.datetime "circulation_date"
     t.datetime "payment_deadline",                             null: false
     t.integer  "business_partner_id"
     t.integer  "financial_year_id"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20160628172217) do
     t.decimal  "payment_amount",      precision: 15, scale: 4, null: false
     t.decimal  "remaining_amount",    precision: 15, scale: 4, null: false
     t.datetime "issuance_date",                                null: false
-    t.datetime "circulation_date",                             null: false
+    t.datetime "circulation_date"
     t.datetime "payment_deadline",                             null: false
     t.integer  "company_id"
     t.integer  "business_partner_id"

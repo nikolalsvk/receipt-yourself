@@ -28,6 +28,6 @@ RSpec.describe OutputInvoice, type: :model do
   it { should validate_presence_of(:payment_amount) }
   it { should validate_presence_of(:remaining_amount) }
   it { should validate_presence_of(:issuance_date) }
-  it { should validate_presence_of(:circulation_date) }
+  #it { should validate_presence_of(:circulation_date) }
   it { should validate_presence_of(:payment_deadline) }
 end

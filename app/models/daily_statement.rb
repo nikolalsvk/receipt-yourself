@@ -87,7 +87,8 @@ class DailyStatement < ActiveRecord::Base
 
   def as_json(options = {})
     super(options.merge(:include => {:business_partner => {:only => [:id, :name]}}, :except => [:created_at, :updated_at]))
-
+  end
+  
   private
 
   def set_status

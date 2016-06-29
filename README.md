@@ -2,6 +2,8 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/nikolalsvk/receipt-yourself/branches/master/badge.svg)](https://semaphoreci.com/nikolalsvk/receipt-yourself)
 
+![receipt-yourself-logo](https://cloud.githubusercontent.com/assets/3028124/16456331/d30158b8-3e17-11e6-977f-ecb1c6021dad.png)
+
 ### Technology stack:
 
  - Backend:

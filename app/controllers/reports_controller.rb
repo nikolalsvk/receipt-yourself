@@ -4,13 +4,19 @@ class ReportsController < ApplicationController
     # temp user
     u = User.first
     info = JSON.parse(OutputInvoice.where(company: u.company).to_json)
-    sendJSON(u.email, info, '/kif')
+    sendJSON(u.email, u.company, info, '/kif')
   end
 
   def kuf
     u = User.first
-    info = JSON.parse(InputInvoice.where(company: u.company).first.to_json)
-    sendJSON(u.email, info, '/kuf')
+    input_invoices = []
+    u.company.financial_years.each do |year|
+      year.input_invoices.each do |ii|
+        input_invoices << ii
+      end
+    end
+    info = JSON.parse(input_invoices.to_json)
+    sendJSON(u.email, u.company, info, '/kuf')
   end
 
   def partner_card
@@ -21,9 +27,10 @@ class ReportsController < ApplicationController
 
   private
 
-  def sendJSON(email, info, path)
+  def sendJSON(email, company, info, path)
     set_JSON_destination
     RestClient.post @rg_address + path, {:data=> {email: email, 
+                                                  company: company,
                                                   info: info}.to_json}
   end
 

@@ -31,15 +31,12 @@
           <tr md-row md-select="dailyStatement"
             md-on-select="logItem"
             md-auto-select="true"
-            ng-repeat="dailyStatement in dailyStatementCtrl.dailyStatements | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-            <td md-cell>{{dailyStatement.businessPartner.name}}</td>
-            <td md-cell>{{dailyStatement.paymentDate}}</td>
-            <td md-cell>
-              {{type == 'on load' ? '-' : ''}}
-              {{dailyStatement.transferAmount}}
-            </td>
-            <td md-cell>{{dailyStatement.debtorReferenceNumber}}</td>
-            <td md-cell>{{dailyStatement.debtorAccountNumber}}</td>
+            ng-repeat="dailyStatement in dailyStatementCtrl.dailyStatements | filter: (type == 'on load' ? isNegative : isPositive) | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+              <td md-cell>{{dailyStatement.businessPartner.name}}</td>
+              <td md-cell>{{dailyStatement.paymentDate}}</td>
+              <td md-cell>{{dailyStatement.transferAmount}}</td>
+              <td md-cell>{{dailyStatement.debtorReferenceNumber}}</td>
+              <td md-cell>{{dailyStatement.debtorAccountNumber}}</td>
           </tr>
         </tbody>
       </table>

@@ -58,7 +58,7 @@ class DailyStatement < ActiveRecord::Base
                              length: { maximum: 3 }
   validates :payment_currency, presence: true
   validates :transfer_amount, presence: true
-  validates_numericality_of :transfer_amount, :greater_than => 0
+  #validates_numericality_of :transfer_amount, :greater_than => 0
   validates :account_city, presence: true
   validates :currency_date, presence: true
   validates :payment_date, presence: true

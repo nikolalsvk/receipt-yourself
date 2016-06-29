@@ -46,7 +46,7 @@ class BanksController < ApplicationController
       daily_statement['business_partner_id'] = business_partners[index]['id']
       daily_statement['currency_date'] = format_date(ds['currency_date'])
       daily_statement['payment_date'] = format_date(ds['payment_date'])
-
+      daily_statement.save! # debugg tracer
       daily_bank_statement.daily_statements.push(daily_statement)
     }
 

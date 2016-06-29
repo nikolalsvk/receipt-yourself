@@ -15,7 +15,6 @@ class InputInvoiceClosure < ActiveRecord::Base
   before_validation :set_closure_date, on: :create
   before_validation :set_closure_amount, on: :create
 
-
   belongs_to :daily_statement
   belongs_to :input_invoice
 

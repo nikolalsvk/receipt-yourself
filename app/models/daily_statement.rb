@@ -31,6 +31,7 @@
 
 class DailyStatement < ActiveRecord::Base
   before_validation :set_dates, on: :create
+  before_validation :set_status, on: :create
 
   belongs_to :business_partner
   belongs_to :daily_bank_statement
@@ -82,7 +83,8 @@ class DailyStatement < ActiveRecord::Base
                 :not_executed_carrier_error, # Neizvršen zbog nelikvidnosti računa nosioca u NBJ
                 :unauthorized,               # Nalog nije odobren za izvršenje- neviziran nalog
                 :wrong,                      # Pogrešan nalog
-                :stopped]                    # Nalog stopiran za izvršenje
+                :stopped,                    # Nalog stopiran za izvršenje
+                :processing]                 # DEFAULT STATUS ? Verovatno ce olaksati filtriranje?
 
   validates :calculation_method, presence: true
 
@@ -91,6 +93,10 @@ class DailyStatement < ActiveRecord::Base
   def set_dates
     self.currency_date = daily_bank_statement.statement_date
     self.payment_date = daily_bank_statement.statement_date
+  end
+
+  def set_status
+    self.status = :processing
   end
 
 end

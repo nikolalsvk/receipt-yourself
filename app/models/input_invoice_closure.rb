@@ -22,14 +22,28 @@ class InputInvoiceClosure < ActiveRecord::Base
   validates :closure_amount, presence: true
 
   # custom validations here pls
-  validate :can_close_invoice, on: :create
+  validate :can_create_closure, on: :create
  
-  def can_close_invoice
-    unless (input_invoice.payment_amount == daily_statement.transfer_amount) &&
-           ((input_invoice.remaining_amount + input_invoice.payment_amount) == daily_statement.remaining_amount)
+  def can_create_closure
+    # if remaining amount of invoice is smaller than zero (can be zero)
+    if (daily_statement.remaining_amount + input_invoice.remaining_amount) < 0
       errors.add(:closure_amount, "Cannot create Input Invoice Closure,
                                    amounts from Daily Statement and
                                    Input Invoice are not the same!")
+    end
+  end
+
+  def revert_closure!
+    self.transaction do
+      input_invoice_remaining = input_invoice.remaining_amount - closure_amount
+      input_invoice.update(remaining_amount: input_invoice_remaining,
+                           circulation_date: nil)
+
+      daily_statement_remaining = daily_statement.remaining_amount + closure_amount
+      daily_statement.update(remaining_amount: daily_statement_remaining,
+                             status: :processing)
+
+      self.destroy
     end
   end
 
@@ -47,13 +61,10 @@ class InputInvoiceClosure < ActiveRecord::Base
 
   def set_closure_amount
     self.transaction do
-      self.closure_amount = input_invoice.payment_amount
-      current_remaining_amount = input_invoice.remaining_amount - input_invoice.payment_amount
-      # should the same be done with daily_statement?
+      self.closure_amount = daily_statement.transfer_amount
+      current_remaining_amount = input_invoice.remaining_amount + self.closure_amount
+      daily_statement.remaining_amount = 0
       input_invoice.update(remaining_amount: current_remaining_amount)
-      # how and when do i set other statuses?
-      #   we will probably set status wrong
-      #   or somethind ig closing fail?
       daily_statement.update(status: :executed)
     end
   end

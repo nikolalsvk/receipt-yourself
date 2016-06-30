@@ -20,6 +20,11 @@ import { OutputInvoiceDirective } from '../app/components/invoiceTables/outputIn
 import { OutputInvoiceController } from '../app/components/invoiceTables/outputInvoice.controller';
 import { OutputInvoice } from '../app/components/outputInvoice/outputInvoice.factory';
 
+// reports components
+import { ReportsDirective } from '../app/components/reports/reports.directive';
+import { ReportsController } from '../app/components/reports/reports.controller';
+import { Reports } from '../app/components/reports/reports.factory';
+
 // BusinessPartner components
 import { BusinessPartnerDirective } from '../app/components/businessPartner/businessPartner.directive';
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
@@ -70,9 +75,11 @@ angular.module('receiptYourself', ['ngResource',
   .factory('dailyStatement', ['railsResourceFactory', DailyStatement.dailyStatement])
   .factory('dailyBankStatement', ['railsResourceFactory', DailyBankStatement.dailyBankStatement])
   .factory('closingReceipts', ['railsResourceFactory', ClosingReceipts.closingReceipts])
+  .factory('reports', ['railsResourceFactory', Reports.reports])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
+  .controller('ReportsController', ReportsController)
   .controller('SignInController', SignInController)
   .controller('SignUpController', SignUpController)
   .controller('InputInvoiceController', InputInvoiceController)
@@ -86,6 +93,7 @@ angular.module('receiptYourself', ['ngResource',
   .controller('ClosedOutputInvoiceController', ClosedOutputInvoiceController)
   .controller('ClosedInputInvoiceController', ClosedInputInvoiceController)
   .directive('inputInvoice', InputInvoiceDirective)
+  .directive('reports', ReportsDirective)
   .directive('closingReceipts', ClosingReceiptsDirective)
   .directive('dailyStatement', DailyStatementDirective)
   .directive('outputInvoiceForm', OutputInvoiceFormDirective)

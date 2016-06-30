@@ -25,18 +25,18 @@ class OutputInvoiceClosure < ActiveRecord::Base
   validate :can_create_closure, on: :create
  
   def can_create_closure
-    if (daily_statement.remaining_amount + output_invoice.remaining_amount) > 0
+    if (daily_statement.remaining_amount - output_invoice.remaining_amount) > 0
       errors.add(:closure_amount, "Cannot create output Invoice Closure, CUSTOM ERROR")
     end
   end
 
   def revert_closure!
     self.transaction do
-      output_invoice_remaining = output_invoice.remaining_amount - closure_amount
+      output_invoice_remaining = output_invoice.remaining_amount + closure_amount
       output_invoice.update(remaining_amount: output_invoice_remaining,
                            circulation_date: nil)
 
-      daily_statement_remaining = daily_statement.remaining_amount + closure_amount
+      daily_statement_remaining = daily_statement.remaining_amount - closure_amount
       daily_statement.update(remaining_amount: daily_statement_remaining,
                              status: :processing)
 
@@ -59,7 +59,7 @@ class OutputInvoiceClosure < ActiveRecord::Base
   def set_closure_amount
     self.transaction do
       self.closure_amount = daily_statement.transfer_amount
-      current_remaining_amount = output_invoice.remaining_amount + self.closure_amount
+      current_remaining_amount = output_invoice.remaining_amount - self.closure_amount
       daily_statement.remaining_amount = 0
       output_invoice.update(remaining_amount: current_remaining_amount)
       daily_statement.update(status: :executed)

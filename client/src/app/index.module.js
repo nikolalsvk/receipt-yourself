@@ -25,6 +25,11 @@ import { BusinessPartnerDirective } from '../app/components/businessPartner/busi
 import { BusinessPartnerController } from '../app/components/businessPartner/businessPartner.controller';
 import { BusinessPartner } from '../app/components/businessPartner/businessPartner.factory';
 
+// ClosingReceipts components
+import { ClosingReceiptsDirective } from '../app/components/closingReceipts/closingReceipts.directive';
+import { ClosingReceiptsController } from '../app/components/closingReceipts/closingReceipts.controller';
+import { ClosingReceipts } from '../app/components/closingReceipts/closingReceipts.factory';
+
 // OutputInvoiceForm components
 import { OutputInvoiceFormDirective } from '../app/components/outputInvoiceForm/outputInvoiceForm.directive';
 import { OutputInvoiceFormController } from '../app/components/outputInvoiceForm/outputInvoiceForm.controller';
@@ -64,6 +69,7 @@ angular.module('receiptYourself', ['ngResource',
   .factory('businessPartner', ['railsResourceFactory', BusinessPartner.businessPartner])
   .factory('dailyStatement', ['railsResourceFactory', DailyStatement.dailyStatement])
   .factory('dailyBankStatement', ['railsResourceFactory', DailyBankStatement.dailyBankStatement])
+  .factory('closingReceipts', ['railsResourceFactory', ClosingReceipts.closingReceipts])
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
@@ -72,6 +78,7 @@ angular.module('receiptYourself', ['ngResource',
   .controller('InputInvoiceController', InputInvoiceController)
   .controller('BusinessPartnerController', BusinessPartnerController)
   .controller('OutputInvoiceController', OutputInvoiceController)
+  .controller('ClosingReceiptsController', ClosingReceiptsController)
   .controller('OutputInvoiceFormController', OutputInvoiceFormController)
   .controller('DailyStatementController', DailyStatementController)
   .controller('DailyStatementListController', DailyStatementListController)
@@ -79,6 +86,7 @@ angular.module('receiptYourself', ['ngResource',
   .controller('ClosedOutputInvoiceController', ClosedOutputInvoiceController)
   .controller('ClosedInputInvoiceController', ClosedInputInvoiceController)
   .directive('inputInvoice', InputInvoiceDirective)
+  .directive('closingReceipts', ClosingReceiptsDirective)
   .directive('dailyStatement', DailyStatementDirective)
   .directive('outputInvoiceForm', OutputInvoiceFormDirective)
   .directive('dailyStatementList', DailyStatementListDirective)

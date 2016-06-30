@@ -1,13 +1,14 @@
 export class InputInvoiceController {
-  constructor($mdEditDialog, $q, $scope, $timeout, inputInvoice) {
+  constructor($mdEditDialog, $q, $rootScope, $scope, $timeout, inputInvoice) {
     'ngInject';
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
+    $rootScope.selectedInputInvoice = [];
 
     $scope.options = {
       rowSelection: true,
-      multiSelect: true,
+      multiSelect: false,
       autoSelect: true,
       decapitate: false,
       largeEditDialog: false,
@@ -42,9 +43,14 @@ export class InputInvoiceController {
       }, 2000);
     }
 
+    $scope.hasRemainingAmount = function (item) { 
+      return item.remainingAmount > 0; 
+    };
+
+
     $scope.logItem = function (item) {
-      debugger
-      console.log(alert($scope.selected));
+      //debugger
+      $rootScope.selectedInputInvoice = $scope.selected;
     };
 
     $scope.$on('changedBusinessPartner', function(event, item) {

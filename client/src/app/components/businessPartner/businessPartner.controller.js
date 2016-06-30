@@ -4,6 +4,7 @@ export class BusinessPartnerController {
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
+    $scope.selected_item = [];
 
     $scope.options = {
       rowSelection: true,
@@ -43,8 +44,13 @@ export class BusinessPartnerController {
     }
 
     $scope.logItem = function (item) {
+      $scope.selected_item = item;
       $rootScope.$broadcast('changedBusinessPartner', item);
     };
+
+    $scope.$on('closedInvoice', function(event, item) {
+      $rootScope.$broadcast('changedBusinessPartner', $scope.selected_item);
+    });
 
     $scope.logOrder = function (order) {
       console.log('order: ', order);

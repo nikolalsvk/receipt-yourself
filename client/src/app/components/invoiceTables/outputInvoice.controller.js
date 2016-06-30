@@ -1,13 +1,14 @@
 export class OutputInvoiceController {
-  constructor($mdEditDialog, $q, $scope, $timeout, outputInvoice) {
+  constructor($mdEditDialog, $rootScope, $q, $scope, $timeout, outputInvoice) {
     'ngInject';
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
+    $rootScope.selectedOutputInvoice = [];
 
     $scope.options = {
       rowSelection: true,
-      multiSelect: true,
+      multiSelect: false,
       autoSelect: true,
       decapitate: false,
       largeEditDialog: false,
@@ -42,8 +43,12 @@ export class OutputInvoiceController {
       }, 2000);
     }
 
+    $scope.hasRemainingAmount = function (item) { 
+      return item.remainingAmount > 0; 
+    };
+
     $scope.logItem = function (item) {
-      console.log(item.id, 'was selected OUTPUT INVOICE');
+      $rootScope.selectedOutputInvoice = $scope.selected;
     };
 
     $scope.logOrder = function (order) {

@@ -20,9 +20,23 @@ class ReportsController < ApplicationController
   end
 
   def partner_card
+    u = User.first
+    input_invoices = []
+    output_invoices = []
+    BusinessPartner.find_each do |partner|
+      input_invoices << partner.input_invoices
+      output_invoices << partner.output_invoices
+    end
+    ii = JSON.parse(input_invoices.to_json)
+    oo = JSON.parse(output_invoices.to_json)
+    sendJSON(u.email, u.company, [ii, oo], '/partner_card')
   end
 
   def ios
+    u = User.first
+    opened_output = JSON.parse(OutputInvoice.opened.to_json)
+    opened_input = JSON.parse(InputInvoice.opened.to_json)
+    sendJSON(u.email, u.company, [opened_output, opened_input], '/ios')
   end
 
   private

@@ -42,6 +42,7 @@ class ReportsController < ApplicationController
   private
 
   def sendJSON(email, company, info, path)
+    set_authorization_info
     set_JSON_destination
     RestClient.post @rg_address + path, {:data=> {email: email, 
                                                   company: company,
@@ -50,10 +51,20 @@ class ReportsController < ApplicationController
 
   def set_JSON_destination
     @rg_address = if Rails.env.development?
-                    "http://localhost:9292"
+                    "http://#{@username}:#{@password}@localhost:9292"
                   elsif Rails.env.production?
-                    "https://ry-report-generator.herokuapp.com"
+                    "https://#{@username}:#{@password}@ry-report-generator.herokuapp.com"
                   end
+  end
+
+  def set_authorization_info
+    if Rails.env.development?
+      @username = "admin"
+      @password = "admin"
+    elsif Rails.env.production?
+      @username = ENV["SINATRA_USERNAME"]
+      @password = ENV["SINATRA_PASSWORD"]
+    end
   end
 
 end

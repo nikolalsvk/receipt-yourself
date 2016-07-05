@@ -4,8 +4,10 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
+
 import { SignInController } from '../app/components/userAuth/signIn.controller';
 import { SignUpController } from '../app/components/userRegistration/signUp.controller';
+
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
@@ -102,4 +104,15 @@ angular.module('receiptYourself', ['ngResource',
   .directive('businessPartner', BusinessPartnerDirective)
   .directive('closedOutputInvoice', ClosedOutputInvoiceDirective)
   .directive('closedInputInvoice', ClosedInputInvoiceDirective)
-  .directive('acmeMalarkey', MalarkeyDirective);
+  .directive('acmeMalarkey', MalarkeyDirective)
+  .run(function ($rootScope, $state) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      if(toState.name != 'home' && toState.name != 'sign_in' && toState.name != 'sign_up') {
+        if(!$rootScope.user.id) {
+          debugger
+          // $state.go('home');
+          window.location = "/";
+        }
+      }
+    }
+  )});

@@ -1,5 +1,5 @@
 export class SignUpController {
-  constructor ($scope, $auth, $mdToast) {
+  constructor ($scope, $auth, $mdToast, $state) {
     'ngInject';
 
     let errors = {};
@@ -11,6 +11,7 @@ export class SignUpController {
             email: $scope.registrationForm.email,
             password: $scope.registrationForm.password
           })
+          $state.go("invoices");
         })
         .catch(function(resp) {
           errors = resp.data.errors.full_messages;

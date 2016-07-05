@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-  
 
   resources :daily_statement_items, except: [:new, :edit]
   resources :daily_statements, except: [:new, :edit]

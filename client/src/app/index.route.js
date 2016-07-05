@@ -51,7 +51,8 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
         content: {
           templateUrl: 'app/components/invoiceTables/invoices.html'
         }
-      }
+      },
+      authenticate: true
     })
     .state('dailyBankStatements', {
       url: '/daily_bank_statements',
@@ -98,6 +99,16 @@ export function routerConfig ($stateProvider, $urlRouterProvider, $locationProvi
         content: {
           templateUrl: 'app/components/outputInvoiceForm/outputInvoiceForm.html',
           controller: 'OutputInvoiceFormController as outputInvoiceFormCtrl'
+        }
+      }
+    })
+    .state('reports', {
+      url: '/reports',
+      views: {
+        navbar: { templateUrl: 'app/components/navbar/navbar.html' },
+        content: {
+          templateUrl: 'app/components/reports/reports.html',
+          controller: 'ReportsController as reportsCtrl'
         }
       }
     });

@@ -7,6 +7,7 @@ export class OutputInvoiceFormController {
     let that = this
 
     businessPartner.query().then(function(results) {
+      debugger
       that.businessPartners = results;
     });
 

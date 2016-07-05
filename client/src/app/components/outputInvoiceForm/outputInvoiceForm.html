@@ -4,7 +4,7 @@
     <form ng-submit="test()" role="form" ng-init="outputInvoiceForm = {}" name="outputInvoiceForm">
       <md-input-container>
         <label>Business partner</label>
-          <md-select ng-model="outputInvoice.businessPartner">
+          <md-select required ng-model="outputInvoice.businessPartner">
           <md-option ng-repeat="businessPartner in outputInvoiceFormCtrl.businessPartners">{{businessPartner.name}}</md-option>
         </md-select>
       </md-input-container>
@@ -14,18 +14,18 @@
       </md-input-container>
       <md-input-container class="md-block">
         <label>Payment amount</label>
-        <input name="opaymentAmount" ng-model="outputInvoice.paymentAmount">
+        <input required md-no-asterisk name="opaymentAmount" ng-model="outputInvoice.paymentAmount">
       </md-input-container>
       <md-input-container class="md-block">
         <label>Remaining amount</label>
-        <input name="remainingAmount" ng-model="outputInvoice.remainingAmount">
+        <input required md-no-asterisk name="remainingAmount" ng-model="outputInvoice.remainingAmount">
       </md-input-container>  
         <label>Issuance date</label>
-        <md-datepicker name="issuanceDate" ng-model="outputInvoice.issuanceDate"></md-datepicker>
+        <md-datepicker required md-no-asterisk name="issuanceDate" ng-model="outputInvoice.issuanceDate"></md-datepicker>
         <label>Circulation date</label>
-        <md-datepicker name="circulationDate" ng-model="outputInvoice.circulationDate"></md-datepicker>
+        <md-datepicker required md-no-asterisk name="circulationDate" ng-model="outputInvoice.circulationDate"></md-datepicker>
         <label>Payment deadline</label>
-        <md-datepicker name="paymentDeadline" ng-model="outputInvoice.paymentDeadline"></md-datepicker><br/>
+        <md-datepicker required md-no-asterisk name="paymentDeadline" ng-model="outputInvoice.paymentDeadline"></md-datepicker><br/>
       <md-input-container>
         <md-button type="submit">Issue an Output Invoice!</md-button>
       </md-input-container>              

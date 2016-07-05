@@ -1,5 +1,5 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr, inputInvoice) {
+  constructor ($rootScope, $state, $timeout, webDevTec, toastr, inputInvoice) {
     'ngInject';
 
     this.awesomeThings = [];
@@ -23,4 +23,5 @@ export class MainController {
       awesomeThing.rank = Math.random();
     });
   }
+
 }

@@ -5,6 +5,8 @@ class ReportsController < ApplicationController
   def create
     parsed_reports = ActiveSupport::JSON.decode(params[:reports].to_json)
     user_id = parsed_reports['user']['id']
+    report_type = parsed_reports['type']
+    bp_contact_card_id = parsed_reports['bp_contact_card_id']
     respond_with(user_id)
   end
 

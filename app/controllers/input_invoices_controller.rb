@@ -32,9 +32,18 @@ class InputInvoicesController < ApplicationController
   end
 
   def create
-    @input_invoice = InputInvoice.new(input_invoice_params)
-    @input_invoice.save
-    respond_with(@input_invoice)
+    parsed_closing_receipts = ActiveSupport::JSON.decode(params[:input_invoice].to_json)
+    if type == 'input'
+      selected_input_invoice_id = parsed_closing_receipts['input_invoice'][0]['id']
+      parsed_closing_receipts['daily_statements'].each { |el|
+        InputInvoiceClosure.where(daily_statement_id: el['id'], input_invoice_id: selected_input_invoice_id)[0].revert!
+      }
+    else
+      selected_output_invoice_id = parsed_closing_receipts['output_invoice'][0]['id']
+      parsed_closing_receipts['daily_statements'].each { |el|
+        OutputInvoiceClosure.where(daily_statement_id: el['id'], output_invoice_id: selected_output_invoice_id)[0].revert!
+      }
+    end
   end
 
   def update

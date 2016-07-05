@@ -97,6 +97,11 @@ ActiveRecord::Schema.define(version: 20160629125229) do
 
   add_index "daily_bank_statements", ["company_account_id"], name: "index_daily_bank_statements_on_company_account_id", using: :btree
 
+  create_table "daily_statement_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "daily_statements", force: :cascade do |t|
     t.string   "debtor_account_number",     limit: 18,                          null: false
     t.string   "debtor_account_name",                                           null: false

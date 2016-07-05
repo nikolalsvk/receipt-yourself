@@ -1,9 +1,11 @@
 export class DailyStatementController {
-  constructor($mdEditDialog, $q, $scope, $timeout, dailyStatement) {
+  constructor($mdEditDialog, $rootScope, $q, $scope, $timeout, dailyStatement) {
     'ngInject';
 
     $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
+    $rootScope.selectedDSUpper = [];
+    $rootScope.selectedDSBottom = [];
 
     $scope.options = {
       rowSelection: true,
@@ -43,15 +45,17 @@ export class DailyStatementController {
     }
 
     $scope.logItem = function (item) {
-      debugger
-      console.log(alert($scope.selected));
+       if($scope.type == 'on load') {
+         $rootScope.selectedDSUpper = $scope.selected;
+       } else {
+         $rootScope.selectedDSBottom = $scope.selected;
+       }
     };
 
     $scope.$on('changedBusinessPartner', function(event, item) {
-
+      
       dailyStatement.query({ business_partner_id: item.id })
       .then(function (results) {
-          debugger
           that.dailyStatements = results;
       }, function (error) {
               alert('[daily statements]: error filter fetching data from database.');
@@ -70,11 +74,11 @@ export class DailyStatementController {
     }
 
     $scope.isPositive = function (item) { 
-      return item.transferAmount > 0; 
+      return item.transferAmount > 0 && item.remainingAmount > 0; 
     };
 
-      $scope.isNegative = function (item) { 
-      return item.transferAmount < 0; 
+    $scope.isNegative = function (item) { 
+      return item.transferAmount < 0 && item.remainingAmount > 0; 
     };
 
     $scope.logPagination = function (page, limit) {

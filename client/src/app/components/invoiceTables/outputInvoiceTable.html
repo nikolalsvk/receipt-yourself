@@ -34,7 +34,7 @@
           <tr md-row md-select="outputInvoice"
             md-on-select="logItem"
             md-auto-select="false"
-            ng-repeat="outputInvoice in invoiceCtrl.outputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            ng-repeat="outputInvoice in invoiceCtrl.outputInvoices | filter: hasRemainingAmount | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
             <td md-cell>{{outputInvoice.number}}</td>
             <td md-cell>{{outputInvoice.paymentAmount}}</td>
             <td md-cell>{{outputInvoice.remainingAmount}}</td>

@@ -15,7 +15,7 @@
     <md-table-container>
       <table md-table
         md-row-select="options.rowSelection"
-        multiple="true"
+        multiple="false"
         ng-model="selected"
         md-progress="promise">
 
@@ -33,9 +33,9 @@
           <tr md-row md-select="inputInvoice"
             md-on-select="logItem"
             md-auto-select="false"
-            ng-repeat="inputInvoice in invoiceCtrl.inputInvoices | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            ng-repeat="inputInvoice in invoiceCtrl.inputInvoices | filter: hasRemainingAmount | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
             <td md-cell>{{inputInvoice.number}}</td>
-            <td md-cell>{{inputInvoice.paymentAmount}}</td>
+            <td md-cell>-{{inputInvoice.paymentAmount}}</td>
             <td md-cell>{{inputInvoice.remainingAmount}}</td>
             <td md-cell>{{inputInvoice.circulationDate}}</td>
             <td md-cell>{{inputInvoice.paymentDeadline}}</td>

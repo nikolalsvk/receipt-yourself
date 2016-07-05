@@ -1,7 +1,7 @@
 <md-content laout="column" flex >
   <md-card>
 
-    <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+    <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
         <span>Daily Statement: {{type}}</span>
         <div flex></div>
@@ -23,7 +23,7 @@
             <th md-column md-order-by="businessPartner.name"><span>Business Partner</span></th>
             <th md-column md-order-by="businessPartner.paymentDate"><span>Payment Date</span></th>
             <th md-column md-order-by="businessPartner.name"><span>{{type == 'on load' ? 'Pay off' : 'Charge'}} amount</span></th>
-            <th md-column md-numeric md-order-by="debtorReferenceNumber" md-desc><span>Reference Number</span></th>
+            <th md-column md-numeric md-order-by="debtorReferenceNumber" md-desc><span>Remaining amount</span></th>
             <th md-column md-numeric md-order-by="debtorAccountNumber"><span>Account Number</span></th>
           </tr>
         </thead>
@@ -35,7 +35,7 @@
               <td md-cell>{{dailyStatement.businessPartner.name}}</td>
               <td md-cell>{{dailyStatement.paymentDate}}</td>
               <td md-cell>{{dailyStatement.transferAmount}}</td>
-              <td md-cell>{{dailyStatement.debtorReferenceNumber}}</td>
+              <td md-cell>{{dailyStatement.remainingAmount}}</td>
               <td md-cell>{{dailyStatement.debtorAccountNumber}}</td>
           </tr>
         </tbody>

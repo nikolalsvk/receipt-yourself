@@ -1,5 +1,13 @@
 class ReportsController < ApplicationController
 
+  respond_to :json
+
+  def create
+    parsed_reports = ActiveSupport::JSON.decode(params[:reports].to_json)
+    user_id = parsed_reports['user']['id']
+    respond_with(user_id)
+  end
+
   def kif
     # temp user
     u = User.first
@@ -40,7 +48,7 @@ class ReportsController < ApplicationController
   end
 
   private
-
+  
   def sendJSON(email, company, info, path)
     set_authorization_info
     set_JSON_destination
@@ -67,4 +75,7 @@ class ReportsController < ApplicationController
     end
   end
 
+  def input_invoice_params
+    params[:reports]
+  end
 end

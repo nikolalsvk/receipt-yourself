@@ -178,6 +178,8 @@ GEM
       ffi (>= 0.5.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -244,10 +246,14 @@ DEPENDENCIES
   rails-erd
   rails_12factor
   responders
+  rest-client
   rspec-rails (~> 3.0)
   selenium-webdriver
   shoulda-matchers (~> 3.1)
   spring
+
+RUBY VERSION
+   ruby 2.2.3p173
 
 BUNDLED WITH
    1.12.5

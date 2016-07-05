@@ -20,6 +20,8 @@ gem 'responders'
 
 gem 'faker'
 
+gem 'rest-client'
+
 group :development, :test do
   gem 'spring'
   gem 'byebug'

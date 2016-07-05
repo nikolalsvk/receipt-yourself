@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     post "closing_receipts/create" => "closing_receipts#create", defaults: { format: 'json' }
     post "reports/create" => "reports#create", defaults: { format: 'json' }
 
+    post "reports/kif" => "reports#kif"
+    post "reports/kuf" => "reports#kuf"
+    post "reports/partner_card" => "reports#partner_card"
+    post "reports/ios" => "reports#ios"
+
     resources :input_invoices, except: [:new, :edit], defaults: { format: 'json' }
 
     resources :output_invoices, except: [:new, :edit], defaults: { format: 'json' }

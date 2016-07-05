@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  get '/.well-known/acme-challenge/:id' => 'identification#letsencrypt'
 
   resources :daily_statement_items, except: [:new, :edit]
   resources :daily_statements, except: [:new, :edit]
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
     post "businesspartners/acceptinvoice" => "businesspartners#accept_invoice"
     post "banks/receivedata" => "banks#receive_data"
     post "banks/receviedailystatement" => "banks#receive_daily_statement"
+    post "closing_receipts/create" => "closing_receipts#create", defaults: { format: 'json' }
+    post "reports/create" => "reports#create", defaults: { format: 'json' }
 
     resources :input_invoices, except: [:new, :edit], defaults: { format: 'json' }
 

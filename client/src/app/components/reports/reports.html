@@ -1,1 +1,24 @@
-<md-button class="md-raised" ng-click="generateReport()"> REPORTS </md-button>
+<md-card>
+    <h1 class="md-title">Generate report</h1>
+    <div layout="column" ng-cloak>
+        <md-content layout-padding>
+            <md-input-container>
+                <label>Business partner</label>
+                <md-select required ng-model="reportsCtrl.bpContactCardId">
+                <md-option value="{{businessPartner.contactCardId}}" ng-repeat="businessPartner in reportsCtrl.businessPartners">{{businessPartner.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Report type</label>
+                <md-select ng-model="reportsCtrl.selectedType">
+                    <md-option value="kif">Book of Output Invoices</md-option>
+                    <md-option value="kuf">Book of Input Invoices</md-option>
+                    <md-option value="ios">Daily Unmerged Statements</md-option>
+                </md-select>
+            </md-input-container>
+        </md-content>
+       <md-input-container>
+        <md-button ng-click="generateReport()">Generate report!</md-button>
+      </md-input-container>
+    </div>
+</md-card>

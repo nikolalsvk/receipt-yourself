@@ -6,6 +6,7 @@ export function ReportsDirective() {
     scope: {
       extraValues: '=',
       type: "=",
+      showForm: "="
     },
     templateUrl: 'app/components/reports/reports.html',
     controller: 'ReportsController',

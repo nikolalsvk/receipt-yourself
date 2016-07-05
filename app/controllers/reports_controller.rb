@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
         puts "it was something else"
     end
 
-    respond_with(user_id)
+    render nothing: true, status: :ok, content_type: "text/html"
   end
 
   def kif

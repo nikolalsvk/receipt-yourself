@@ -32,6 +32,7 @@ group :development do
   gem 'rails-erd'
   # schema info in model
   gem 'annotate'
+  gem 'thin'
 end
 
 group :test do

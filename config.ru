@@ -1,4 +1,5 @@
 # This file is used by Rack-based servers to start the application.
+require 'rack/rewrite'
 
 use Rack::Rewrite do
   rewrite %r{^(?!.*(api|\.)).*$}, '/index.html'

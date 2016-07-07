@@ -30,7 +30,7 @@
 
 class User < ActiveRecord::Base
   belongs_to :company
-  before_validation :add_user_to_company, on: :create
+  after_commit :add_user_to_company, on: :create
   
   # Include default devise modules.
   devise :database_authenticatable, :registerable,

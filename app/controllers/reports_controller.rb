@@ -9,10 +9,10 @@ class ReportsController < ApplicationController
     report_type = parsed_reports['type']
     bp_contact_card_id = parsed_reports['bp_contact_card_id']
 
-    case report_type # a_variable is the variable we want to compare
-      when "kif"    #compare to 1
+    case report_type
+      when "kif"
         kif
-      when "kuf"    #compare to 2
+      when "kuf"
         kuf
       when "ios"
         ios

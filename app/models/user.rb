@@ -30,6 +30,7 @@
 
 class User < ActiveRecord::Base
   belongs_to :company
+  before_validation :add_user_to_company, on: :create
   
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
@@ -38,5 +39,9 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   before_save -> { skip_confirmation! }
+
+  def add_user_to_company
+    self.company_id = Company.last.id
+  end
 
 end
